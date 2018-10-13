@@ -1,9 +1,9 @@
 module.exports = {
   siteMetadata: {
-    name: `Hello Typescript World!`,
-    tagline: `best gatsby site`
+    name: 'Hi I am site metadata name',
+    tagline: 'Awesome Gatsby site'
   },  
   plugins: [
-    `gatsby-plugin-typescript`,
+    'gatsby-plugin-typescript',
   ],
 }

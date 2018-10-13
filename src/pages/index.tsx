@@ -1,6 +1,9 @@
 import * as React from 'react'
 import { graphql } from 'gatsby'
 
+import { DefaultLayout } from '../layouts/DefaultLayout'
+import { Button } from '../elements/Button'
+
 interface IFrontPageProps {
   data: IFrontPageQuery
 }
@@ -22,11 +25,14 @@ export default class FrontPage extends React.PureComponent<IFrontPageProps> {
   render() {
     const { name, tagline } = this.graphqlProps.site.siteMetadata
     return (
-      <div>
-        <h1>Front page</h1>
-        <h1>{name}</h1>
-        <p>{tagline}</p>
-      </div>
+      <DefaultLayout>
+        <div>
+          <h1>Front page</h1>
+          <h1>{name}</h1>
+          <p>{tagline}</p>
+          <Button>I am a button</Button>
+        </div>
+      </DefaultLayout>
     )
   }
 }
