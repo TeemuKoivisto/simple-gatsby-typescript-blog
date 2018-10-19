@@ -2,6 +2,7 @@ import * as React from 'react'
 import { ThemeProvider } from 'styled-components'
 import { StaticQuery, graphql } from 'gatsby'
 
+import styled from '../theme/styled'
 import { defaultTheme } from '../theme/defaultTheme'
 
 import { NavBar } from '../components/NavBar' 
@@ -25,9 +26,13 @@ export const DefaultLayout = ({ children }) => (
 
 const DefaultContent = (children: React.ReactChildren) => (data: ISiteData) => (
   <ThemeProvider theme={defaultTheme}>
-    <div>
+    <DefaultWrapper>
       <NavBar data={data}/>
       { children }
-    </div>
+    </DefaultWrapper>
   </ThemeProvider>
 )
+
+const DefaultWrapper = styled.main`
+  margin: 20px;
+`

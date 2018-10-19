@@ -5,24 +5,19 @@ import { DefaultLayout } from '../layouts/DefaultLayout'
 import { Button } from '../elements/Button'
 
 interface IFrontPageProps {
-  data: IFrontPageQuery
-}
-
-interface IFrontPageQuery {
-  site: {
-    siteMetadata: {
-      title: string
-      tagline: string
+  data: {
+    site: {
+      siteMetadata: {
+        title: string
+        tagline: string
+      }
     }
   }
 }
 
 export default class FrontPage extends React.PureComponent<IFrontPageProps> {
-  get graphqlProps() {
-    return this.props.data as IFrontPageQuery
-  }
   render() {
-    const { title, tagline } = this.graphqlProps.site.siteMetadata
+    const { title, tagline } = this.props.data.site.siteMetadata
     return (
       <DefaultLayout>
         <div>
