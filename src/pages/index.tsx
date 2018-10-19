@@ -11,24 +11,23 @@ interface IFrontPageProps {
 interface IFrontPageQuery {
   site: {
     siteMetadata: {
-      name: string
+      title: string
       tagline: string
     }
   }
 }
-
 
 export default class FrontPage extends React.PureComponent<IFrontPageProps> {
   get graphqlProps() {
     return this.props.data as IFrontPageQuery
   }
   render() {
-    const { name, tagline } = this.graphqlProps.site.siteMetadata
+    const { title, tagline } = this.graphqlProps.site.siteMetadata
     return (
       <DefaultLayout>
         <div>
           <h1>Front page</h1>
-          <h1>{name}</h1>
+          <h1>{title}</h1>
           <p>{tagline}</p>
           <Button>I am a button</Button>
         </div>
@@ -37,11 +36,11 @@ export default class FrontPage extends React.PureComponent<IFrontPageProps> {
   }
 }
 
-export const frontPageQuery = graphql`
+export const query = graphql`
   query FrontPageQuery {
     site {
       siteMetadata {
-        name
+        title
         tagline
       }
     }

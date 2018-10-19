@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    name: 'Hi I am site metadata name',
+    title: 'TeemuKoivisto',
     tagline: 'Awesome Gatsby site'
   },  
   plugins: [
