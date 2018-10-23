@@ -8,7 +8,8 @@ export const defaultTheme : ITheme = {
     white: '#fff',
     primary: '#2979FF',
     secondary: '#82B1FF',
-    danger: '#e93e2e'
+    danger: '#e93e2e',
+    lightGrey: '#aaa',
   },
   button: {
     sizes: {
