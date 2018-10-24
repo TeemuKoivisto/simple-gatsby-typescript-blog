@@ -4,6 +4,7 @@ import { graphql } from 'gatsby'
 import { DefaultLayout } from '../layouts/DefaultLayout'
 import { Button } from '../elements/Button'
 import { Input } from '../elements/Input'
+import { MdEmail, MdLock } from 'react-icons/md'
 
 interface IFrontPageProps {
   data: {
@@ -29,8 +30,15 @@ export default class FrontPage extends React.Component<IFrontPageProps, {email: 
           <h1>Front page</h1>
           <h1>{title}</h1>
           <p>{tagline}</p>
-          <Input label="email" onChange={(e) => this.setState({email: e.currentTarget.value})}/>
-          <Input type="password" label="password" onChange={(e) => this.setState({password: e.currentTarget.value})}/>
+          <MdEmail/>
+          <Input />
+          <Input label="Email" icon={<MdEmail size={24}/>}
+            onChange={(e) => this.setState({email: e.currentTarget.value})}
+          />
+          <Input type="password" label="Password" icon={<MdLock size={24}/>}
+            onChange={(e) => this.setState({password: e.currentTarget.value})}
+          />
+          <br />
           <Button>Login</Button>
         </div>
       </DefaultLayout>
