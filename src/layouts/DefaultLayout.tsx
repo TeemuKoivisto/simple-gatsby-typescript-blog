@@ -3,7 +3,7 @@ import { ThemeProvider } from 'styled-components'
 import { StaticQuery, graphql } from 'gatsby'
 
 import styled from '../theme/styled'
-import { defaultTheme } from '../theme/defaultTheme'
+import { defaultTheme } from '../theme/sc-default-theme'
 
 import { NavBar } from '../components/NavBar' 
 

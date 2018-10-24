@@ -1,7 +1,7 @@
 import Typography from 'typography'
-import teemuTheme from './teemu-theme'
+import teemuTheme from './ty-teemu-theme'
 
-const typography = new Typography(teemuTheme)
+const typography = Typography(teemuTheme)
 
 // Hot reloading in dev
 if (process.env.NODE_ENV !== 'production') {

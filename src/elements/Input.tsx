@@ -31,13 +31,14 @@ const InputContainer = styled.div`
   border-radius: 4px;
   display: flex;
   max-width: 150px;
+  position: relative;
   &:focus {
     background-image: linear-gradient(to right, #cefff8, #729EE74D);
     color: ${({ theme }) => theme.color.textDark };
     outline: auto 5px;
   }
   & > svg {
-    padding: 0 0 0 5px;
+    left: 8px;
     position: absolute;
   }
 `
@@ -58,6 +59,6 @@ export const StyledInput = styled.input`
     color: ${({ theme }) => theme.color.textDark };
   }
   &.has-icon {
-    padding-left: 36px;
+    padding-left: 40px;
   }
 `

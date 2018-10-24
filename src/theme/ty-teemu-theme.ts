@@ -4,6 +4,8 @@ import {
   TABLET_MEDIA_QUERY,
 } from './theme-breakpoints'
 
+// Uses typography-theme-sutro as its base
+// https://github.com/KyleAMathews/typography.js/blob/master/packages/typography-theme-sutro/src/index.js
 const theme = {
   title: 'Teemu-theme',
   baseFontSize: '16px',
@@ -53,7 +55,7 @@ const theme = {
       content: '"— "',
     },
     ul: {
-      listStyle: 'disc',
+      listStyle: 'none',
     },
     'ul,ol': {
       marginLeft: 0,
