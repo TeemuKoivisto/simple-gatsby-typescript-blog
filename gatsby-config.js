@@ -5,6 +5,12 @@ module.exports = {
   },  
   plugins: [
     'gatsby-plugin-typescript',
+    {
+      resolve: 'gatsby-plugin-typography',
+      options: {
+        pathToConfigModule: 'src/theme/typography',
+      },
+    },
     'gatsby-transformer-remark',
     {
       resolve: 'gatsby-source-filesystem',

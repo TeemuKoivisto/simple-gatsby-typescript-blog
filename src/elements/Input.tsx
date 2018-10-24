@@ -28,6 +28,7 @@ const InputWrapper = styled.div`
 const InputContainer = styled.div`
   align-items: center;
   border: 1px solid ${({ theme }) => theme.color.textDark };
+  border-radius: 4px;
   display: flex;
   max-width: 150px;
   &:focus {
@@ -53,7 +54,7 @@ export const StyledInput = styled.input`
   transition: 0.1s all;
   width: 100%;
   &:focus {
-    background-image: linear-gradient(to right,#fcffff,#bbecff4d);
+    background-image: linear-gradient(to right,#fcffff,#e6f8ff4d);
     color: ${({ theme }) => theme.color.textDark };
   }
   &.has-icon {
