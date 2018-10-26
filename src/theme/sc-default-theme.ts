@@ -1,4 +1,5 @@
 import { ITheme } from '../interfaces/theme'
+import { createGlobalStyle } from 'styled-components'
 
 export const defaultTheme : ITheme = {
   color: {
@@ -38,3 +39,18 @@ export const defaultTheme : ITheme = {
     largeIcon: '50px'
   },
 }
+
+export const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+    padding: 0;
+  }
+   body,
+   input,
+   * {
+    box-sizing: border-box;
+   }
+   ul, ol {
+    list-style: none;
+   }
+`

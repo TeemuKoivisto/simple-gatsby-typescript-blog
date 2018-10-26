@@ -30,7 +30,10 @@ export default class FrontPage extends React.Component<IFrontPageProps, {email: 
           <h1>Front page</h1>
           <h1>{title}</h1>
           <p>{tagline}</p>
-          <MdEmail/>
+          <h2>This is my awesome website</h2>
+          <p>
+            Hi, and welcome!
+          </p>
           <Input />
           <Input label="Email" icon={<MdEmail size={24}/>}
             onChange={(e) => this.setState({email: e.currentTarget.value})}

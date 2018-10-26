@@ -16,6 +16,7 @@ export class NavBar extends React.PureComponent<INavBarProps> {
         <Nav>
           <NavLink to="/">{title}</NavLink>
           <NavLink to="/blog">Blog</NavLink>
+          <NavLink to="/login" className="right-end">Sign in</NavLink>
         </Nav>
       </NavBarContainer>
     )
@@ -29,9 +30,14 @@ const NavBarContainer = styled.div`
 const Nav = styled.nav`
   display: flex;
   padding: 20px;
+  position: relative;
 `
 
 const NavLink = styled(Link)`
   margin-right: 10px;
   text-decoration: none;
+  &.right-end {
+    position: absolute;
+    right: 5px;
+  }
 `
