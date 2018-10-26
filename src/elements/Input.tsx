@@ -5,14 +5,15 @@ interface IInputProps extends React.HTMLAttributes<HTMLInputElement> {
   label?: string
   type?: string
   icon?: React.ReactElement<any>
+  fullWidth?: boolean
 }
 
-export const Input: React.SFC<IInputProps> = ({ label, icon, ...props }: IInputProps) => (
+export const Input: React.SFC<IInputProps> = ({ label, ...props }: IInputProps) => (
   <InputWrapper>
-    <label>{label}</label>
-    <InputContainer>
-      { icon }
-      <StyledInput {...props} className={`${icon ? 'has-icon' : ''}`}></StyledInput>
+    { label && <label>{label}</label> }
+    <InputContainer {...props}>
+      { props.icon }
+      <StyledInput {...props}></StyledInput>
     </InputContainer>
   </InputWrapper>
 )
@@ -30,8 +31,8 @@ const InputContainer = styled.div`
   border: 1px solid ${({ theme }) => theme.color.textDark };
   border-radius: 4px;
   display: flex;
-  max-width: 150px;
   position: relative;
+  width: ${({ fullWidth }) => fullWidth ? '100%' : '150px' };
   &:focus {
     background-image: linear-gradient(to right, #cefff8, #729EE74D);
     color: ${({ theme }) => theme.color.textDark };
@@ -51,6 +52,7 @@ export const StyledInput = styled.input`
   cursor: pointer;
   font-size: ${({ theme }) => theme.fontSize.medium };
   padding: 0.5rem 0.5rem;
+  padding-left: ${({ icon }) => icon ? '40px' : '0'};
   text-decoration: none;
   transition: 0.1s all;
   width: 100%;
@@ -58,7 +60,7 @@ export const StyledInput = styled.input`
     background-image: linear-gradient(to right,#fcffff,#e6f8ff4d);
     color: ${({ theme }) => theme.color.textDark };
   }
-  &.has-icon {
+  /* &.has-icon {
     padding-left: 40px;
-  }
+  } */
 `
