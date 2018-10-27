@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 
 import styled from '../theme/styled'
 import { DefaultLayout } from '../layouts/DefaultLayout'
+import { Signature } from '../components/Signature'
 
 interface IBlogPostTemplateProps {
   data: {
@@ -23,6 +24,7 @@ export default class BlogPostTemplate extends React.PureComponent<IBlogPostTempl
         <div>
           <h1>{post.frontmatter.title}</h1>
           <MarkDownContainer dangerouslySetInnerHTML={{ __html: post.html }} />
+          <Signature />
         </div>
       </DefaultLayout>
     )
