@@ -6,15 +6,15 @@ import { ISiteData } from '../types/graphql'
 // IoMdMail IoLogoLinkedin IoLogoGithub
 import { IoMdMail, IoLogoLinkedin, IoLogoGithub } from 'react-icons/io'
 
-interface INavBarProps {
+interface IFooterProps {
   data: ISiteData
 }
 
-export class NavBar extends React.PureComponent<INavBarProps> {
+export class Footer extends React.PureComponent<IFooterProps> {
   render() {
     const { title } = this.props.data.site.siteMetadata
     return (
-      <NavBarContainer>
+      <FooterContainer>
         <Nav>
           <NavLink to="/">{title}</NavLink>
           <NavLink to="/blog">Blog</NavLink>
@@ -29,15 +29,19 @@ export class NavBar extends React.PureComponent<INavBarProps> {
               <IoLogoLinkedin size={24}/>
             </IconLink>
           </MyIconLinks>
-          <NavLink to="/login" className="right-end">Sign in</NavLink>
         </Nav>
-      </NavBarContainer>
+      </FooterContainer>
     )
   }
 }
 
-const NavBarContainer = styled.header`
+const FooterContainer = styled.footer`
   background: white;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: ${({ theme }) => theme.sizes.footer};
 `
 
 const MyIconLinks = styled.div`
@@ -56,9 +60,9 @@ const IconLink = styled.a`
 
 const Nav = styled.nav`
   display: flex;
-  padding: 40px;
+  justify-content: center;
+  padding: 20px;
   position: relative;
-  ${raise(2)};
 `
 
 const NavLink = styled(Link)`

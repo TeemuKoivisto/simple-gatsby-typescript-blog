@@ -20,17 +20,18 @@ export default class BlogPostTemplate extends React.PureComponent<IBlogPostTempl
     const post = this.props.data.markdownRemark
     return (
       <DefaultLayout>
-        <Container>
+        <div>
           <h1>{post.frontmatter.title}</h1>
-          <div dangerouslySetInnerHTML={{ __html: post.html }} />
-        </Container>
+          <MarkDownContainer dangerouslySetInnerHTML={{ __html: post.html }} />
+        </div>
       </DefaultLayout>
     )
   }
 }
 
-const Container = styled.div`
-  margin: ${({ theme }) => theme.margins.default};
+const MarkDownContainer = styled.div`
+  & > pre {
+  }
 `
 
 export const query = graphql`

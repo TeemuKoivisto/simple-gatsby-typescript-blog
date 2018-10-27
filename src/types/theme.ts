@@ -38,6 +38,9 @@ export interface ITheme {
     xlarge: string
     largeIcon: string
   },
+  sizes: {
+    footer: string
+  }
   margins: {
     default: string
   }

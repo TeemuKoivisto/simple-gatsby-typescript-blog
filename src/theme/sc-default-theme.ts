@@ -38,6 +38,9 @@ export const defaultTheme : ITheme = {
     xlarge: '40px',
     largeIcon: '50px'
   },
+  sizes: {
+    footer: '68px',
+  },
   margins: {
     default: '2rem',
   }
@@ -47,13 +50,19 @@ export const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
+    min-height: 100%;
+    // TODO this shit
+    & > div {
+      height: 100%;
+      & > div {
+        height: 100%;
+      }
+    }
   }
-   body,
-   input,
-   * {
+  * {
     box-sizing: border-box;
-   }
-   ul, ol {
+  }
+  ul, ol {
     list-style: none;
-   }
+  }
 `
