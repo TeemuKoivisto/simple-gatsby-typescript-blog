@@ -28,11 +28,29 @@ const DefaultContent = (children: React.ReactChildren) => (data: ISiteData) => (
   <ThemeProvider theme={defaultTheme}>
     <DefaultWrapper>
       <NavBar data={data}/>
-      { children }
+      <DefaultContainer>
+        { children }
+      </DefaultContainer>
       <GlobalStyle/>
     </DefaultWrapper>
   </ThemeProvider>
 )
 
 const DefaultWrapper = styled.main`
+`
+
+const DefaultContainer = styled.div`
+  margin: ${({ theme }) => theme.margins.default};
+  &:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: whitesmoke;
+    background-size: cover;
+    display: block;
+    content: ' ';
+    z-index: -1;
+    height: 100%;
+  }
 `

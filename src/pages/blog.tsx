@@ -2,7 +2,6 @@ import * as React from 'react'
 import { graphql } from 'gatsby'
 import { Link } from 'gatsby'
 
-import styled from '../theme/styled'
 import { DefaultLayout } from '../layouts/DefaultLayout'
 
 import { IBlogPosts, INode } from '../types/graphql'
@@ -18,22 +17,18 @@ export default class BlogPage extends React.PureComponent<IBlogPageProps> {
     const { data: { allMarkdownRemark }} = this.props
     return (
       <DefaultLayout>
-        <Container>
+        <div>
           <h1>My blog posts</h1>
           <ul>
             { allMarkdownRemark.edges.map(({ node }: INode) => 
             <li key={node.frontmatter.title}><Link to={node.fields.slug}>{node.frontmatter.title}</Link></li>
             )}
           </ul>
-        </Container>
+        </div>
       </DefaultLayout>
     )
   }
 }
-
-const Container = styled.div`
-  margin: ${({ theme }) => theme.margins.default};
-`
 
 export const query = graphql`
   query {

@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { graphql, Link } from 'gatsby'
 
-import styled from '../theme/styled'
 import { DefaultLayout } from '../layouts/DefaultLayout'
 
 import { IBlogPosts, INode } from '../types/graphql'
@@ -28,7 +27,7 @@ export default class FrontPage extends React.Component<IFrontPageProps, {email: 
     const { data: { allMarkdownRemark }} = this.props
     return (
       <DefaultLayout>
-        <Container>
+        <div>
           <h1>This is my awesome website</h1>
           <p>{tagline}</p>
           <p>
@@ -42,15 +41,11 @@ export default class FrontPage extends React.Component<IFrontPageProps, {email: 
               )}
             </ul>
           </div>
-        </Container>
+        </div>
       </DefaultLayout>
     )
   }
 }
-
-const Container = styled.div`
-  margin: ${({ theme }) => theme.margins.default};
-`
 
 export const query = graphql`
   query FrontPageQuery {
