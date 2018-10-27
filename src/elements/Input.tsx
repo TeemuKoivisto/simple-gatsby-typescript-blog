@@ -49,10 +49,9 @@ export const StyledInput = styled.input`
   border: 0;
   border-radius: 4px;
   color: ${({ theme }) => theme.color.textDark };
-  cursor: pointer;
   font-size: ${({ theme }) => theme.fontSize.medium };
   padding: 0.5rem 0.5rem;
-  padding-left: ${({ icon }) => icon ? '40px' : '0'};
+  padding-left: ${({ icon }) => icon ? '40px' : '10px'};
   text-decoration: none;
   transition: 0.1s all;
   width: 100%;

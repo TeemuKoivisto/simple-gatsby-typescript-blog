@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
+import styled from '../theme/styled'
 import { DefaultLayout } from '../layouts/DefaultLayout'
 
 interface IBlogPostTemplateProps {
@@ -19,14 +20,18 @@ export default class BlogPostTemplate extends React.PureComponent<IBlogPostTempl
     const post = this.props.data.markdownRemark
     return (
       <DefaultLayout>
-        <div>
+        <Container>
           <h1>{post.frontmatter.title}</h1>
           <div dangerouslySetInnerHTML={{ __html: post.html }} />
-        </div>
+        </Container>
       </DefaultLayout>
     )
   }
 }
+
+const Container = styled.div`
+  margin: ${({ theme }) => theme.margins.default};
+`
 
 export const query = graphql`
   query($slug: String!) {

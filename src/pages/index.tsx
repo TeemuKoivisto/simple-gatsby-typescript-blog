@@ -1,10 +1,10 @@
 import * as React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 
+import styled from '../theme/styled'
 import { DefaultLayout } from '../layouts/DefaultLayout'
-import { Button } from '../elements/Button'
-import { Input } from '../elements/Input'
-import { MdEmail, MdLock } from 'react-icons/md'
+
+import { IBlogPosts, INode } from '../types/graphql'
 
 interface IFrontPageProps {
   data: {
@@ -13,7 +13,8 @@ interface IFrontPageProps {
         title: string
         tagline: string
       }
-    }
+    },
+    allMarkdownRemark: IBlogPosts
   }
 }
 
@@ -24,30 +25,32 @@ export default class FrontPage extends React.Component<IFrontPageProps, {email: 
   }
   render() {
     const { title, tagline } = this.props.data.site.siteMetadata
+    const { data: { allMarkdownRemark }} = this.props
     return (
       <DefaultLayout>
-        <div>
-          <h1>Front page</h1>
-          <h1>{title}</h1>
+        <Container>
+          <h1>This is my awesome website</h1>
           <p>{tagline}</p>
-          <h2>This is my awesome website</h2>
           <p>
             Hi, and welcome!
           </p>
-          <Input />
-          <Input label="Email" icon={<MdEmail size={24}/>}
-            onChange={(e) => this.setState({email: e.currentTarget.value})}
-          />
-          <Input type="password" label="Password" icon={<MdLock size={24}/>}
-            onChange={(e) => this.setState({password: e.currentTarget.value})}
-          />
-          <br />
-          <Button>Login</Button>
-        </div>
+          <div>
+            <h2>My most recent blog posts</h2>
+            <ul>
+              { allMarkdownRemark.edges.map(({ node }: INode) => 
+              <li key={node.frontmatter.title}><Link to={node.fields.slug}>{node.frontmatter.title}</Link></li>
+              )}
+            </ul>
+          </div>
+        </Container>
       </DefaultLayout>
     )
   }
 }
+
+const Container = styled.div`
+  margin: ${({ theme }) => theme.margins.default};
+`
 
 export const query = graphql`
   query FrontPageQuery {
@@ -55,6 +58,12 @@ export const query = graphql`
       siteMetadata {
         title
         tagline
+      }
+    }
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+      totalCount
+      edges {
+        ...BlogPost
       }
     }
   }

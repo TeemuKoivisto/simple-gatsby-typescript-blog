@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Link } from 'gatsby'
 
-import styled from '../theme/styled'
+import styled, { raise } from '../theme/styled'
 import { ISiteData } from '../types/graphql'
 
 interface INavBarProps {
@@ -31,13 +31,26 @@ const Nav = styled.nav`
   display: flex;
   padding: 20px;
   position: relative;
+  ${raise(2)};
 `
 
 const NavLink = styled(Link)`
-  margin-right: 10px;
+  margin-right: 40px;
   text-decoration: none;
+  position: relative;
   &.right-end {
     position: absolute;
     right: 5px;
+  }
+  &:not(:last-child):before {
+    content: " ";
+    cursor: auto;
+    display: block;
+    height: 1rem;
+    width: 1px;
+    right: -20px;
+    position: absolute;
+    top: 6px; // Hmm
+    background-color: #757575; // #cbcbcb;
   }
 `

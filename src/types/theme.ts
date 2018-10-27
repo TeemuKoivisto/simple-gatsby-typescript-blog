@@ -37,5 +37,8 @@ export interface ITheme {
     large: string
     xlarge: string
     largeIcon: string
+  },
+  margins: {
+    default: string
   }
 }

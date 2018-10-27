@@ -1,4 +1,4 @@
-import { ITheme } from '../interfaces/theme'
+import { ITheme } from '../types/theme'
 import { createGlobalStyle } from 'styled-components'
 
 export const defaultTheme : ITheme = {
@@ -38,6 +38,9 @@ export const defaultTheme : ITheme = {
     xlarge: '40px',
     largeIcon: '50px'
   },
+  margins: {
+    default: '2rem',
+  }
 }
 
 export const GlobalStyle = createGlobalStyle`

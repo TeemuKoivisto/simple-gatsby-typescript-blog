@@ -26,6 +26,7 @@ const StyledButton = styled.button`
   cursor: pointer;
   padding: 10px 10px 10px 10px;
   text-decoration: none;
+  text-transform: uppercase;
   &:focus {
     outline: none;
   }

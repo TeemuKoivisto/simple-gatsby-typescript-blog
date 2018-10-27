@@ -35,5 +35,4 @@ const DefaultContent = (children: React.ReactChildren) => (data: ISiteData) => (
 )
 
 const DefaultWrapper = styled.main`
-  margin: 20px;
 `
