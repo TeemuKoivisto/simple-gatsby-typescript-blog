@@ -4,6 +4,7 @@ import { graphql } from 'gatsby'
 import styled from '../theme/styled'
 import { DefaultLayout } from '../layouts/DefaultLayout'
 import { Signature } from '../components/Signature'
+import { BlogPager } from '../components/BlogPager'
 
 interface IBlogPostTemplateProps {
   data: {
@@ -25,6 +26,7 @@ export default class BlogPostTemplate extends React.PureComponent<IBlogPostTempl
           <h1>{post.frontmatter.title}</h1>
           <MarkDownContainer dangerouslySetInnerHTML={{ __html: post.html }} />
           <Signature />
+          <BlogPager />
         </div>
       </DefaultLayout>
     )
