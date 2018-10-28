@@ -36,7 +36,8 @@ export class Footer extends React.PureComponent<IFooterProps> {
 }
 
 const FooterContainer = styled.footer`
-  background: white;
+  background: linear-gradient(#f6f6f6 -59%, #8e8e8e3d); // #a6a6a7ba
+  /* border-top: 1px solid hsla(0,0%,0%,0.2); */
   position: absolute;
   bottom: 0;
   left: 0;
@@ -66,6 +67,7 @@ const Nav = styled.nav`
 `
 
 const NavLink = styled(Link)`
+  color: black;
   margin-right: 40px;
   text-decoration: none;
   position: relative;

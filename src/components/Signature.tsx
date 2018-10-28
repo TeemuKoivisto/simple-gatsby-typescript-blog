@@ -14,7 +14,7 @@ export class Signature extends React.PureComponent<ISignatureProps> {
         <Avatar src={avatar}/>
         <Blurb>
           <p>
-            <b>Teemu Koivisto</b> is an enthusiastic student of Data Science and a software developer from Helsinki.
+            <b>Teemu Koivisto</b> is an enthusiastic MSc. student of Data Science and a software developer from Helsinki.
           </p>
         </Blurb>
       </SignatureContainer>,

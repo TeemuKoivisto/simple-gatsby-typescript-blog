@@ -5,6 +5,7 @@ export const defaultTheme : ITheme = {
   color: {
     textLight: '#666',
     textDark: '#222',
+    black: '#272822',
     bg: '#fff',
     white: '#fff',
     primary: '#2979FF',

@@ -57,7 +57,7 @@ const DefaultContainer = styled.main`
   height: 100%;
   & > div:first-child {
     /* box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); */
-    padding: 30px 30px 10px 30px;
+    padding: 30px 30px 0 30px;
     /* background: white; */
   }
 `

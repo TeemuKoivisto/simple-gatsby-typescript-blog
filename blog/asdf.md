@@ -1,10 +1,10 @@
 ---
 date: "2018-11-07"
 layout: "page"
-title: "asdf"
+title: "Computational Statistics I 2018"
 ---
 
-# [Computational Statistics I 2018](https://courses.helsinki.fi/fi/mast32001/124789436)
+https://courses.helsinki.fi/fi/mast32001/124789436
 
 Is pretty hard... But cool cos lots of coding!
 
