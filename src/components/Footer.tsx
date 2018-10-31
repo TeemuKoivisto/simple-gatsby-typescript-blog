@@ -7,12 +7,12 @@ import { ISiteData } from '../types/graphql'
 import { IoMdMail, IoLogoLinkedin, IoLogoGithub } from 'react-icons/io'
 
 interface IFooterProps {
-  data: ISiteData
+  site: ISiteData
 }
 
 export class Footer extends React.PureComponent<IFooterProps> {
   render() {
-    const { title } = this.props.data.site.siteMetadata
+    const { title } = this.props.site.siteMetadata
     return (
       <FooterContainer>
         <Nav>

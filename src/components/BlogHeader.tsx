@@ -8,13 +8,13 @@ interface IBlogHeaderProps {
   frontmatter: {
     title: string
     date: Date
+    tags: string[]
   }
 }
 
 export class BlogHeader extends React.PureComponent<IBlogHeaderProps> {
   render() {
-    const { title, date } = this.props.frontmatter
-    const tags = ['aws', 'typescript', 'sunshine']
+    const { title, date, tags } = this.props.frontmatter
     return (
       <BlogHeaderContainer>
         <h1>{ title }</h1>

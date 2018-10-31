@@ -77,11 +77,11 @@ const theme = {
     },
     'h1,h2,h3,h4,h5,h6': {
       marginTop: rhythm(1),
-      textShadow: '1px 1px 0px rgba(162, 162, 162, 0.38)',
     },
     h1: {
       ...scale(6 / 5),
       letterSpacing: '-2px',
+      textShadow: '1px 1px 0px rgba(162, 162, 162, 0.38)',
     },
     h6: {
       fontStyle: 'italic',

@@ -106,10 +106,7 @@ const LoginButton = styled(Button)`
 export const query = graphql`
   query LoginPageQuery {
     site {
-      siteMetadata {
-        title
-        tagline
-      }
+      ...SiteData
     }
   }
 `

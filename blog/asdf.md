@@ -2,6 +2,10 @@
 date: "2018-11-07"
 layout: "page"
 title: "Computational Statistics I 2018"
+tags:
+  - stats
+  - programming
+  - datascience
 ---
 
 https://courses.helsinki.fi/fi/mast32001/124789436

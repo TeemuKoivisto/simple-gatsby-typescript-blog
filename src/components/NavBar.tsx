@@ -7,12 +7,12 @@ import { ISiteData } from '../types/graphql'
 import { IoMdMail, IoLogoLinkedin, IoLogoGithub } from 'react-icons/io'
 
 interface INavBarProps {
-  data: ISiteData
+  site: ISiteData
 }
 
 export class NavBar extends React.PureComponent<INavBarProps> {
   render() {
-    const { title } = this.props.data.site.siteMetadata
+    const { title } = this.props.site.siteMetadata
     return (
       <NavBarContainer>
         <Nav>
@@ -29,7 +29,6 @@ export class NavBar extends React.PureComponent<INavBarProps> {
               <IoLogoLinkedin size={24}/>
             </IconLink>
           </MyIconLinks>
-          <NavLink to="/login" className="right-end">Sign in</NavLink>
         </Nav>
       </NavBarContainer>
     )

@@ -1,39 +1,58 @@
 import * as React from 'react'
 import { ThemeProvider } from 'styled-components'
 import { StaticQuery, graphql } from 'gatsby'
+import Helmet from 'react-helmet'
 
 import styled from '../theme/styled'
 import { defaultTheme, GlobalStyle } from '../theme/sc-default-theme'
 
 import { NavBar } from '../components/NavBar'
 import { Footer } from '../components/Footer'
+import { SEO } from '../components/SEO'
 
 import { ISiteData } from '../types/graphql'
 
 const siteDataQuery = graphql`
-  query SiteDataQuery {
+  query {
     site {
-      siteMetadata {
-        title
-        tagline
-      }
+      ...SiteData
+    }
+  }
+  fragment SiteData on Site {
+    siteMetadata {
+      url
+      title
+      tagline
+      description
+      image
+      twitterUser
+      facebookAppID
     }
   }
 `
 
-export const DefaultLayout = ({ children }) => (
-  <StaticQuery query={siteDataQuery} render={DefaultContent(children)}/>
+interface IProps {
+  title?: string
+  children: React.ReactNode
+}
+
+export const DefaultLayout: React.SFC<IProps> = ({ title, children }: IProps) => (
+  <StaticQuery query={siteDataQuery} render={DefaultContent(children, title)}/>
 )
 
-const DefaultContent = (children: React.ReactChildren) => (data: ISiteData) => (
+const DefaultContent = (children: React.ReactNode, title?: string) => ({ site }: { site: ISiteData }) => (
   <ThemeProvider theme={defaultTheme}>
     <DefaultWrapper>
-      <NavBar data={data}/>
+      <Helmet>
+        <title>{ title || site.siteMetadata.title }</title>
+      </Helmet>
+      <SEO site={site}/>
+      <NavBar site={site}/>
       <DefaultContainer>
         { children }
       </DefaultContainer>
       <GlobalStyle/>
-      <Footer data={data}/>
+      <Footer site={site}/>
     </DefaultWrapper>
   </ThemeProvider>
 )

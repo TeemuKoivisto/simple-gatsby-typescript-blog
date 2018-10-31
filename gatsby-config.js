@@ -1,7 +1,12 @@
 module.exports = {
   siteMetadata: {
+    url: 'teemukoivisto.xyz',
     title: 'TeemuKoivisto',
-    tagline: 'Awesome Gatsby site'
+    tagline: 'Awesome Gatsby site',
+    description: 'Personal blog of Teemu Koivisto, developer and datascience student from University of Helsinki',
+    image: 'https://teemukoivisto.xyz/images/avatar-460.jpeg',
+    twitterUser: 'tekkk___3',
+    facebookAppID: '1234asdf',
   },  
   plugins: [
     'gatsby-plugin-typescript',

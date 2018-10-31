@@ -23,7 +23,7 @@ export default class FrontPage extends React.Component<IFrontPageProps, {email: 
     password: ''
   }
   render() {
-    const { title, tagline } = this.props.data.site.siteMetadata
+    const { tagline } = this.props.data.site.siteMetadata
     const { data: { allMarkdownRemark }} = this.props
     return (
       <DefaultLayout>
@@ -50,10 +50,7 @@ export default class FrontPage extends React.Component<IFrontPageProps, {email: 
 export const query = graphql`
   query FrontPageQuery {
     site {
-      siteMetadata {
-        title
-        tagline
-      }
+      ...SiteData
     }
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
       totalCount

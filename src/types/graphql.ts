@@ -1,10 +1,13 @@
 
 export interface ISiteData {
-  site: {
-    siteMetadata: {
-      title: string
-      tagline: string
-    }
+  siteMetadata: {
+    url: string
+    title: string
+    tagline: string
+    description: string
+    image: string
+    twitterUser: string
+    facebookAppID: string
   }
 }
 
@@ -13,11 +16,18 @@ export interface IBlogPosts {
   edges: INode[]
 }
 
+export interface IBlogPostFrontmatter {
+  title: string
+  date: Date
+  tags: string[]
+}
+
 export interface INode {
   node: {
     frontmatter: {
       title: string
       date: Date
+      tags: string[]
     }
     fields: {
       slug: string
