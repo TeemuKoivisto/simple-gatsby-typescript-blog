@@ -16,7 +16,7 @@ export default class BlogPage extends React.PureComponent<IBlogPageProps> {
   render() {
     const { data: { allMarkdownRemark }} = this.props
     return (
-      <DefaultLayout seo>
+      <DefaultLayout>
         <div>
           <h1>My blog posts</h1>
           <ul>

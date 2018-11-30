@@ -1,7 +1,7 @@
 import React from "react"
 import Helmet from "react-helmet"
 
-import { ISiteData, IBlogPostFrontmatter } from '../../types/graphql'
+import { ISiteData, IBlogPostFrontmatter } from '../types/graphql'
 
 interface ISEOProps {
   site: ISiteData
@@ -87,7 +87,6 @@ export class SEO extends React.PureComponent<ISEOProps> {
     const { site, blogPost } = this.props
     const JSONLD = blogPost ? generateBlogJSONLD(blogPost) : generateSiteJSONLD(site)
     const { siteMetadata: { url, title, tagline, description, image, twitterUser, facebookAppID } } = site
-    console.log('hei')
     return (
       <Helmet>
         { this.renderGeneral(description, image, JSONLD) }
@@ -97,8 +96,3 @@ export class SEO extends React.PureComponent<ISEOProps> {
     )
   }
 }
-
-{/* <meta property="og:title" content={title} />
-<meta property="og:description" content={description} />
-<meta property="og:image" content={image} />
-<meta property="fb:app_id" content={facebookAppID} /> */}
