@@ -24,11 +24,7 @@ export interface IBlogPostFrontmatter {
 
 export interface INode {
   node: {
-    frontmatter: {
-      title: string
-      date: Date
-      tags: string[]
-    }
+    frontmatter: IBlogPostFrontmatter
     fields: {
       slug: string
     }

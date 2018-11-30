@@ -26,7 +26,7 @@ export default class FrontPage extends React.Component<IFrontPageProps, {email: 
     const { tagline } = this.props.data.site.siteMetadata
     const { data: { allMarkdownRemark }} = this.props
     return (
-      <DefaultLayout>
+      <DefaultLayout seo>
         <div>
           <h1>This is my awesome website</h1>
           <p>{tagline}</p>

@@ -17,6 +17,9 @@ interface IBlogPostTemplateProps {
       html: any
       excerpt: string
       frontmatter: IBlogPostFrontmatter
+      fields: {
+        slug: string
+      }
     }
   }
 }
@@ -24,13 +27,14 @@ interface IBlogPostTemplateProps {
 export default class BlogPostTemplate extends React.PureComponent<IBlogPostTemplateProps> {
   render() {
     const { data: { site, markdownRemark }} = this.props
+    const url = site.siteMetadata.url + '/' + markdownRemark.fields.slug
+    const blogPost = { frontmatter: markdownRemark.frontmatter, url }
     return (
-      <DefaultLayout title={markdownRemark.frontmatter.title}>
-        <SEO site={site} frontmatter={markdownRemark.frontmatter}/>
+      <DefaultLayout title={markdownRemark.frontmatter.title} seoBlogPost={blogPost}>
         <div>
           <BlogHeader frontmatter={markdownRemark.frontmatter}/>
           <h6>{markdownRemark.excerpt}</h6>
-          <MarkDownContainer dangerouslySetInnerHTML={{ __html: markdownRemark.html }} />
+          <div dangerouslySetInnerHTML={{ __html: markdownRemark.html }} />
           <Signature />
           <BlogPager />
         </div>
@@ -38,9 +42,6 @@ export default class BlogPostTemplate extends React.PureComponent<IBlogPostTempl
     )
   }
 }
-
-const MarkDownContainer = styled.div`
-`
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
@@ -54,6 +55,9 @@ export const pageQuery = graphql`
         title
         date
         tags
+      }
+      fields {
+        slug
       }
     }
   }

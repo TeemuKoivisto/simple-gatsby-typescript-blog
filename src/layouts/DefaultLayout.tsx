@@ -32,21 +32,24 @@ const siteDataQuery = graphql`
 `
 
 interface IProps {
-  title?: string
   children: React.ReactNode
+  title?: string
+  seoBlogPost?: any
 }
 
-export const DefaultLayout: React.SFC<IProps> = ({ title, children }: IProps) => (
-  <StaticQuery query={siteDataQuery} render={DefaultContent(children, title)}/>
+// This kinda boilerplatish wrapping is because StaticQuery only offers render-method
+// for rendering children
+export const DefaultLayout: React.SFC<IProps> = (props: IProps) => (
+  <StaticQuery query={siteDataQuery} render={DefaultContent(props)}/>
 )
 
-const DefaultContent = (children: React.ReactNode, title?: string) => ({ site }: { site: ISiteData }) => (
+const DefaultContent = ({ children, title, seoBlogPost }: IProps) => ({ site }: { site: ISiteData }) => (
   <ThemeProvider theme={defaultTheme}>
     <DefaultWrapper>
       <Helmet>
         <title>{ title || site.siteMetadata.title }</title>
       </Helmet>
-      <SEO site={site}/>
+      <SEO site={site} blogPost={seoBlogPost}/>
       <NavBar site={site}/>
       <DefaultContainer>
         { children }
