@@ -12,6 +12,8 @@ import { Disqus } from '../components/Disqus'
 
 import { ISiteData, IBlogPostFrontmatter } from '../types/graphql'
 
+// There is a lot of other stuff in props, provided by Gatsby, that I'm not typing here
+// since it would quite a lot of work.
 interface IBlogPostTemplateProps {
   data: {
     site: ISiteData
@@ -24,11 +26,24 @@ interface IBlogPostTemplateProps {
       }
     }
   }
+  pageContext: {
+    slug: string
+    previous: {
+      slug?: string
+      title?: string
+      date?: string
+    }
+    next: {
+      slug?: string
+      title?: string
+      date?: string
+    }
+  }
 }
 
 export default class BlogPostTemplate extends React.PureComponent<IBlogPostTemplateProps> {
   render() {
-    const { data: { site, markdownRemark }} = this.props
+    const { data: { site, markdownRemark }, pageContext } = this.props
     const url = site.siteMetadata.url + '/' + markdownRemark.fields.slug
     const blogPost = { frontmatter: markdownRemark.frontmatter, url }
     const title = markdownRemark.frontmatter.title
@@ -39,7 +54,7 @@ export default class BlogPostTemplate extends React.PureComponent<IBlogPostTempl
           <h6>{markdownRemark.excerpt}</h6>
           <div dangerouslySetInnerHTML={{ __html: markdownRemark.html }} />
           <Signature />
-          <BlogPager />
+          <BlogPager previous={pageContext.previous} next={pageContext.next}/>
           <ShareButtons url={url} title={title}/>
           <Disqus shortname={site.siteMetadata.disqusShortname} title={title}/>
         </div>

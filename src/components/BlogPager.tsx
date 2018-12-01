@@ -5,20 +5,38 @@ import styled from '../theme/styled'
 import { FiChevronsLeft, FiChevronsRight } from 'react-icons/fi'
 
 interface IBlogPagerProps {
+  previous: {
+    slug?: string
+    title?: string
+    date?: string
+  }
+  next: {
+    slug?: string
+    title?: string
+    date?: string
+  }
 }
 
 export class BlogPager extends React.PureComponent<IBlogPagerProps> {
   render() {
+    const { previous, next } = this.props
     return (
       <BlogPagerContainer>
-        <IconLink to="blog/prev">
+        { previous.slug ?
+        <IconLink to={previous.slug}>
           <FiChevronsLeft size={24}/>
-          <LinkText className="m-left">Long time ago ...</LinkText>
-        </IconLink>
-        <IconLink to="blog/next">
-          <LinkText className="m-right">I invented the future!</LinkText>
+          <LinkText className="m-left">
+            <p>{previous.title}</p>
+            <p>{previous.date}</p>
+          </LinkText>
+        </IconLink> : <div></div>}
+        { next.slug ? <IconLink to={next.slug}>
+          <LinkText className="m-right">
+            <p>{next.title}</p>
+            <p>{next.date}</p>
+          </LinkText>
           <FiChevronsRight size={24}/>
-        </IconLink>
+        </IconLink> : <div></div>}
       </BlogPagerContainer>
     )
   }
@@ -41,12 +59,18 @@ const IconLink = styled(Link)`
   display: flex;
 `
 
-const LinkText = styled.p`
+const LinkText = styled.div`
   margin: 0;
   &.m-left {
     margin-left: 20px;
   }
   &.m-right {
     margin-right: 20px;
+  }
+  & > p:first-child {
+    font-weight: bold;
+  }
+  & > p {
+    margin: 0;
   }
 `

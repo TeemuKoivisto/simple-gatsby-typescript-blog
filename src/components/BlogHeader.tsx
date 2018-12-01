@@ -43,57 +43,32 @@ const BlogHeaderContainer = styled.div`
     margin-bottom: 0.5rem;
   }
 `
-
 const Info = styled.div`
   align-items: center;
   display: flex;
-  & > div {
-    margin-right: 20px;
-  }
 `
-
-// Keeps svgs from resizing themselves into oblivion
-const SvgWrapper = styled.div`
-  display: flex;
-`
-
 const BlogDate = styled.div`
   align-items: center;
   display: flex;
-  & > ${SvgWrapper} {
-    margin-right: 10px;
-  }
+  margin-right: 20px;
 `
-
+// Keeps svgs from resizing themselves into oblivion
+const SvgWrapper = styled.div`
+  display: flex;
+  margin-right: 10px;
+`
 const Tags = styled.div`
   align-items: center;
   display: flex;
   flex-wrap: wrap;
   margin-top: 5px;
 `
-
 const Tag = styled.p`
-  background: #ff3354c9; // #393d3ead
+  background: #ff3354c9;
   border-radius: 5px;
   color: white;
   font-size: 1rem;
   margin: 0 5px 5px 0;
   padding: 0 3px 0 3px;
   ${raise(1)};
-`
-
-const IconLink = styled(Link)`
-  align-items: center;
-  color: black;
-  display: flex;
-`
-
-const LinkText = styled.p`
-  margin: 0;
-  &.m-left {
-    margin-left: 20px;
-  }
-  &.m-right {
-    margin-right: 20px;
-  }
 `

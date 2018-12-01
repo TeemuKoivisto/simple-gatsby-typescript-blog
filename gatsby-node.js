@@ -23,6 +23,10 @@ exports.createPages = async ({ graphql, actions }) => {
       allMarkdownRemark {
         edges {
           node {
+            frontmatter {
+              title
+              date
+            }
             fields {
               slug
             }
@@ -32,7 +36,9 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
   const nodes = result.data.allMarkdownRemark.edges.map(({ node }) => node)
-  nodes.forEach(node => {
+  nodes.forEach((node, i) => {
+    const previousNode = i !== nodes.length - 1 ? nodes[i+1] : undefined
+    const nextNode = i !== 0 ? nodes[i-1]: undefined
     createPage({
       path: node.fields.slug,
       component: path.resolve(`./src/templates/BlogPost.tsx`),
@@ -40,6 +46,17 @@ exports.createPages = async ({ graphql, actions }) => {
         // Data passed to context is available
         // in page queries as GraphQL variables.
         slug: node.fields.slug,
+        // Add previous and next pages for easy pagination of blog posts
+        previous: {
+          slug: previousNode && previousNode.fields.slug,
+          title: previousNode && previousNode.frontmatter.title,
+          date: previousNode && previousNode.frontmatter.date,
+        },
+        next: {
+          slug: nextNode && nextNode.fields.slug,
+          title: nextNode && nextNode.frontmatter.title,
+          date: nextNode && nextNode.frontmatter.date,
+        }
       },
     })
   })
