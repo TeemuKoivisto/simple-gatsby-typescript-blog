@@ -60,9 +60,6 @@ const theme = {
       marginLeft: 0,
     },
     [MOBILE_MEDIA_QUERY]: {
-      'ul,ol': {
-        marginLeft: rhythm(1),
-      },
       blockquote: {
         marginLeft: rhythm(-3 / 4),
         marginRight: 0,

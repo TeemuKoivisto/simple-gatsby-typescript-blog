@@ -38,7 +38,7 @@ export class Footer extends React.PureComponent<IFooterProps> {
 const FooterContainer = styled.footer`
   background: linear-gradient(#298effc9 -59%, #1773dad1);
   /* border-top: 1px solid hsla(0,0%,0%,0.2); */
-  position: absolute;
+  position: absolute; // DON'T REMOVE THIS UNLESS YOU REALLY WANT TO GO DEEP INTO CSS. It's crap but it works
   bottom: 0;
   left: 0;
   width: 100%;
