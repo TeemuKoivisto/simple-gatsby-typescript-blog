@@ -67,7 +67,4 @@ export const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
-  ul, ol {
-    list-style: none;
-  }
 `

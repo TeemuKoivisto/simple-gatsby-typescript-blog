@@ -53,12 +53,6 @@ const theme = {
     'blockquote cite:before': {
       content: '"— "',
     },
-    ul: {
-      listStyle: 'none',
-    },
-    'ul,ol': {
-      marginLeft: 0,
-    },
     [MOBILE_MEDIA_QUERY]: {
       blockquote: {
         marginLeft: rhythm(-3 / 4),

@@ -23,7 +23,7 @@ With the good ol Bayesien inference you'd calculate your **posterior distributio
 However if you have ever had to calculate that by hand, you know it's *pretty* darn complicated computation. Also you'd probably had used logarithms since the sums might get super low or high.
 
 >Building posterior is straightforward:  
->Bayesian inference is hard because integration is hard [[HMC-BC]](#HMC-BC)
+>Bayesian inference is hard because integration is hard [[HMC-BC]](#hmc-bc)
 
 Which brings to us these fancy things, MCMC methods, which are just a way to **approximate** the Bayesian formula in more computable way. And then there's cases where MCMC doesn't work so we switch to using different things, easy peasy! (not) [[VI-Py]](#VI-Py)
 
