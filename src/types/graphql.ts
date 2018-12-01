@@ -6,8 +6,8 @@ export interface ISiteData {
     tagline: string
     description: string
     image: string
-    twitterUser: string
-    facebookAppID: string
+    facebookAppId: string
+    disqusShortname: string
   }
 }
 

@@ -25,8 +25,8 @@ const siteDataQuery = graphql`
       tagline
       description
       image
-      twitterUser
-      facebookAppID
+      facebookAppId
+      disqusShortname
     }
   }
 `

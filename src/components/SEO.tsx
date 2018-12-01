@@ -86,11 +86,11 @@ export class SEO extends React.PureComponent<ISEOProps> {
   render() {
     const { site, blogPost } = this.props
     const JSONLD = blogPost ? generateBlogJSONLD(blogPost) : generateSiteJSONLD(site)
-    const { siteMetadata: { url, title, tagline, description, image, twitterUser, facebookAppID } } = site
+    const { siteMetadata: { url, title, tagline, description, image, facebookAppId } } = site
     return (
       <Helmet>
         { this.renderGeneral(description, image, JSONLD) }
-        { this.renderFacebook(url, title, description, image, facebookAppID) }
+        { this.renderFacebook(url, title, description, image, facebookAppId) }
         { this.renderTwitter(title, description, image) }
       </Helmet>
     )

@@ -7,6 +7,7 @@ import { SEO } from '../components/SEO'
 import { Signature } from '../components/Signature'
 import { BlogPager } from '../components/BlogPager'
 import { BlogHeader } from '../components/BlogHeader'
+import { Disqus } from '../components/Disqus'
 
 import { ISiteData, IBlogPostFrontmatter } from '../types/graphql'
 
@@ -37,6 +38,7 @@ export default class BlogPostTemplate extends React.PureComponent<IBlogPostTempl
           <div dangerouslySetInnerHTML={{ __html: markdownRemark.html }} />
           <Signature />
           <BlogPager />
+          <Disqus shortname={site.siteMetadata.disqusShortname} title={markdownRemark.frontmatter.title}/>
         </div>
       </DefaultLayout>
     )
