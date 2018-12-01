@@ -6,7 +6,7 @@ module.exports = {
     description: 'Personal blog of Teemu Koivisto, developer and datascience student from University of Helsinki',
     image: 'https://teemukoivisto.xyz/images/avatar-460.jpeg',
     facebookAppId: '1234asdf',
-    disqusShortname: 'teemukoivisto-xyz' // Uses dev-teemukoivisto-xyz in development
+    disqusShortname: 'teemukoivisto-xyz' // Uses dev-teemukoivisto-xyz in development,
   },  
   plugins: [
     'gatsby-plugin-typescript',

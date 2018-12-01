@@ -15,21 +15,29 @@ export class Footer extends React.PureComponent<IFooterProps> {
     const { title } = this.props.site.siteMetadata
     return (
       <FooterContainer>
-        <Nav>
-          <NavLink to="/">{title}</NavLink>
-          <NavLink to="/blog">Blog</NavLink>
-          <MyIconLinks>
-            <IconLink href="mailto:contact@teemukoivisto.xyz">
-              <IoMdMail size={24}/>
-            </IconLink>
-            <IconLink href="https://github.com/teemukoivisto">
-              <IoLogoGithub size={24}/>
-            </IconLink>
-            <IconLink href="https://www.linkedin.com/in/teemu-koivisto-75304b114">
-              <IoLogoLinkedin size={24}/>
-            </IconLink>
-          </MyIconLinks>
-        </Nav>
+        <NavWrapper>
+          <Nav>
+            <NavLink to="/">{title}</NavLink>
+            <NavLink to="/blog">Blog</NavLink>
+            <MyIconLinks>
+              <IconLink href="mailto:contact@teemukoivisto.xyz">
+                <IoMdMail size={24}/>
+              </IconLink>
+              <IconLink href="https://github.com/teemukoivisto">
+                <IoLogoGithub size={24}/>
+              </IconLink>
+              <IconLink href="https://www.linkedin.com/in/teemu-koivisto-75304b114">
+                <IoLogoLinkedin size={24}/>
+              </IconLink>
+            </MyIconLinks>
+          </Nav>
+          <SmallPrint>
+            <CopyrightNotice>Copyright © {new Date().getFullYear()}, Teemu Koivisto</CopyrightNotice>
+            <SourceLink href="https://github.com/TeemuKoivisto/simple-gatsby-typescript-blog">
+              This site's code is Open Source
+            </SourceLink>
+          </SmallPrint>
+        </NavWrapper>
       </FooterContainer>
     )
   }
@@ -58,14 +66,18 @@ const IconLink = styled.a`
     margin-right: 10px;
   }
 `
-
+const NavWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+`
 const Nav = styled.nav`
   display: flex;
   justify-content: center;
   padding: 20px;
   position: relative;
 `
-
 const NavLink = styled(Link)`
   color: #fff;
   margin-right: 40px;
@@ -84,6 +96,21 @@ const NavLink = styled(Link)`
     right: -20px;
     position: absolute;
     top: 6px; // Hmm
-    background-color: #757575; // #cbcbcb;
+    background-color: #fff;
   }
+`
+const SmallPrint = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  & > * {
+    margin: 0;
+  }
+`
+const CopyrightNotice = styled.p`
+  font-size: 12px;
+`
+const SourceLink = styled.a`
+  font-size: 12px;
 `

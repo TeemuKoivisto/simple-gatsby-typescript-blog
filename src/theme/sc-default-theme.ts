@@ -40,7 +40,7 @@ export const defaultTheme : ITheme = {
     largeIcon: '50px'
   },
   sizes: {
-    footer: '68px',
+    footer: '118px',
   },
   margins: {
     default: '2rem',

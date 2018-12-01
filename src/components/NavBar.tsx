@@ -36,7 +36,7 @@ export class NavBar extends React.PureComponent<INavBarProps> {
 }
 
 const NavBarContainer = styled.header`
-  background: #298effc9;
+  background: linear-gradient(#1773dad1 -59%, #298effc9);
 `
 
 const MyIconLinks = styled.div`
@@ -78,6 +78,6 @@ const NavLink = styled(Link)`
     right: -20px;
     position: absolute;
     top: 6px; // Hmm
-    background-color: #757575; // #cbcbcb;
+    background-color: #fff; // #757575; #cbcbcb;
   }
 `

@@ -44,6 +44,7 @@ export default class BlogPage extends React.PureComponent<IBlogPageProps> {
 const BlogList = styled.ul`
   & > li {
     display: flex;
+    flex-direction: column;
   }
 `
 
