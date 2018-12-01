@@ -64,10 +64,10 @@ export class SEO extends React.PureComponent<ISEOProps> {
       </script>
     ])
   }
-  renderFacebook(url: string, title: string, description: string, image: string, facebookAppId: string) {
+  renderFacebook(url: string, title: string, description: string, image: string, ogType: string, facebookAppId: string) {
     return ([
       <meta key="og:url" property="og:url" content={url} />,
-      <meta key="og:type"  property="og:type" content="article" />,
+      <meta key="og:type" property="og:type" content={ogType} />,
       <meta key="og:title" property="og:title" content={title} />,
       <meta key="og:description" property="og:description" content={description} />,
       <meta key="og:image" property="og:image" content={image} />,
@@ -87,10 +87,12 @@ export class SEO extends React.PureComponent<ISEOProps> {
     const { site, blogPost } = this.props
     const JSONLD = blogPost ? generateBlogJSONLD(blogPost) : generateSiteJSONLD(site)
     const { siteMetadata: { url, title, tagline, description, image, facebookAppId } } = site
+    // http://ogp.me/#types
+    const ogType = blogPost ? 'article' : 'website'
     return (
       <Helmet>
         { this.renderGeneral(description, image, JSONLD) }
-        { this.renderFacebook(url, title, description, image, facebookAppId) }
+        { this.renderFacebook(url, title, description, image, ogType, facebookAppId) }
         { this.renderTwitter(title, description, image) }
       </Helmet>
     )
