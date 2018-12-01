@@ -61,7 +61,7 @@ const DefaultContent = ({ children, title, seoBlogPost }: IProps) => ({ site }: 
 )
 
 const DefaultWrapper = styled.div`
-  background: whitesmoke;
+  background: #f1f3ff;
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -73,6 +73,8 @@ const DefaultWrapper = styled.div`
 `
 
 const DefaultContainer = styled.main`
+  background: #fff;
+  border-radius: 20px;
   margin: ${({ theme }) => theme.margins.default};
   margin-bottom: ${({ theme }) => `calc(${theme.margins.default} + ${theme.sizes.footer})`};
   position: relative;

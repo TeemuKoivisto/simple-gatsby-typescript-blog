@@ -29,7 +29,6 @@ const theme = {
   boldWeight: 700,
   overrideStyles: ({ adjustFontSizeTo, scale, rhythm }, options) => ({
     a: {
-      color: '#f92300',
       textDecoration: 'none',
     },
     'a:hover,a:active': {

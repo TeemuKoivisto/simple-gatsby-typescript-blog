@@ -36,7 +36,7 @@ export class NavBar extends React.PureComponent<INavBarProps> {
 }
 
 const NavBarContainer = styled.header`
-  background: white;
+  background: #298effc9;
 `
 
 const MyIconLinks = styled.div`
@@ -45,7 +45,7 @@ const MyIconLinks = styled.div`
 
 const IconLink = styled.a`
   align-items: center;
-  color: black;
+  color: #fff;
   cursor: pointer;
   display: flex;
   &:not(:last-child) {
@@ -61,6 +61,7 @@ const Nav = styled.nav`
 `
 
 const NavLink = styled(Link)`
+  color: #fff;
   margin-right: 40px;
   text-decoration: none;
   position: relative;

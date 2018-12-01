@@ -36,7 +36,7 @@ export class Footer extends React.PureComponent<IFooterProps> {
 }
 
 const FooterContainer = styled.footer`
-  background: linear-gradient(#f6f6f6 -59%, #8e8e8e3d); // #a6a6a7ba
+  background: linear-gradient(#298effc9 -59%, #1773dad1);
   /* border-top: 1px solid hsla(0,0%,0%,0.2); */
   position: absolute;
   bottom: 0;
@@ -51,7 +51,7 @@ const MyIconLinks = styled.div`
 
 const IconLink = styled.a`
   align-items: center;
-  color: black;
+  color: #fff;
   cursor: pointer;
   display: flex;
   &:not(:last-child) {
@@ -67,7 +67,7 @@ const Nav = styled.nav`
 `
 
 const NavLink = styled(Link)`
-  color: black;
+  color: #fff;
   margin-right: 40px;
   text-decoration: none;
   position: relative;

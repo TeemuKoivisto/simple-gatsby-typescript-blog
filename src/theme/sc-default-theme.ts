@@ -8,7 +8,7 @@ export const defaultTheme : ITheme = {
     black: '#272822',
     bg: '#fff',
     white: '#fff',
-    primary: '#2979FF',
+    primary: '#298effc9',
     secondary: '#82B1FF',
     danger: '#e93e2e',
     lightGrey: '#aaa',
