@@ -28,6 +28,7 @@ const BlogPagerContainer = styled.div`
   align-items: center;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 2rem;
   margin-top: 2rem;
   padding: 20px;
   & > svg {

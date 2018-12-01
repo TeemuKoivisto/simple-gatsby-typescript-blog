@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    url: 'teemukoivisto.xyz',
+    url: 'https://teemukoivisto.xyz',
     title: 'TeemuKoivisto',
     tagline: 'Awesome Gatsby site',
     description: 'Personal blog of Teemu Koivisto, developer and datascience student from University of Helsinki',

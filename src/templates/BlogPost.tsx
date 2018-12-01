@@ -7,6 +7,7 @@ import { SEO } from '../components/SEO'
 import { Signature } from '../components/Signature'
 import { BlogPager } from '../components/BlogPager'
 import { BlogHeader } from '../components/BlogHeader'
+import { ShareButtons } from '../components/ShareButtons'
 import { Disqus } from '../components/Disqus'
 
 import { ISiteData, IBlogPostFrontmatter } from '../types/graphql'
@@ -30,15 +31,17 @@ export default class BlogPostTemplate extends React.PureComponent<IBlogPostTempl
     const { data: { site, markdownRemark }} = this.props
     const url = site.siteMetadata.url + '/' + markdownRemark.fields.slug
     const blogPost = { frontmatter: markdownRemark.frontmatter, url }
+    const title = markdownRemark.frontmatter.title
     return (
-      <DefaultLayout title={markdownRemark.frontmatter.title} seoBlogPost={blogPost}>
+      <DefaultLayout title={title} seoBlogPost={blogPost}>
         <div>
           <BlogHeader frontmatter={markdownRemark.frontmatter}/>
           <h6>{markdownRemark.excerpt}</h6>
           <div dangerouslySetInnerHTML={{ __html: markdownRemark.html }} />
           <Signature />
           <BlogPager />
-          <Disqus shortname={site.siteMetadata.disqusShortname} title={markdownRemark.frontmatter.title}/>
+          <ShareButtons url={url} title={title}/>
+          <Disqus shortname={site.siteMetadata.disqusShortname} title={title}/>
         </div>
       </DefaultLayout>
     )

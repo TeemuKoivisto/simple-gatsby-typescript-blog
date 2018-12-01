@@ -62,7 +62,7 @@ const Tags = styled.div`
 `
 
 const Tag = styled.p`
-  background: #393d3ead;
+  background: #ff3354c9; // #393d3ead
   border-radius: 5px;
   color: white;
   font-size: 1rem;
