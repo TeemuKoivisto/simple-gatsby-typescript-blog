@@ -19,8 +19,12 @@ export class BlogHeader extends React.PureComponent<IBlogHeaderProps> {
       <BlogHeaderContainer>
         <h1>{ title }</h1>
         <Info>
-          <BlogDate><MdEvent size={24}/>{ date }</BlogDate>
-          <Tags><MdLocalOffer size={24}/>
+          <BlogDate>
+            <SvgWrapper><MdEvent size={24}/></SvgWrapper>
+            { date }
+          </BlogDate>
+          <SvgWrapper><MdLocalOffer size={24}/></SvgWrapper>
+          <Tags>
             { tags.map((t, i) =>
             <Tag key={i}>{t}</Tag>
             )}
@@ -43,15 +47,20 @@ const BlogHeaderContainer = styled.div`
 const Info = styled.div`
   align-items: center;
   display: flex;
-  & > * {
+  & > div {
     margin-right: 20px;
   }
+`
+
+// Keeps svgs from resizing themselves into oblivion
+const SvgWrapper = styled.div`
+  display: flex;
 `
 
 const BlogDate = styled.div`
   align-items: center;
   display: flex;
-  & > svg {
+  & > ${SvgWrapper} {
     margin-right: 10px;
   }
 `
@@ -59,6 +68,8 @@ const BlogDate = styled.div`
 const Tags = styled.div`
   align-items: center;
   display: flex;
+  flex-wrap: wrap;
+  margin-top: 5px;
 `
 
 const Tag = styled.p`
@@ -66,7 +77,7 @@ const Tag = styled.p`
   border-radius: 5px;
   color: white;
   font-size: 1rem;
-  margin: 0 5px;
+  margin: 0 5px 5px 0;
   padding: 0 3px 0 3px;
   ${raise(1)};
 `

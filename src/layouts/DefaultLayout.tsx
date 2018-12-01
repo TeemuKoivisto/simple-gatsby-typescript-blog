@@ -79,6 +79,12 @@ const DefaultContainer = styled.main`
   margin-bottom: ${({ theme }) => `calc(${theme.margins.default} + ${theme.sizes.footer})`};
   position: relative;
   height: 100%;
+  @media screen and (max-width: 600px) {
+    margin: 1rem;
+  }
+  @media screen and (max-width: 400px) {
+    margin: 0.5rem;
+  }
   & > div:first-child {
     /* box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); */
     padding: 30px 30px 0 30px;
