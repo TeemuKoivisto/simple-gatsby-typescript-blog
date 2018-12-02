@@ -57,7 +57,10 @@ const Nav = styled.nav`
   display: flex;
   padding: 40px;
   position: relative;
-  ${raise(2)};
+  ${raise(2)}
+  @media screen and (max-width: 400px) {
+    padding: 20px;
+  }
 `
 
 const NavLink = styled(Link)`
@@ -65,6 +68,9 @@ const NavLink = styled(Link)`
   margin-right: 40px;
   text-decoration: none;
   position: relative;
+  @media screen and (max-width: 400px) {
+    margin-right: 20px;
+  }
   &.right-end {
     position: absolute;
     right: 5px;
@@ -79,5 +85,8 @@ const NavLink = styled(Link)`
     position: absolute;
     top: 6px; // Hmm
     background-color: #fff; // #757575; #cbcbcb;
+    @media screen and (max-width: 400px) {
+      right: -10px;
+    }
   }
 `

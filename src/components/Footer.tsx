@@ -32,7 +32,7 @@ export class Footer extends React.PureComponent<IFooterProps> {
             </MyIconLinks>
           </Nav>
           <SmallPrint>
-            <CopyrightNotice>Copyright © {new Date().getFullYear()}, Teemu Koivisto</CopyrightNotice>
+            <CopyrightNotice>{`Copyright © ${new Date().getFullYear()}, Teemu Koivisto`}</CopyrightNotice>
             <SourceLink href="https://github.com/TeemuKoivisto/simple-gatsby-typescript-blog">
               This site's code is Open Source
             </SourceLink>
@@ -83,6 +83,9 @@ const NavLink = styled(Link)`
   margin-right: 40px;
   text-decoration: none;
   position: relative;
+  @media screen and (max-width: 400px) {
+    margin-right: 20px;
+  }
   &.right-end {
     position: absolute;
     right: 5px;
@@ -97,6 +100,9 @@ const NavLink = styled(Link)`
     position: absolute;
     top: 6px; // Hmm
     background-color: #fff;
+    @media screen and (max-width: 400px) {
+      right: -10px;
+    }
   }
 `
 const SmallPrint = styled.div`

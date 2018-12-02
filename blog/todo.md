@@ -19,5 +19,10 @@ Well since I am making a blog site why not keep my todo list here
 * Add favicon
 * Enable SES // newsletter
 * Add RSS?? (well not in near future)
+* gatsby-remark-responsive-image
+* gatsby-plugin-favicon
+* gatsby-plugin-catch-links -> If i'm going to link inside my markdown to my other articles AND want to avoid reloading page.
 
 And then I can just **write**???
+
+https://using-remark.gatsbyjs.org/hello-world-kitchen-sink/#headers

@@ -23,9 +23,9 @@ With the good ol Bayesien inference you'd calculate your **posterior distributio
 However if you have ever had to calculate that by hand, you know it's *pretty* darn complicated computation. Also you'd probably had used logarithms since the sums might get super low or high.
 
 >Building posterior is straightforward:  
->Bayesian inference is hard because integration is hard [[HMC-BC]](#hmc-bc)
+>Bayesian inference is hard because integration is hard [[HMC-MB]](#hmc-mb)
 
-Which brings to us these fancy things, MCMC methods, which are just a way to **approximate** the Bayesian formula in more computable way. And then there's cases where MCMC doesn't work so we switch to using different things, easy peasy! (not) [[VI-Py]](#VI-Py)
+Which brings to us these fancy things, MCMC methods, which are just a way to **approximate** the Bayesian formula in more computable way. And then there's cases where MCMC doesn't work so we switch to using different things, easy peasy! (not) [[VI-Py]](#vi-py)
 
 ## Preface
 Monte Carlo simulation was created by **Stan Ulam** who wanted to compute the probability of winning solitaire games but he quickly saw that computing it algorithmically was impossible (52 factorial) at that time. Instead he decided that what if he just played games and recorded their results to gain an approximation of the probability distribution. 

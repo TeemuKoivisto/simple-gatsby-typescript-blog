@@ -49,7 +49,8 @@ const BlogPagerContainer = styled.div`
   margin-bottom: 2rem;
   margin-top: 2rem;
   padding: 20px;
-  & > svg {
+  @media screen and (max-width: 600px) {
+    padding: 0;
   }
 `
 
