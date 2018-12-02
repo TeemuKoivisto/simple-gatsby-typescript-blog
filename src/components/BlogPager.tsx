@@ -64,9 +64,15 @@ const LinkText = styled.div`
   margin: 0;
   &.m-left {
     margin-left: 20px;
+    @media screen and (max-width: 400px) {
+      margin: 5px;
+    }
   }
   &.m-right {
     margin-right: 20px;
+    @media screen and (max-width: 400px) {
+      margin: 5px;
+    }
   }
   & > p:first-child {
     font-weight: bold;
