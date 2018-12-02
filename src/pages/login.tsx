@@ -13,7 +13,6 @@ interface IFrontPageProps {
     site: {
       siteMetadata: {
         title: string
-        tagline: string
       }
     }
   }
@@ -37,7 +36,6 @@ export default class FrontPage extends React.Component<IFrontPageProps, IState> 
     }
   }
   render() {
-    const { title, tagline } = this.props.data.site.siteMetadata
     return (
       <DefaultLayout>
         <LoginPageContainer>
@@ -62,33 +60,6 @@ const LoginPageContainer = styled.div`
   display: flex;
   justify-content: center;
   padding: 150px 0 0 0;
-  /* &:before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    clip-path: polygon(72% 74%,100% 27%,100% 100%,5% 100%);
-    background: #00809f;
-    background-size: cover;
-    display: block;
-    content: ' ';
-    z-index: -1;
-    height: 100%;
-    opacity: 0.9;
-  }
-  &:after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: #2eb6f2;
-    background-size: cover;
-    z-index: -2;
-    display: block;
-    content: ' ';
-    clip-path: polygon(0% 0%,117% 0,72% 74%,0% 102%);
-  } */
 `
 
 const LoginForm = styled.form`

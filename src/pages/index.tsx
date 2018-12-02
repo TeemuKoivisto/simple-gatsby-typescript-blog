@@ -10,26 +10,19 @@ interface IFrontPageProps {
     site: {
       siteMetadata: {
         title: string
-        tagline: string
       }
     },
     allMarkdownRemark: IBlogPosts
   }
 }
 
-export default class FrontPage extends React.Component<IFrontPageProps, {email: string, password: string}> {
-  readonly state = {
-    email: '',
-    password: ''
-  }
+export default class FrontPage extends React.PureComponent<IFrontPageProps> {
   render() {
-    const { tagline } = this.props.data.site.siteMetadata
     const { data: { allMarkdownRemark }} = this.props
     return (
       <DefaultLayout>
         <div>
           <h1>Hi there!</h1>
-          <p>{tagline}</p>
           <p>
             You have happened to stumble upon my curious blog. Don't panic, there's no cameras here.
           </p>

@@ -22,7 +22,7 @@ const siteDataQuery = graphql`
     siteMetadata {
       url
       title
-      tagline
+      siteName
       description
       image
       facebookAppId

@@ -5,17 +5,8 @@ import styled, { raise } from '../theme/styled'
 
 import { DefaultLayout } from '../layouts/DefaultLayout'
 import { Button } from '../elements/Button'
-import { MdEmail, MdLock } from 'react-icons/md'
 
 interface IProps {
-  data: {
-    site: {
-      siteMetadata: {
-        title: string
-        tagline: string
-      }
-    }
-  }
 }
 
 export default class NotFoundPage extends React.PureComponent<IProps> {

@@ -3,7 +3,7 @@ export interface ISiteData {
   siteMetadata: {
     url: string
     title: string
-    tagline: string
+    siteName: string
     description: string
     image: string
     facebookAppId: string
@@ -18,7 +18,7 @@ export interface IBlogPosts {
 
 export interface IBlogPostFrontmatter {
   title: string
-  date: Date
+  date: string // Can be converted into date, which you can actually do in the graphql query (parseDate or something)
   tags: string[]
 }
 

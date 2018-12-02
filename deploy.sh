@@ -13,8 +13,9 @@ aws s3 sync ./public s3://"${BUCKET}"/ \
   --cache-control max-age=2592000 \
   --delete
 
-# Copy index.html the second time with decreased cache duration
-aws s3 cp ./public/index.html s3://"${BUCKET}"/ \
+# Copy the HTML pages the second time with decreased cache duration
+# since they'll be the ones to load the new assets.
+aws s3 cp ./**/index.html s3://"${BUCKET}"/ \
   --region eu-west-1 \
   --acl public-read \
   --cache-control max-age=120

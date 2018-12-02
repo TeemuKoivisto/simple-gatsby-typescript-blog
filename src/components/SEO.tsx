@@ -39,7 +39,7 @@ const generateSiteJSONLD = ({ siteMetadata }: ISiteData) => ([
     "@type": "WebSite",
     url: siteMetadata.url,
     name: siteMetadata.title,
-    description: siteMetadata.tagline,
+    description: siteMetadata.description,
     author: {
       '@type': 'Person',
       name: 'Teemu Koivisto'
@@ -64,13 +64,24 @@ export class SEO extends React.PureComponent<ISEOProps> {
       </script>
     ])
   }
-  renderFacebook(url: string, title: string, description: string, image: string, ogType: string, facebookAppId: string) {
+  renderNonBlogOgTags() {
     return ([
-      <meta key="og:url" property="og:url" content={url} />,
-      <meta key="og:type" property="og:type" content={ogType} />,
-      <meta key="og:title" property="og:title" content={title} />,
-      <meta key="og:description" property="og:description" content={description} />,
-      <meta key="og:image" property="og:image" content={image} />,
+      <meta key="og:type" property="og:type" content="website" />,
+    ])
+  }
+  renderBlogOgTags(date: string) {
+    return ([
+      <meta key="og:type" property="og:type" content="article" />,
+      <meta key="og:article:published_time" property="og:article:published_time" content={date} />,
+    ])
+  }
+  renderFacebook(url: string, title: string, description: string, image: string, siteName: string, facebookAppId: string) {
+    return ([
+      <meta key="og:url" property="og:url" content={url} />, // Important
+      <meta key="og:title" property="og:title" content={title} />, // Important
+      <meta key="og:description" property="og:description" content={description} />, // Somewhat important
+      <meta key="og:image" property="og:image" content={image} />, // Important
+      <meta key="og:site_name" property="og:site_name" content={siteName} />, // Eeh... can't hurt?
       <meta key="fb:app_id" property="fb:app_id" content={facebookAppId}/>
     ])
   }
@@ -86,13 +97,13 @@ export class SEO extends React.PureComponent<ISEOProps> {
   render() {
     const { site, blogPost } = this.props
     const JSONLD = blogPost ? generateBlogJSONLD(blogPost) : generateSiteJSONLD(site)
-    const { siteMetadata: { url, title, tagline, description, image, facebookAppId } } = site
+    const { siteMetadata: { url, title, siteName, description, image, facebookAppId } } = site
     // http://ogp.me/#types
-    const ogType = blogPost ? 'article' : 'website'
     return (
       <Helmet>
         { this.renderGeneral(description, image, JSONLD) }
-        { this.renderFacebook(url, title, description, image, ogType, facebookAppId) }
+        { blogPost ? this.renderBlogOgTags(blogPost.frontmatter.date) : this.renderNonBlogOgTags() }
+        { this.renderFacebook(url, title, description, image, siteName, facebookAppId) }
         { this.renderTwitter(title, description, image) }
       </Helmet>
     )

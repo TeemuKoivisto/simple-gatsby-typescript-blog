@@ -1,40 +1,19 @@
 ---
-date: "2018-11-09"
+date: "2018-12-02"
 layout: "page"
-title: "Hello from the other side"
+title: "Hello World!"
 tags:
-  - drugs
-  - adele
+  - hello world
+  - gatsby
+  - blog
 ---
 
-Heiehe.
+Oh, arise my glorious castle in the internet fantasy land.
 
-This line has a footnote [^1]. Scroll down or click the link to see it
+It has taken me now what, about 1 week of working days to get this site up and running? It has been long time coming, this blog thing. At one point I was trying out Jekyll, then Hugo but each time I faced some little-bitty thing that I wanted to do differently. So I guess I'm stuck with using this custom-made Gatsby setup, which is good, don't get me wrong. Maybe a little too much boilerplate and strange configuration, but hey it works! So alles gut.
 
->To be or not to be.
+Anyway this project is *far* from finished and there's some things that I have to figure out how to do or fix. For example how to correctly render the metatags for SEO bots to crawl, react-helmet renders them only **after** the page has loaded in JS so they won't show up to the crawlers, oh well. All in time. This won't face much of traffic anyway so why over-engineer it? Haha, stupid question - because I can! No stingy eyed project manager here to tell me to use my time on more 'useful things'.
 
-*I am italic*
+All the code that I've used to build this should be available on GitHub, the infra stack is still work in progress so I haven't made it public yet.
 
-**I am bold**
-
-1. First ordered list item
-2. Another item
-⋅⋅⋅⋅* Unordered sub-list.
-1. Actual numbers don't matter, just that it's a number
-⋅⋅⋅⋅1. Ordered sub-list
-4. And another item.
-
-⋅⋅⋅You can have properly indented paragraphs within list items. Notice the blank line above, and the leading spaces (at least one, but we'll use three here to also align the raw Markdown).
-
-⋅⋅⋅To have a line break without a paragraph, you will need to use two trailing spaces.⋅⋅
-⋅⋅⋅Note that this line is separate, but within the same paragraph.⋅⋅
-
-* Unordered list can use asterisks
-- Or minuses
-+ Or pluses
-
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+Is this good enough? It probably is good enough. I have to just ... do ... this ... one ... more ... thing and *then* I am ready. Humm humm, so why am I here still writing? I should go back to work!
