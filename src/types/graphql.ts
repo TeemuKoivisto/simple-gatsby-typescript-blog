@@ -20,6 +20,7 @@ export interface IBlogPostFrontmatter {
   title: string
   date: string // Can be converted into date, which you can actually do in the graphql query (parseDate or something)
   tags: string[]
+  imagePath: string
 }
 
 export interface INode {

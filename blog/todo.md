@@ -26,3 +26,5 @@ Well since I am making a blog site why not keep my todo list here
 And then I can just **write**???
 
 https://using-remark.gatsbyjs.org/hello-world-kitchen-sink/#headers
+
+https://using-remark.gatsbyjs.org/custom-components/

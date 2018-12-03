@@ -61,7 +61,9 @@ export class SEO extends React.PureComponent<ISEOProps> {
       // Schema.org tags
       <script key="application/ld+json" type="application/ld+json">
         {JSON.stringify(JSONLD)}
-      </script>
+      </script>,
+
+      <meta key="google-site-verification" name="google-site-verification" content="4GIke6DKlXgvoQ1caBPxl2PHfw9Ul81M46TI3KhGwS8" />
     ])
   }
   renderNonBlogOgTags() {

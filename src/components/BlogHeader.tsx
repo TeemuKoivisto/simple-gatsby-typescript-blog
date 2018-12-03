@@ -4,12 +4,10 @@ import { Link } from 'gatsby'
 import styled, { raise } from '../theme/styled'
 import { MdEvent, MdLocalOffer } from 'react-icons/md'
 
+import { IBlogPostFrontmatter } from '../types/graphql'
+
 interface IBlogHeaderProps {
-  frontmatter: {
-    title: string
-    date: Date
-    tags: string[]
-  }
+  frontmatter: IBlogPostFrontmatter
 }
 
 export class BlogHeader extends React.PureComponent<IBlogHeaderProps> {
