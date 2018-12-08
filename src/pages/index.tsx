@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { graphql, Link } from 'gatsby'
-
 import { DefaultLayout } from '../layouts/DefaultLayout'
 
 import { IBlogPosts, INode } from '../types/graphql'
@@ -18,7 +17,7 @@ interface IFrontPageProps {
 
 export default class FrontPage extends React.PureComponent<IFrontPageProps> {
   render() {
-    const { data: { allMarkdownRemark }} = this.props
+    const { data: { allMarkdownRemark } } = this.props
     return (
       <DefaultLayout>
         <div>
@@ -55,7 +54,7 @@ export default class FrontPage extends React.PureComponent<IFrontPageProps> {
           </p>
           <p>
             AWS is my go-to cloud provider which I'm familiar with through work mostly. I am Cloud Architect Associate certified
-            if that means anything, probably not much. 
+            if that means anything, probably not much.
           </p>
           <h2>Other activities</h2>
           <p>
@@ -84,12 +83,12 @@ export default class FrontPage extends React.PureComponent<IFrontPageProps> {
             here, since I am writing these articles just so I can remember how to do this stuff later on :).
           </p>
           <p>
-            If you have something to ask, don't be shy to contact me through whatever way fits you best. 
+            If you have something to ask, don't be shy to contact me through whatever way fits you best.
           </p>
           <div>
             <h2>My most recent blog posts</h2>
             <ul>
-              { allMarkdownRemark.edges.map(({ node }: INode) => 
+              { allMarkdownRemark.edges.map(({ node }: INode) =>
               <li key={node.frontmatter.title}><Link to={node.fields.slug}>{node.frontmatter.title}</Link></li>
               )}
             </ul>

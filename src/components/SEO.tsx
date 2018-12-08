@@ -1,5 +1,5 @@
-import React from "react"
-import Helmet from "react-helmet"
+import React from 'react'
+import Helmet from 'react-helmet'
 
 import { ISiteData, IBlogPostFrontmatter } from '../types/graphql'
 
@@ -8,6 +8,7 @@ interface ISEOProps {
   blogPost?: {
     frontmatter: IBlogPostFrontmatter
     url: string
+    description: string
   }
 }
 
@@ -18,25 +19,28 @@ interface IBlogPost {
 
 const generateBlogJSONLD = ({ frontmatter, url }: IBlogPost) => ([
   {
-    "@context": "http://schema.org",
-    "@type": "BlogPosting",
+    '@context': 'http://schema.org',
+    '@type': 'BlogPosting',
     headline: frontmatter.title,
     keywords: frontmatter.tags,
     url,
     datePublished: frontmatter.date,
     dateCreated: frontmatter.date,
+    // image
+    // publisher
+    // dateModified
+    // mainEntityOfPage
     author: {
       '@type': 'Person',
       name: 'Teemu Koivisto'
     },
-    // image, wordcount?
   }
 ])
 
 const generateSiteJSONLD = ({ siteMetadata }: ISiteData) => ([
   {
-    "@context": "http://schema.org",
-    "@type": "WebSite",
+    '@context': 'http://schema.org',
+    '@type': 'WebSite',
     url: siteMetadata.url,
     name: siteMetadata.title,
     description: siteMetadata.description,
@@ -101,10 +105,20 @@ export class SEO extends React.PureComponent<ISEOProps> {
     const JSONLD = blogPost ? generateBlogJSONLD(blogPost) : generateSiteJSONLD(site)
     const { siteMetadata: { url, title, siteName, description, image, facebookAppId } } = site
     // http://ogp.me/#types
+    if (blogPost) {
+      return (
+        <Helmet>
+          { this.renderGeneral(description, image, JSONLD) }
+          { this.renderBlogOgTags(blogPost.frontmatter.date) }
+          { this.renderFacebook(blogPost.url, blogPost.frontmatter.title, blogPost.description, image, siteName, facebookAppId) }
+          { this.renderTwitter(blogPost.frontmatter.title, blogPost.description, image) }
+        </Helmet>
+      )
+    }
     return (
       <Helmet>
         { this.renderGeneral(description, image, JSONLD) }
-        { blogPost ? this.renderBlogOgTags(blogPost.frontmatter.date) : this.renderNonBlogOgTags() }
+        { this.renderNonBlogOgTags() }
         { this.renderFacebook(url, title, description, image, siteName, facebookAppId) }
         { this.renderTwitter(title, description, image) }
       </Helmet>

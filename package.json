@@ -6,8 +6,11 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "deploy": "gatsby build && AWS_PROFILE=teemukoivisto.xyz-ci ./deploy.sh",
+    "lint": "tslint --project ./ -c tslint.json ",
+    "lint:fix": "tslint --fix --project ./ -c tslint.json ",
     "serve": "gatsby serve",
     "start": "gatsby develop",
+    "a": "gatsby info",
     "test": "exit 0"
   },
   "author": "https://github.com/teemukoivisto",
@@ -45,6 +48,8 @@
     "typography": "^0.16.17"
   },
   "devDependencies": {
-    "@types/react-share": "^2.1.1"
+    "@types/react-share": "^2.1.1",
+    "tslint": "^5.11.0",
+    "tslint-config-airbnb": "^5.11.1"
   }
 }

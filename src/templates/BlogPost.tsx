@@ -44,8 +44,12 @@ interface IBlogPostTemplateProps {
 export default class BlogPostTemplate extends React.PureComponent<IBlogPostTemplateProps> {
   render() {
     const { data: { site, markdownRemark }, pageContext } = this.props
-    const url = site.siteMetadata.url + '/' + markdownRemark.fields.slug
-    const blogPost = { frontmatter: markdownRemark.frontmatter, url }
+    const url = `${site.siteMetadata.url}/${markdownRemark.fields.slug}`
+    const blogPost = {
+      frontmatter: markdownRemark.frontmatter,
+      description: markdownRemark.excerpt,
+      url,
+    }
     const title = markdownRemark.frontmatter.title
     return (
       <DefaultLayout title={title} seoBlogPost={blogPost}>

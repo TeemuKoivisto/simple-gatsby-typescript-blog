@@ -1,6 +1,5 @@
 import * as React from 'react'
-import { graphql } from 'gatsby'
-import { Link } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import styled, { raise } from '../theme/styled'
 
 import { DefaultLayout } from '../layouts/DefaultLayout'
@@ -15,13 +14,13 @@ interface IBlogPageProps {
 
 export default class BlogPage extends React.PureComponent<IBlogPageProps> {
   render() {
-    const { data: { allMarkdownRemark }} = this.props
+    const { data: { allMarkdownRemark } } = this.props
     return (
       <DefaultLayout>
         <div>
           <h1>My blog posts</h1>
           <BlogList>
-            { allMarkdownRemark.edges.map(({ node }: INode) => 
+            { allMarkdownRemark.edges.map(({ node }: INode) =>
             <li key={node.frontmatter.title}>
               <BlogLink to={node.fields.slug}>
                 <Date>{node.frontmatter.date}</Date>

@@ -42,10 +42,10 @@ export default class FrontPage extends React.Component<IFrontPageProps, IState> 
           <LoginForm onSubmit={this.handleSubmit}>
 
             <Input label="Email" icon={<MdEmail size={24}/>} fullWidth
-              onChange={(e) => this.setState({email: e.currentTarget.value})}
+              onChange={e => this.setState({ email: e.currentTarget.value })}
             />
             <Input type="password" label="Password" icon={<MdLock size={24}/>} fullWidth
-              onChange={(e) => this.setState({password: e.currentTarget.value})}
+              onChange={e => this.setState({ password: e.currentTarget.value })}
             />
             <LoginButton type="submit" fullWidth>Login</LoginButton>
 

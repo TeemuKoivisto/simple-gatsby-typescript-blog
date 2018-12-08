@@ -8,7 +8,7 @@ interface IProps {
 
 /**
  * Wrapper around react-disqus-comments
- * 
+ *
  * If you're familiar with Disqus, you know there's a few parameters that it
  * requires to function. However, in my case I'm happy with the defaults that
  * are used so I'm only using the minimum needed.
@@ -17,7 +17,7 @@ interface IProps {
 export class Disqus extends React.PureComponent<IProps> {
   render() {
     const { shortname, title } = this.props
-    const modifiedShortname = process.env.NODE_ENV === 'development' ? 'dev-' + shortname : shortname
+    const modifiedShortname = process.env.NODE_ENV === 'development' ? `dev-${shortname}` : shortname
     return (
       <ReactDisqusComments
         shortname={modifiedShortname}
