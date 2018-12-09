@@ -21,6 +21,7 @@ export interface IBlogPostFrontmatter {
   date: string // Can be converted into date, which you can actually do in the graphql query (parseDate or something)
   tags: string[]
   imagePath: string
+  description: string // Should be a short description about the topic, <=200 words. Mainly for SEO purposes.
 }
 
 export interface INode {

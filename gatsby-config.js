@@ -12,6 +12,7 @@ module.exports = {
     'gatsby-plugin-typescript',
     'gatsby-plugin-styled-components',
     'gatsby-plugin-react-helmet',
+    'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-plugin-typography',
       options: {
@@ -25,6 +26,13 @@ module.exports = {
           `gatsby-remark-autolink-headers`,
           `gatsby-remark-prismjs`,
           `gatsby-remark-katex`,
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              maxWidth: 1380,
+              linkImagesToOriginal: false,
+            },
+          },
         ]
       }
     },

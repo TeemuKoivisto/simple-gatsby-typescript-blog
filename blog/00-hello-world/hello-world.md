@@ -1,17 +1,29 @@
 ---
-date: "2018-12-02"
-layout: "page"
-title: "Hello World!"
-imagePath: "img/hello-world.png"
+date: 2018-12-02
+title: Hello World!
+description: My first blog post!
 tags:
   - hello world
   - gatsby
   - blog
+images:
+  - hello-world.png
 ---
 
 Oh, arise my glorious castle in the internet fantasy land.
 
-![Hello world!](https://teemukoivisto.xyz/static/hello-world.png "hello-world")
+<figure>
+  <img src="./hello-world.png" alt="Hello world in TypeScript." />
+  <figcaption>
+    A timeless classic.
+    <small>
+      Credit: 
+      <span>
+        Teemu Koivisto
+      </span>
+    </small>
+  </figcaption>
+</figure>
 
 It has taken me now what, about 1 week of working days to get this site up and running? It has been long time coming, this blog thing. At one point I was trying out Jekyll, then Hugo but each time I faced some little-bitty thing that I wanted to do differently. So I guess I'm stuck with using this custom-made Gatsby setup, which is good, don't get me wrong. Maybe a little too much boilerplate and strange configuration, but hey it works! So alles gut.
 

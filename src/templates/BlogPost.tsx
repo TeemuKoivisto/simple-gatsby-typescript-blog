@@ -2,8 +2,8 @@ import React from 'react'
 import { graphql } from 'gatsby'
 
 import styled from '../theme/styled'
+
 import { DefaultLayout } from '../layouts/DefaultLayout'
-import { SEO } from '../components/SEO'
 import { Signature } from '../components/Signature'
 import { BlogPager } from '../components/BlogPager'
 import { BlogHeader } from '../components/BlogHeader'
@@ -77,7 +77,7 @@ export const pageQuery = graphql`
       excerpt
       frontmatter {
         title
-        date
+        date(formatString: "YYYY-MM-DD")
         tags
       }
       fields {

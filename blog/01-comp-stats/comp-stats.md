@@ -1,11 +1,12 @@
 ---
-date: "2018-11-07"
-layout: "page"
-title: "Computational Statistics I 2018"
+date: 2018-11-07
+title: Computational Statistics I 2018
 tags:
   - stats
   - programming
   - datascience
+images:
+- mcmc.png
 ---
 
 https://courses.helsinki.fi/fi/mast32001/124789436
@@ -15,6 +16,19 @@ Is pretty hard... But cool cos lots of coding!
 I used `jupyter/tensorflow-notebook:137a295ff71b` Docker image for launching the Jupyter notebooks provided in the course and it should run the code snippets. I think it had Python 3.5. NOTE: which actually fucking sucked as I couldn't install Pytorch on it. Decided to install instead Anaconda which seems to work fine.
 
 # 6. Markov Chain Monte Carlo (MCMC)
+
+<figure>
+  <img src="./mcmc.png" alt="Two MCMC plots in IPython notebook." />
+  <figcaption>
+    A well converging MCMC using Metropolis-Hastings.
+    <small>
+      Credit: 
+      <span>
+        Teemu Koivisto
+      </span>
+    </small>
+  </figcaption>
+</figure>
 
 ## The idea
 

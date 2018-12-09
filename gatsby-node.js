@@ -1,17 +1,19 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
-exports.onCreateNode = ({ node, getNode, actions }) => {
+exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions
   // Select only markdown-nodes picked up by 'gatsby-transformer-remark'
   if (node.internal.type === `MarkdownRemark`) {
     // Generate a slug name from the file name
-    const slug = createFilePath({ node, getNode, basePath: `blog` })
+    const filePath = node.fileAbsolutePath
+    const lastSlashIndex = filePath.lastIndexOf('/')
+    const slug = `/blog${filePath.substring(lastSlashIndex).split('.')[0]}`
     // This will add a 'slug'-field to the file-node's 'fields' -object
     createNodeField({
       node,
       name: `slug`,
-      value: `/blog${slug}`,
+      value: slug
     })
   }
 }
@@ -20,42 +22,56 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const result = await graphql(`
     {
-      allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+      posts: allFile(
+        filter: { relativePath: { glob: "**/*.md" } }
+        sort: { fields: relativePath, order: DESC }
+      ) {
         edges {
           node {
-            frontmatter {
-              title
-              date
-            }
-            fields {
-              slug
+            id
+            relativePath
+            childMarkdownRemark {
+              frontmatter {
+                date
+                title
+                description
+                tags
+              }
+              fields {
+                slug
+              }
             }
           }
         }
       }
     }
   `)
-  const nodes = result.data.allMarkdownRemark.edges.map(({ node }) => node)
+  if (result.errors) {
+    throw Error('createPages graphql query threw an error: \n' + result.errors[0])
+  }
+  const nodes = result.data.posts.edges.map(({ node: { childMarkdownRemark } }) => childMarkdownRemark)
   nodes.forEach((node, i) => {
     const previousNode = i !== nodes.length - 1 ? nodes[i+1] : undefined
     const nextNode = i !== 0 ? nodes[i-1]: undefined
+    const getSlug = (node) => node ? node.fields.slug : undefined
+    const getPostAttribute = (node, attr) => node ? node.frontmatter[attr] : undefined
     createPage({
-      path: node.fields.slug,
+      path: getSlug(node),
       component: path.resolve(`./src/templates/BlogPost.tsx`),
       context: {
         // Data passed to context is available
         // in page queries as GraphQL variables.
-        slug: node.fields.slug,
+        slug: getSlug(node),
         // Add previous and next pages for easy pagination of blog posts
         previous: {
-          slug: previousNode && previousNode.fields.slug,
-          title: previousNode && previousNode.frontmatter.title,
-          date: previousNode && previousNode.frontmatter.date,
+          slug: getSlug(previousNode),
+          title: getPostAttribute(previousNode, 'title'),
+          date: getPostAttribute(previousNode, 'date'),
         },
         next: {
-          slug: nextNode && nextNode.fields.slug,
-          title: nextNode && nextNode.frontmatter.title,
-          date: nextNode && nextNode.frontmatter.date,
+          slug: getSlug(nextNode),
+          title: getPostAttribute(nextNode, 'title'),
+          date: getPostAttribute(nextNode, 'date'),
         }
       },
     })
