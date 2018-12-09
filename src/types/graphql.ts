@@ -10,7 +10,6 @@ export interface ISiteData {
     disqusShortname: string
     author: {
       name: string
-      minibio: string
     }
     organization: {
       name: string

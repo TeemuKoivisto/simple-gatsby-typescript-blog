@@ -25,6 +25,13 @@ interface IBlogPostTemplateProps {
         slug: string
       }
     }
+    seoImage: {
+      landscape: {
+        fluid: {
+          src: string
+        }
+      }
+    }
   }
   pageContext: {
     slug: string
@@ -65,11 +72,12 @@ interface IBlogPostTemplateProps {
 
 export default class BlogPostTemplate extends React.PureComponent<IBlogPostTemplateProps> {
   render() {
-    const { data: { site, markdownRemark }, pageContext } = this.props
+    const { data: { site, markdownRemark, seoImage }, pageContext } = this.props
     const url = this.props.location.href
     const blogPost = {
       frontmatter: markdownRemark.frontmatter,
       url,
+      seoImage: seoImage.landscape.fluid.src,
     }
     const title = markdownRemark.frontmatter.title
     return (
@@ -77,8 +85,8 @@ export default class BlogPostTemplate extends React.PureComponent<IBlogPostTempl
         <div>
           <BlogHeader frontmatter={markdownRemark.frontmatter}/>
           <h6>{markdownRemark.excerpt}</h6>
-          <div dangerouslySetInnerHTML={{ __html: markdownRemark.html }} />
-          <Signature />
+          <section dangerouslySetInnerHTML={{ __html: markdownRemark.html }} />
+          <Signature/>
           <BlogPager previous={pageContext.previous} next={pageContext.next}/>
           <ShareButtons url={url} title={title}/>
           <Disqus shortname={site.siteMetadata.disqusShortname} title={title}/>
@@ -107,6 +115,13 @@ export const pageQuery = graphql`
       }
       fields {
         slug
+      }
+    }
+    seoImage: file(relativePath: { regex: "/big-image/" }) {
+      landscape: childImageSharp {
+        fluid(maxWidth: 1000) {
+          src
+        }
       }
     }
   }

@@ -7,21 +7,23 @@ tags:
   - gatsby
   - blog
 images:
-  - hello-world.png
+  - hello-world.jpg
 ---
 
 Oh, arise my glorious castle in the internet fantasy land.
 
 <figure>
-  <img src="./hello-world.png" alt="Hello world in TypeScript." />
+  <img src="./hello-world.jpg" alt="Hello world in TypeScript." />
   <figcaption>
-    A timeless classic.
-    <small>
+    <span class="figure-caption__body">
+      A timeless classic.
+      <small>
       Credit: 
       <span>
         Teemu Koivisto
       </span>
-    </small>
+      </small>
+    </span>
   </figcaption>
 </figure>
 

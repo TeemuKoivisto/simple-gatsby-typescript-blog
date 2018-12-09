@@ -67,4 +67,7 @@ export const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
+  .figure-caption__body {
+
+  }
 `

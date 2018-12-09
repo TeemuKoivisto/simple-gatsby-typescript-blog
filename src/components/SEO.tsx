@@ -6,16 +6,14 @@ import { ISiteData, IBlogPostFrontmatter } from '../types/graphql'
 
 interface ISEOProps {
   site: ISiteData
-  blogPost?: {
-    frontmatter: IBlogPostFrontmatter
-    url: string
-    description: string
-  }
+  blogPost?: IBlogPost
 }
 
 interface IBlogPost {
   frontmatter: IBlogPostFrontmatter
   url: string
+  description: string
+  seoImage: string
 }
 
 /**
@@ -38,10 +36,9 @@ export class SEO extends React.PureComponent<ISEOProps> {
       <meta key="og:type" property="og:type" content="website" />,
     ])
   }
-  renderBlogOgTags(date: string) {
+  renderBlogOgTags() {
     return ([
       <meta key="og:type" property="og:type" content="article" />,
-      <meta key="og:article:published_time" property="og:article:published_time" content={date} />,
     ])
   }
   renderFacebook(url: string, title: string, description: string, image: string, siteName: string, facebookAppId: string) {
@@ -49,6 +46,8 @@ export class SEO extends React.PureComponent<ISEOProps> {
       <meta key="og:url" property="og:url" content={url} />, // Important
       <meta key="og:title" property="og:title" content={title} />, // Important
       <meta key="og:description" property="og:description" content={description} />, // Somewhat important
+      // Facebook recommends 1200x630 size, ratio of 1.91:1
+      // But 1200x1200 is also fine
       <meta key="og:image" property="og:image" content={image} />, // Important
       <meta key="og:site_name" property="og:site_name" content={siteName} />, // Eeh... can't hurt?
       <meta key="fb:app_id" property="fb:app_id" content={facebookAppId}/>
@@ -64,9 +63,8 @@ export class SEO extends React.PureComponent<ISEOProps> {
     ])
   }
   renderBlogPostSEO({ siteMetadata }: ISiteData, blogPost: IBlogPost) {
-    const { title, date, description, tags, images } = blogPost.frontmatter
-    const image = images && images.length > 0 ? images[0].publicURL : siteMetadata.image
-    console.log(images)
+    const { title, date, description, tags } = blogPost.frontmatter
+    const image = blogPost.seoImage || siteMetadata.image
     return (
       <Helmet>
         { this.renderGeneral(description, image) }
@@ -83,7 +81,7 @@ export class SEO extends React.PureComponent<ISEOProps> {
             organization: siteMetadata.organization,
           })}
         </script>,
-        { this.renderBlogOgTags(date) }
+        { this.renderBlogOgTags() }
         { this.renderFacebook(blogPost.url, title, description, image, siteMetadata.siteName, siteMetadata.facebookAppId) }
         { this.renderTwitter(title, description, image) }
       </Helmet>

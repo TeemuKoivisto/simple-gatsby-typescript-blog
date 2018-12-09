@@ -9,9 +9,6 @@ module.exports = {
     disqusShortname: 'teemukoivisto-xyz', // Uses dev-teemukoivisto-xyz in development
     author: {
       name: 'Teemu Koivisto',
-      minibio: `
-        <b>Teemu Koivisto</b> is an enthusiastic MSc. student of Data Science and a software developer from Helsinki.
-      `,
     },
     organization: {
       name: 'Teemu Koivisto',
@@ -23,6 +20,7 @@ module.exports = {
     'gatsby-plugin-styled-components',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-plugin-typography',
       options: {
@@ -52,6 +50,6 @@ module.exports = {
         name: 'blog-pages',
         path: `${__dirname}/blog`
       }
-    }
+    },
   ],
 }

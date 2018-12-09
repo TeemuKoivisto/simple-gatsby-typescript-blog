@@ -29,7 +29,6 @@ const siteDataQuery = graphql`
       disqusShortname
       author {
         name
-        minibio
       }
       organization {
         name

@@ -7,7 +7,7 @@ tags:
   - programming
   - datascience
 images:
-- mcmc.png
+- mcmc.jpg
 ---
 
 https://courses.helsinki.fi/fi/mast32001/124789436
@@ -19,15 +19,17 @@ I used `jupyter/tensorflow-notebook:137a295ff71b` Docker image for launching the
 # 6. Markov Chain Monte Carlo (MCMC)
 
 <figure>
-  <img src="./mcmc.png" alt="Two MCMC plots in IPython notebook." />
+  <img src="./mcmc.jpg" alt="Two MCMC plots in IPython notebook." />
   <figcaption>
-    A well converging MCMC using Metropolis-Hastings.
-    <small>
+    <span class="figure-caption__body">
+      A well converging MCMC using Metropolis-Hastings.
+      <small>
       Credit: 
       <span>
         Teemu Koivisto
       </span>
-    </small>
+      </small>
+    </span>
   </figcaption>
 </figure>
 
