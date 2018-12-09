@@ -88,28 +88,9 @@ const generateBlogPosting = ({ url, title, description, image, date, tags, canon
     '@type': 'WebSite',
     '@id': canonicalUrl,
   },
-  datePublished: date
+  datePublished: date,
+  dateModified: date, // Recommended by https://search.google.com/structured-data/testing-tool
 })
-
-// const generateBlogJSONLD = ({ frontmatter, url }: IBlogPost) => ([
-//   {
-//     '@context': 'http://schema.org',
-//     '@type': 'BlogPosting',
-//     headline: frontmatter.title,
-//     keywords: frontmatter.tags,
-//     url,
-//     datePublished: frontmatter.date,
-//     dateCreated: frontmatter.date,
-//     // image
-//     // publisher
-//     // dateModified
-//     // mainEntityOfPage
-//     author: {
-//       '@type': 'Person',
-//       name: 'Teemu Koivisto'
-//     },
-//   }
-// ])
 
 export const createWebsiteJSONLD = (props: ISiteProps) =>
   JSON.stringify([

@@ -36,6 +36,9 @@ exports.createPages = async ({ graphql, actions }) => {
                 title
                 description
                 tags
+                images {
+                  name
+                }
               }
               fields {
                 slug
@@ -55,6 +58,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const nextNode = i !== 0 ? nodes[i-1]: undefined
     const getSlug = (node) => node ? node.fields.slug : undefined
     const getPostAttribute = (node, attr) => node ? node.frontmatter[attr] : undefined
+    const image = node.frontmatter.images && node.frontmatter.images[0].name || undefined
     createPage({
       path: getSlug(node),
       component: path.resolve(`./src/templates/BlogPost.tsx`),
@@ -62,6 +66,7 @@ exports.createPages = async ({ graphql, actions }) => {
         // Data passed to context is available
         // in page queries as GraphQL variables.
         slug: getSlug(node),
+        imageRegex: `/${image}/`,
         // Add previous and next pages for easy pagination of blog posts
         previous: {
           slug: getSlug(previousNode),

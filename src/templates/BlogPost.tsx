@@ -73,11 +73,12 @@ interface IBlogPostTemplateProps {
 export default class BlogPostTemplate extends React.PureComponent<IBlogPostTemplateProps> {
   render() {
     const { data: { site, markdownRemark, seoImage }, pageContext } = this.props
-    const url = this.props.location.href
+    const baseUrl = process.env.NODE_ENV === 'development' ? this.props.location.origin : site.siteMetadata.canonicalUrl
+    const postUrl = `${baseUrl}${markdownRemark.fields.slug}`
     const blogPost = {
       frontmatter: markdownRemark.frontmatter,
-      url,
-      seoImage: seoImage.landscape.fluid.src,
+      url: postUrl,
+      seoImage: `${baseUrl}${seoImage.landscape.fluid.src}`,
     }
     const title = markdownRemark.frontmatter.title
     return (
@@ -88,7 +89,7 @@ export default class BlogPostTemplate extends React.PureComponent<IBlogPostTempl
           <section dangerouslySetInnerHTML={{ __html: markdownRemark.html }} />
           <Signature/>
           <BlogPager previous={pageContext.previous} next={pageContext.next}/>
-          <ShareButtons url={url} title={title}/>
+          <ShareButtons url={postUrl} title={title}/>
           <Disqus shortname={site.siteMetadata.disqusShortname} title={title}/>
         </div>
       </DefaultLayout>
@@ -97,7 +98,7 @@ export default class BlogPostTemplate extends React.PureComponent<IBlogPostTempl
 }
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
+  query BlogPostBySlug($imageRegex: String!, $slug: String!) {
     site {
       ...SiteData
     }
@@ -117,7 +118,7 @@ export const pageQuery = graphql`
         slug
       }
     }
-    seoImage: file(relativePath: { regex: "/big-image/" }) {
+    seoImage: file(relativePath: { regex: $imageRegex }) {
       landscape: childImageSharp {
         fluid(maxWidth: 1000) {
           src
