@@ -1,5 +1,6 @@
 import React from 'react'
 import Helmet from 'react-helmet'
+import { createWebsiteJSONLD, createBlogPostJSONLD } from './SchemaOrg'
 
 import { ISiteData, IBlogPostFrontmatter } from '../types/graphql'
 
@@ -17,56 +18,18 @@ interface IBlogPost {
   url: string
 }
 
-const generateBlogJSONLD = ({ frontmatter, url }: IBlogPost) => ([
-  {
-    '@context': 'http://schema.org',
-    '@type': 'BlogPosting',
-    headline: frontmatter.title,
-    keywords: frontmatter.tags,
-    url,
-    datePublished: frontmatter.date,
-    dateCreated: frontmatter.date,
-    // image
-    // publisher
-    // dateModified
-    // mainEntityOfPage
-    author: {
-      '@type': 'Person',
-      name: 'Teemu Koivisto'
-    },
-  }
-])
-
-const generateSiteJSONLD = ({ siteMetadata }: ISiteData) => ([
-  {
-    '@context': 'http://schema.org',
-    '@type': 'WebSite',
-    url: siteMetadata.url,
-    name: siteMetadata.title,
-    description: siteMetadata.description,
-    author: {
-      '@type': 'Person',
-      name: 'Teemu Koivisto'
-    }
-  }
-])
-
 /**
  * General SEO element that renders meta tags with react-helmet
  * Which is kinda shitty library, as it doesn't allow nested components inside of it.
  * So instead everything is rendered here as methods of this SEO. Sigh.
  */
 export class SEO extends React.PureComponent<ISEOProps> {
-  renderGeneral(description: string, image: string, JSONLD: object) {
+  renderGeneral(description: string, image: string) {
     return ([
       // General tags
       <meta key="description" name="description" content={description} />,
       <meta key="image" name="image" content={image} />,
-      // Schema.org tags
-      <script key="application/ld+json" type="application/ld+json">
-        {JSON.stringify(JSONLD)}
-      </script>,
-
+      // Google site verification TODO
       <meta key="google-site-verification" name="google-site-verification" content="4GIke6DKlXgvoQ1caBPxl2PHfw9Ul81M46TI3KhGwS8" />
     ])
   }
@@ -100,26 +63,52 @@ export class SEO extends React.PureComponent<ISEOProps> {
       <meta key="twitter:image" name="twitter:image" content={image} />
     ])
   }
+  renderBlogPostSEO({ siteMetadata }: ISiteData, blogPost: IBlogPost) {
+    const { title, date, description, tags, images } = blogPost.frontmatter
+    const image = images && images.length > 0 ? images[0].publicURL : siteMetadata.image
+    console.log(images)
+    return (
+      <Helmet>
+        { this.renderGeneral(description, image) }
+        <script key="application/ld+json" type="application/ld+json">
+          { createBlogPostJSONLD({
+            url: blogPost.url,
+            title,
+            description,
+            image,
+            tags,
+            date,
+            canonicalUrl: siteMetadata.canonicalUrl,
+            author: siteMetadata.author,
+            organization: siteMetadata.organization,
+          })}
+        </script>,
+        { this.renderBlogOgTags(date) }
+        { this.renderFacebook(blogPost.url, title, description, image, siteMetadata.siteName, siteMetadata.facebookAppId) }
+        { this.renderTwitter(title, description, image) }
+      </Helmet>
+    )
+  }
   render() {
-    const { site, blogPost } = this.props
-    const JSONLD = blogPost ? generateBlogJSONLD(blogPost) : generateSiteJSONLD(site)
-    const { siteMetadata: { url, title, siteName, description, image, facebookAppId } } = site
+    const { site: { siteMetadata }, blogPost } = this.props
+    const { canonicalUrl, title, siteName, description, image, author, facebookAppId } = siteMetadata
     // http://ogp.me/#types
     if (blogPost) {
-      return (
-        <Helmet>
-          { this.renderGeneral(description, image, JSONLD) }
-          { this.renderBlogOgTags(blogPost.frontmatter.date) }
-          { this.renderFacebook(blogPost.url, blogPost.frontmatter.title, blogPost.description, image, siteName, facebookAppId) }
-          { this.renderTwitter(blogPost.frontmatter.title, blogPost.description, image) }
-        </Helmet>
-      )
+      return this.renderBlogPostSEO(this.props.site, blogPost)
     }
     return (
       <Helmet>
-        { this.renderGeneral(description, image, JSONLD) }
+        { this.renderGeneral(description, image) }
+        <script key="application/ld+json" type="application/ld+json">
+          { createWebsiteJSONLD({
+            url: canonicalUrl, // TODO WRONG, should be page's url
+            title,
+            description,
+            author,
+          })}
+        </script>,
         { this.renderNonBlogOgTags() }
-        { this.renderFacebook(url, title, description, image, siteName, facebookAppId) }
+        { this.renderFacebook(canonicalUrl, title, description, image, siteName, facebookAppId) }
         { this.renderTwitter(title, description, image) }
       </Helmet>
     )

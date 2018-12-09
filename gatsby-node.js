@@ -32,7 +32,7 @@ exports.createPages = async ({ graphql, actions }) => {
             relativePath
             childMarkdownRemark {
               frontmatter {
-                date
+                date(formatString: "YYYY-MM-DD")
                 title
                 description
                 tags

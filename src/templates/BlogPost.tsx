@@ -39,15 +39,36 @@ interface IBlogPostTemplateProps {
       date?: string
     }
   }
+  pathContext: {
+    slug: string
+    previous: {
+      slug?: string
+      title?: string
+      date?: string
+    }
+    next: {
+      slug?: string
+      title?: string
+      date?: string
+    }
+  }
+  '*': string
+  children: any
+  location: any // lots of stuff
+  navigate: (to: any, options: any) => void
+  pageResources: {
+    component: () => void
+    page: any
+  }
+  path: string
 }
 
 export default class BlogPostTemplate extends React.PureComponent<IBlogPostTemplateProps> {
   render() {
     const { data: { site, markdownRemark }, pageContext } = this.props
-    const url = `${site.siteMetadata.url}/${markdownRemark.fields.slug}`
+    const url = this.props.location.href
     const blogPost = {
       frontmatter: markdownRemark.frontmatter,
-      description: markdownRemark.excerpt,
       url,
     }
     const title = markdownRemark.frontmatter.title
@@ -79,6 +100,10 @@ export const pageQuery = graphql`
         title
         date(formatString: "YYYY-MM-DD")
         tags
+        description
+        images {
+          publicURL
+        }
       }
       fields {
         slug

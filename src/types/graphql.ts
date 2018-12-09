@@ -1,13 +1,21 @@
 
 export interface ISiteData {
   siteMetadata: {
-    url: string
+    canonicalUrl: string
     title: string
     siteName: string
     description: string
     image: string
     facebookAppId: string
     disqusShortname: string
+    author: {
+      name: string
+      minibio: string
+    }
+    organization: {
+      name: string
+      url: string
+    }
   }
 }
 
@@ -19,9 +27,13 @@ export interface IBlogPosts {
 export interface IBlogPostFrontmatter {
   title: string
   date: string // Can be converted into date, which you can actually do in the graphql query (parseDate or something)
-  tags: string[]
-  imagePath: string
   description: string // Should be a short description about the topic, <=200 words. Mainly for SEO purposes.
+  tags: string[]
+  images: IImage[]
+}
+
+export interface IImage {
+  publicURL: string
 }
 
 export interface INode {

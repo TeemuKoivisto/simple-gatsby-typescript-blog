@@ -20,13 +20,21 @@ const siteDataQuery = graphql`
   }
   fragment SiteData on Site {
     siteMetadata {
-      url
+      canonicalUrl
       title
       siteName
       description
       image
       facebookAppId
       disqusShortname
+      author {
+        name
+        minibio
+      }
+      organization {
+        name
+        url
+      }
     }
   }
   fragment BlogPost on MarkdownRemarkEdge {
@@ -34,8 +42,12 @@ const siteDataQuery = graphql`
       id
       frontmatter {
         title
-        date
+        description
+        date(formatString: "YYYY-MM-DD")
         tags
+        images {
+          publicURL
+        }
       }
       fields {
         slug
