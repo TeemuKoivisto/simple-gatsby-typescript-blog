@@ -104,7 +104,7 @@ export const query = graphql`
     site {
       ...SiteData
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(sort: { fields: [frontmatter___datePublished], order: DESC }) {
       totalCount
       edges {
         ...BlogPost

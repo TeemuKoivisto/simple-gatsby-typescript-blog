@@ -80,7 +80,7 @@ const Tag = styled.p`
 
 export const query = graphql`
   query {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(sort: { fields: [frontmatter___datePublished], order: DESC }) {
       totalCount
       edges {
         ...BlogPost

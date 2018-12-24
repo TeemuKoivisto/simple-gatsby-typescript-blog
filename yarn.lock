@@ -9009,9 +9009,9 @@ react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
 
-react-seo-meta-tags@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/react-seo-meta-tags/-/react-seo-meta-tags-0.0.2.tgz#f630bbc2471c2f6a48daf29a05223fde986db852"
+react-seo-meta-tags@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/react-seo-meta-tags/-/react-seo-meta-tags-0.1.0.tgz#0f163e2e7beb6c17397bde98ea9cf65b7f0eff3a"
 
 react-share@^2.4.0:
   version "2.4.0"

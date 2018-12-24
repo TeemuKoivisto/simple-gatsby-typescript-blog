@@ -10,7 +10,7 @@ import { defaultTheme, GlobalStyle } from '../theme/sc-default-theme'
 import { NavBar } from '../components/NavBar'
 import { Footer } from '../components/Footer'
 
-import { ISiteData } from '../types/graphql'
+import { ISiteData, ISEOBlogPost } from '../types/graphql'
 
 const siteDataQuery = graphql`
   query {
@@ -35,6 +35,7 @@ const siteDataQuery = graphql`
       }
       organization {
         name
+        logo
         url
       }
     }
@@ -45,7 +46,8 @@ const siteDataQuery = graphql`
       frontmatter {
         title
         description
-        date(formatString: "YYYY-MM-DD")
+        datePublished(formatString: "YYYY-MM-DD")
+        dateModified(formatString: "YYYY-MM-DD")
         tags
         images {
           publicURL
@@ -62,7 +64,7 @@ const siteDataQuery = graphql`
 interface IProps {
   children: React.ReactNode
   title?: string
-  seoBlogPost?: any
+  seoBlogPost?: ISEOBlogPost
 }
 
 // This kinda boilerplatish wrapping is because StaticQuery only offers render-method
@@ -74,11 +76,11 @@ export const DefaultLayout: React.SFC<IProps> = (props: IProps) => (
 const DefaultContent = ({ children, seoBlogPost }: IProps) => ({ site }: { site: ISiteData }) => (
   <ThemeProvider theme={defaultTheme}>
     <DefaultWrapper>
-      <SEO site={site} blogPost={seoBlogPost}/>
       <ReactSEOMetaTags
         render={(el: any) => <Helmet>{el}</Helmet>}
-        website={site}
-        blogPost={{ ...seoBlogPost as any }}
+        website={site.siteMetadata}
+        blogPost={seoBlogPost}
+        facebook={{ facebookAppId: site.siteMetadata.facebookAppId }}
       />
       <NavBar site={site}/>
       <DefaultContainer>

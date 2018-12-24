@@ -1,5 +1,6 @@
 ---
-date: 2018-11-07
+datePublished: 2018-11-07
+dateModified: 2018-11-07
 title: Computational Statistics I 2018
 description: Overview of computational methods for calculating Bayesian inference using MCMC, Variational Inference etc.
 tags:

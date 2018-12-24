@@ -16,7 +16,7 @@ module.exports = {
     organization: {
       name: 'Teemu Koivisto',
       url: 'https://teemukoivisto.xyz',
-      logo: 'logo-660x150.png'
+      logo: 'https://teemukoivisto.xyz/images/avatar-460.jpeg'
     }
   },  
   plugins: [

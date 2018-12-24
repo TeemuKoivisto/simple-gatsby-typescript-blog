@@ -1,5 +1,6 @@
 ---
-date: 2018-12-02
+datePublished: 2018-12-02
+dateModified: 2018-12-02
 title: Hello World!
 description: My first blog post!
 tags:

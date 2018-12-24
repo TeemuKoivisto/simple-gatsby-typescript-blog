@@ -17,7 +17,33 @@ export interface ISiteData {
     organization: {
       name: string
       url: string
+      logo: string
     }
+  }
+}
+
+export interface ISEOBlogPost {
+  url: string
+  image: string
+  title: string
+  datePublished: string
+  dateModified: string
+  description: string
+  tags: string[]
+  facebookAppId: string
+  disqusShortname: string
+  site: {
+    siteName: string
+    canonicalUrl: string
+  }
+  author: {
+    name: string
+    schemaType: string
+  }
+  organization: {
+    name: string
+    logo: string
+    url: string
   }
 }
 
@@ -28,7 +54,8 @@ export interface IBlogPosts {
 
 export interface IBlogPostFrontmatter {
   title: string
-  date: string // Can be converted into date, which you can actually do in the graphql query (parseDate or something)
+  datePublished: string // Can be converted into date, which you can actually do in the graphql query
+  dateModified: string // Eg. 2018-12-02
   description: string // Should be a short description about the topic, <=200 words. Mainly for SEO purposes.
   tags: string[]
   images: IImage[]

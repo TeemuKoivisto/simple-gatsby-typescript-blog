@@ -10,7 +10,7 @@ import { BlogHeader } from '../components/BlogHeader'
 import { ShareButtons } from '../components/ShareButtons'
 import { Disqus } from '../components/Disqus'
 
-import { ISiteData, IBlogPostFrontmatter } from '../types/graphql'
+import { ISiteData, ISEOBlogPost, IBlogPostFrontmatter } from '../types/graphql'
 
 // There is a lot of other stuff in props, provided by Gatsby, that I'm not typing here
 // since it would quite a lot of work.
@@ -78,7 +78,8 @@ export default class BlogPostTemplate extends React.PureComponent<IBlogPostTempl
     const blogPost = { ...site.siteMetadata, ...markdownRemark.frontmatter, ...{
       url: postUrl,
       image: seoImage.landscape && `${baseUrl}${seoImage.landscape.fluid.src}`,
-    }}
+    }} as ISEOBlogPost
+    console.log(seoImage)
     const title = markdownRemark.frontmatter.title
     return (
       <DefaultLayout title={title} seoBlogPost={blogPost}>
@@ -106,7 +107,8 @@ export const pageQuery = graphql`
       excerpt
       frontmatter {
         title
-        date(formatString: "YYYY-MM-DD")
+        datePublished(formatString: "YYYY-MM-DD")
+        dateModified(formatString: "YYYY-MM-DD")
         tags
         description
         images {
