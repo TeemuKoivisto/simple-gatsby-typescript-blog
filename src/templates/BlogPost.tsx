@@ -38,12 +38,12 @@ interface IBlogPostTemplateProps {
     previous: {
       slug?: string
       title?: string
-      date?: string
+      datePublished?: string
     }
     next: {
       slug?: string
       title?: string
-      date?: string
+      datePublished?: string
     }
   }
   pathContext: {
@@ -51,12 +51,12 @@ interface IBlogPostTemplateProps {
     previous: {
       slug?: string
       title?: string
-      date?: string
+      datePublished?: string
     }
     next: {
       slug?: string
       title?: string
-      date?: string
+      datePublished?: string
     }
   }
   '*': string

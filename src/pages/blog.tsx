@@ -23,7 +23,7 @@ export default class BlogPage extends React.PureComponent<IBlogPageProps> {
             { allMarkdownRemark.edges.map(({ node }: INode) =>
             <li key={node.frontmatter.title}>
               <BlogLink to={node.fields.slug}>
-                <Date>{node.frontmatter.date}</Date>
+                <Date>{node.frontmatter.datePublished}</Date>
                 <Title>{node.frontmatter.title}</Title>
               </BlogLink>
               <Tags>

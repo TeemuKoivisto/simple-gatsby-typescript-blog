@@ -60,6 +60,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const getSlug = (node) => node ? node.fields.slug : undefined
     const getPostAttribute = (node, attr) => node ? node.frontmatter[attr] : undefined
     const image = node.frontmatter.images && node.frontmatter.images[0].name || undefined
+    console.log(image)
     createPage({
       path: getSlug(node),
       component: path.resolve(`./src/templates/BlogPost.tsx`),
@@ -72,12 +73,12 @@ exports.createPages = async ({ graphql, actions }) => {
         previous: {
           slug: getSlug(previousNode),
           title: getPostAttribute(previousNode, 'title'),
-          date: getPostAttribute(previousNode, 'date'),
+          datePublished: getPostAttribute(previousNode, 'datePublished'),
         },
         next: {
           slug: getSlug(nextNode),
           title: getPostAttribute(nextNode, 'title'),
-          date: getPostAttribute(nextNode, 'date'),
+          datePublished: getPostAttribute(nextNode, 'datePublished'),
         }
       },
     })

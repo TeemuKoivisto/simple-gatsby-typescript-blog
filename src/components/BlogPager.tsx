@@ -8,12 +8,12 @@ interface IBlogPagerProps {
   previous: {
     slug?: string
     title?: string
-    date?: string
+    datePublished?: string
   }
   next: {
     slug?: string
     title?: string
-    date?: string
+    datePublished?: string
   }
 }
 
@@ -27,13 +27,13 @@ export class BlogPager extends React.PureComponent<IBlogPagerProps> {
           <FiChevronsLeft size={24}/>
           <LinkText className="m-left">
             <p>{previous.title}</p>
-            <p>{previous.date}</p>
+            <p>{previous.datePublished}</p>
           </LinkText>
         </IconLink> : <div></div>}
         { next.slug ? <IconLink to={next.slug}>
           <LinkText className="m-right">
             <p>{next.title}</p>
-            <p>{next.date}</p>
+            <p>{next.datePublished}</p>
           </LinkText>
           <FiChevronsRight size={24}/>
         </IconLink> : <div></div>}
