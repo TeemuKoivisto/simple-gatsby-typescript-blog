@@ -8,6 +8,7 @@ export interface IThemeColor {
   secondary: string
   danger: string
   lightGrey: string
+  lightGreen: string
 }
 
 export interface ISize {

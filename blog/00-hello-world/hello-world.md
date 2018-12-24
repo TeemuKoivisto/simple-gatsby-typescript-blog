@@ -13,7 +13,7 @@ images:
 Oh, arise my glorious castle in the internet fantasy land.
 
 <figure>
-  <img src="./hello-world.jpg" alt="Hello world in TypeScript." />
+  <img src="./hello-world.jpg" alt="Hello world in TypeScript." title="A timeless classic." />
   <figcaption>
     <span class="figure-caption__body">
       A timeless classic.

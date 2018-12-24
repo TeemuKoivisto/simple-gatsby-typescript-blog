@@ -1,15 +1,18 @@
 
 export interface ISiteData {
   siteMetadata: {
-    canonicalUrl: string
     title: string
-    siteName: string
     description: string
     image: string
     facebookAppId: string
     disqusShortname: string
+    site: {
+      siteName: string
+      canonicalUrl: string
+    }
     author: {
       name: string
+      schemaType: string
     }
     organization: {
       name: string

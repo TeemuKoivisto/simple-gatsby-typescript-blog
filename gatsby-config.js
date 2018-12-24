@@ -1,18 +1,22 @@
 module.exports = {
   siteMetadata: {
-    canonicalUrl: 'https://teemukoivisto.xyz',
     title: 'TeemuKoivisto',
-    siteName: 'TeemuKoivisto', // This is not very necessary for a personal blog but whatever
     description: 'Personal blog of Teemu Koivisto, developer and datascience student from University of Helsinki',
     image: 'https://teemukoivisto.xyz/images/avatar-460.jpeg',
     facebookAppId: '2200410943508452',
     disqusShortname: 'teemukoivisto-xyz', // Uses dev-teemukoivisto-xyz in development
     author: {
       name: 'Teemu Koivisto',
+      schemaType: 'Person'
+    },
+    site: {
+      siteName: 'TeemuKoivisto', // This is not very necessary for a personal blog but whatever
+      canonicalUrl: 'https://teemukoivisto.xyz',
     },
     organization: {
       name: 'Teemu Koivisto',
       url: 'https://teemukoivisto.xyz',
+      logo: 'logo-660x150.png'
     }
   },  
   plugins: [
@@ -39,6 +43,7 @@ module.exports = {
             options: {
               maxWidth: 1380,
               linkImagesToOriginal: false,
+              showCaptions: true
             },
           },
         ]

@@ -2,13 +2,13 @@ import * as React from 'react'
 import { ThemeProvider } from 'styled-components'
 import { StaticQuery, graphql } from 'gatsby'
 import Helmet from 'react-helmet'
+import ReactSEOMetaTags from 'react-seo-meta-tags'
 
 import styled from '../theme/styled'
 import { defaultTheme, GlobalStyle } from '../theme/sc-default-theme'
 
 import { NavBar } from '../components/NavBar'
 import { Footer } from '../components/Footer'
-import { SEO } from '../components/SEO'
 
 import { ISiteData } from '../types/graphql'
 
@@ -20,15 +20,18 @@ const siteDataQuery = graphql`
   }
   fragment SiteData on Site {
     siteMetadata {
-      canonicalUrl
       title
-      siteName
       description
       image
       facebookAppId
       disqusShortname
+      site {
+        siteName
+        canonicalUrl
+      }
       author {
         name
+        schemaType
       }
       organization {
         name
@@ -68,13 +71,15 @@ export const DefaultLayout: React.SFC<IProps> = (props: IProps) => (
   <StaticQuery query={siteDataQuery} render={DefaultContent(props)}/>
 )
 
-const DefaultContent = ({ children, title, seoBlogPost }: IProps) => ({ site }: { site: ISiteData }) => (
+const DefaultContent = ({ children, seoBlogPost }: IProps) => ({ site }: { site: ISiteData }) => (
   <ThemeProvider theme={defaultTheme}>
     <DefaultWrapper>
-      <Helmet>
-        <title>{ title || site.siteMetadata.title }</title>
-      </Helmet>
       <SEO site={site} blogPost={seoBlogPost}/>
+      <ReactSEOMetaTags
+        render={(el: any) => <Helmet>{el}</Helmet>}
+        website={site}
+        blogPost={{ ...seoBlogPost as any }}
+      />
       <NavBar site={site}/>
       <DefaultContainer>
         { children }

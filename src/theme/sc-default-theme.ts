@@ -6,12 +6,13 @@ export const defaultTheme : ITheme = {
     textLight: '#666',
     textDark: '#222',
     black: '#272822',
-    bg: '#fff',
+    bg: ' #f1f3ff', // light bluish
     white: '#fff',
-    primary: '#298effc9',
+    primary: '#5FA0FF', // medium blue
     secondary: '#82B1FF',
-    danger: '#e93e2e',
+    danger: '#ff3354c9',
     lightGrey: '#aaa',
+    lightGreen: 'rgb(119, 242, 240)',
   },
   button: {
     sizes: {
