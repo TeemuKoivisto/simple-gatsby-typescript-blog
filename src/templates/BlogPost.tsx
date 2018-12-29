@@ -79,7 +79,6 @@ export default class BlogPostTemplate extends React.PureComponent<IBlogPostTempl
       url: postUrl,
       image: seoImage.landscape && `${baseUrl}${seoImage.landscape.fluid.src}`,
     }} as ISEOBlogPost
-    console.log(seoImage)
     const title = markdownRemark.frontmatter.title
     return (
       <DefaultLayout title={title} seoBlogPost={blogPost}>

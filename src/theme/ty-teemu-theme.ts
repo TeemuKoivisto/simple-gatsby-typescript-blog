@@ -71,7 +71,6 @@ const theme = {
     h1: {
       ...scale(6 / 5),
       letterSpacing: '-2px',
-      textShadow: '1px 1px 0px rgba(162, 162, 162, 0.38)',
     },
     h6: {
       fontStyle: 'italic',

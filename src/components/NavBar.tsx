@@ -6,6 +6,8 @@ import { ISiteData } from '../types/graphql'
 // IoMdMail IoLogoLinkedin IoLogoGithub
 import { IoMdMail, IoLogoLinkedin, IoLogoGithub } from 'react-icons/io'
 
+import hyper from './logo-black-40.svg'
+
 interface INavBarProps {
   site: ISiteData
 }
@@ -16,6 +18,7 @@ export class NavBar extends React.PureComponent<INavBarProps> {
     return (
       <NavBarContainer>
         <Nav>
+          <Logo src={hyper}/>
           <NavLink to="/">{title}</NavLink>
           <NavLink to="/blog">Blog</NavLink>
           <MyIconLinks>
@@ -44,9 +47,7 @@ const MyIconLinks = styled.div`
 `
 
 const Logo = styled.img`
-  background: #298effc9;
-  width: 30%;
-  height: 30%;
+  margin-right: 20px;
 `
 
 const IconLink = styled.a`
@@ -60,6 +61,7 @@ const IconLink = styled.a`
 `
 
 const Nav = styled.nav`
+  align-items: center;
   display: flex;
   padding: 40px;
   position: relative;

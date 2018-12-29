@@ -12,14 +12,14 @@ interface IBlogHeaderProps {
 
 export class BlogHeader extends React.PureComponent<IBlogHeaderProps> {
   render() {
-    const { title, date, tags } = this.props.frontmatter
+    const { title, datePublished, tags } = this.props.frontmatter
     return (
       <BlogHeaderContainer>
         <h1>{ title }</h1>
         <Info>
           <BlogDate>
             <SvgWrapper><MdEvent size={24}/></SvgWrapper>
-            { date }
+            { datePublished }
           </BlogDate>
           <SvgWrapper><MdLocalOffer size={24}/></SvgWrapper>
           <Tags>
