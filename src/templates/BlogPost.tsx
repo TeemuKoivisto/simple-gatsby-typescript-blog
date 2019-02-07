@@ -82,19 +82,22 @@ export default class BlogPostTemplate extends React.PureComponent<IBlogPostTempl
     const title = markdownRemark.frontmatter.title
     return (
       <DefaultLayout title={title} seoBlogPost={blogPost}>
-        <div>
-          <BlogHeader frontmatter={markdownRemark.frontmatter}/>
-          <h6>{markdownRemark.excerpt}</h6>
+        <BlogContainer>
+          <BlogHeader frontmatter={markdownRemark.frontmatter} excerpt={markdownRemark.excerpt}/>
           <section dangerouslySetInnerHTML={{ __html: markdownRemark.html }} />
           <Signature/>
           <BlogPager previous={pageContext.previous} next={pageContext.next}/>
           <ShareButtons url={postUrl} title={title}/>
           <Disqus shortname={site.siteMetadata.disqusShortname} title={title}/>
-        </div>
+        </BlogContainer>
       </DefaultLayout>
     )
   }
 }
+
+const BlogContainer = styled.div`
+
+`
 
 export const pageQuery = graphql`
   query BlogPostBySlug($imageRegex: String!, $slug: String!) {

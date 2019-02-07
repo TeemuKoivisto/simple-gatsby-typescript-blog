@@ -116,17 +116,25 @@ const DefaultWrapper = styled.div`
 const DefaultContainer = styled.main`
   background: #fff;
   border-radius: 20px;
-  margin: ${({ theme }) => `4rem 2rem calc(4rem + ${theme.sizes.footer}) 2rem`};
+  max-width: 800px;
+  margin: ${({ theme }) => `4rem auto calc(4rem + ${theme.sizes.footer}) auto`};
   position: relative;
   height: 100%;
-  @media screen and (max-width: 600px) {
+  & > div:first-child {
+    /* box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); */
+    padding: 30px 8vw 0 8vw;
+  }
+  @media screen and (max-width: 900px) {
+    max-width: 600px;
+    & > div:first-child {
+      /* box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); */
+      padding: 30px 3vw 0 4vw;
+    }
+  }
+  @media screen and (max-width: 650px) {
     margin: ${({ theme }) => `2rem 1rem calc(2rem + ${theme.sizes.footer}) 1rem`};
   }
   @media screen and (max-width: 400px) {
     margin: ${({ theme }) => `2rem 0.5rem calc(2rem + ${theme.sizes.footer}) 0.5rem`};
-  }
-  & > div:first-child {
-    /* box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); */
-    padding: 30px 30px 0 30px;
   }
 `

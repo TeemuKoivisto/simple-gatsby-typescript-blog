@@ -8,11 +8,12 @@ import { IBlogPostFrontmatter } from '../types/graphql'
 
 interface IBlogHeaderProps {
   frontmatter: IBlogPostFrontmatter
+  excerpt: string
 }
 
 export class BlogHeader extends React.PureComponent<IBlogHeaderProps> {
   render() {
-    const { title, datePublished, tags } = this.props.frontmatter
+    const { excerpt, frontmatter: { title, datePublished, tags } } = this.props
     return (
       <BlogHeaderContainer>
         <h1>{ title }</h1>
@@ -28,6 +29,8 @@ export class BlogHeader extends React.PureComponent<IBlogHeaderProps> {
             )}
           </Tags>
         </Info>
+        <Excerpt>{excerpt}</Excerpt>
+        <Divider />
       </BlogHeaderContainer>
     )
   }
@@ -36,14 +39,18 @@ export class BlogHeader extends React.PureComponent<IBlogHeaderProps> {
 const BlogHeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 2rem; // TODO use rhythm??
   & > h1 {
-    margin-bottom: 0.5rem;
+    color: #4590ff;
+    font-family: 'Rubik', sans-serif;
+    font-size: 3rem;
+    line-height: 3.25rem;
+    margin-bottom: 0;
   }
 `
 const Info = styled.div`
   align-items: center;
   display: flex;
+  margin: 5px 0 5px 0;
 `
 const BlogDate = styled.div`
   align-items: center;
@@ -69,4 +76,10 @@ const Tag = styled.p`
   margin: 0 5px 5px 0;
   padding: 0 3px 0 3px;
   ${raise(1)};
+`
+const Excerpt = styled.h6`
+  margin: 0.5rem 0 0 0;
+`
+const Divider = styled.hr`
+  margin: 2rem 0 2rem 0; // TODO use rhythm??
 `

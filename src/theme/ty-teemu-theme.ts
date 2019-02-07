@@ -9,19 +9,19 @@ import {
 const theme = {
   title: 'Teemu-theme',
   baseFontSize: '16px',
-  baseLineHeight: 1.78,
+  baseLineHeight: 1.625,
   // scaleRatio: 2,
   googleFonts: [
-    {
-      name: 'Open Sans',
-      styles: ['700'],
-    },
     {
       name: 'Merriweather',
       styles: ['300', '700'],
     },
+    {
+      name: 'Rubik',
+      styles: ['700', '900'],
+    },
   ],
-  headerFontFamily: ['Open Sans', 'sans-serif'],
+  headerFontFamily: ['Rubik', 'sans-serif'],
   bodyFontFamily: ['Merriweather', 'Georgia', 'serif'],
   bodyColor: 'hsla(0,0%,0%,0.9)',
   headerWeight: 700,
@@ -67,10 +67,11 @@ const theme = {
     },
     'h1,h2,h3,h4,h5,h6': {
       marginTop: rhythm(1),
+      marginBottom: rhythm(3 / 5),
     },
     h1: {
       ...scale(6 / 5),
-      letterSpacing: '-2px',
+      letterSpacing: '-1px',
     },
     h6: {
       fontStyle: 'italic',
