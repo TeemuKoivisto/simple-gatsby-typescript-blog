@@ -14,7 +14,7 @@ import { ISiteData, ISEOBlogPost, IBlogPostFrontmatter } from '../types/graphql'
 
 // There is a lot of other stuff in props, provided by Gatsby, that I'm not typing here
 // since it would quite a lot of work.
-interface IBlogPostTemplateProps {
+interface IProps {
   data: {
     site: ISiteData
     markdownRemark: {
@@ -70,20 +70,26 @@ interface IBlogPostTemplateProps {
   path: string
 }
 
-export default class BlogPostTemplate extends React.PureComponent<IBlogPostTemplateProps> {
+export default class BlogPostTemplate extends React.PureComponent<IProps> {
   render() {
     const { data: { site, markdownRemark, seoImage }, pageContext } = this.props
     const baseUrl = process.env.NODE_ENV === 'development' ? this.props.location.origin : site.siteMetadata.site.canonicalUrl
     const postUrl = `${baseUrl}${markdownRemark.fields.slug}`
+    // This abomination is the combination of siteMetadata from gatsby-config.js,
+    // data from the markdown file this blog-post is generated from and the beautifully
+    // mushed together URLs of the blog-post & its image so that in development it picks up
+    // the localhost address and in production the canonical URL defined in gatsby-config.js
     const blogPost = { ...site.siteMetadata, ...markdownRemark.frontmatter, ...{
       url: postUrl,
-      image: seoImage.landscape && `${baseUrl}${seoImage.landscape.fluid.src}`,
+      image: seoImage && seoImage.landscape && `${baseUrl}${seoImage.landscape.fluid.src}`,
     }} as ISEOBlogPost
     const title = markdownRemark.frontmatter.title
+    // Use markdown's description field if provided, otherwise just 100 first characters.
+    const excerpt = markdownRemark.frontmatter.description || markdownRemark.excerpt
     return (
       <DefaultLayout title={title} seoBlogPost={blogPost}>
         <BlogContainer>
-          <BlogHeader frontmatter={markdownRemark.frontmatter} excerpt={markdownRemark.excerpt}/>
+          <BlogHeader frontmatter={markdownRemark.frontmatter} excerpt={excerpt}/>
           <section dangerouslySetInnerHTML={{ __html: markdownRemark.html }} />
           <Signature/>
           <BlogPager previous={pageContext.previous} next={pageContext.next}/>
