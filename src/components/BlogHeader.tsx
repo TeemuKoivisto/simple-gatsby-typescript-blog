@@ -47,6 +47,9 @@ const BlogHeaderContainer = styled.div`
     font-size: 3rem;
     line-height: 3.25rem;
     margin-bottom: 0;
+    @media only screen and (max-width: 620px) {
+      font-size: 2rem;
+    }
   }
 `
 const Info = styled.div`
@@ -63,6 +66,7 @@ const BlogDate = styled.div`
   align-items: center;
   display: flex;
   margin: 10px 20px 10px 0;
+  min-width: 130px; // Based on complex calculations and rocket science
 `
 // Keeps svgs from resizing themselves into oblivion
 const SvgWrapper = styled.div`

@@ -14,16 +14,16 @@ images:
 Oh, arise my glorious castle in the internet fantasy land.
 
 <figure>
-  <img src="./hello-world.jpg" alt="Hello world in TypeScript." title="A timeless classic." />
+  <img src="./hello-world.jpg" alt="Hello world in TypeScript." />
   <figcaption>
     <span class="figure-caption__body">
-      A timeless classic.
-      <small>
+      <small>A timeless classic.</small>
+      <!-- <small>
       Credit: 
       <span>
         Teemu Koivisto
       </span>
-      </small>
+      </small> -->
     </span>
   </figcaption>
 </figure>

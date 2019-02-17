@@ -42,24 +42,26 @@ export class BlogPager extends React.PureComponent<IBlogPagerProps> {
   }
 }
 
-const BlogPagerContainer = styled.div`
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 2rem;
-  margin-top: 2rem;
-  padding: 20px;
-  @media screen and (max-width: 600px) {
-    padding: 0;
-  }
-`
-
 const IconLink = styled(Link)`
   align-items: center;
   color: black;
   display: flex;
+  margin-top: 2rem;
 `
-
+const BlogPagerContainer = styled.div`
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap-reverse;
+  margin-bottom: 2rem;
+  margin-top: -2rem; // Cool trick https://stackoverflow.com/questions/30887071/margin-top-only-when-the-flex-item-is-wrapped
+  padding: 20px;
+  @media screen and (max-width: 600px) {
+    padding: 0;
+  }
+  ${IconLink}:last-child {
+    margin-left: auto
+  }
+`
 const LinkText = styled.div`
   margin: 0;
   &.m-left {

@@ -23,13 +23,7 @@ I used `jupyter/tensorflow-notebook:137a295ff71b` Docker image for launching the
   <img src="./mcmc.jpg" alt="Two MCMC plots in IPython notebook." />
   <figcaption>
     <span class="figure-caption__body">
-      A well converging MCMC using Metropolis-Hastings.
-      <small>
-      Credit: 
-      <span>
-        Teemu Koivisto
-      </span>
-      </small>
+      <small>A well converging MCMC using Metropolis-Hastings.</small>
     </span>
   </figcaption>
 </figure>
