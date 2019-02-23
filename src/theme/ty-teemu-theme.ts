@@ -18,7 +18,7 @@ const theme = {
     },
     {
       name: 'Rubik',
-      styles: ['700', '900'],
+      styles: ['500', '700'],
     },
   ],
   headerFontFamily: ['Rubik', 'sans-serif'],

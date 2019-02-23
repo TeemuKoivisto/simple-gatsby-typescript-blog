@@ -3,8 +3,9 @@ import { Link } from 'gatsby'
 
 import styled, { raise } from '../theme/styled'
 import { ISiteData } from '../types/graphql'
-// IoMdMail IoLogoLinkedin IoLogoGithub
-import { IoMdMail, IoLogoLinkedin, IoLogoGithub } from 'react-icons/io'
+
+import { NavDropdown } from '../elements/NavDropdown'
+import { MyIconLinks } from '../elements/MyIconLinks'
 
 import hyper from './logo-black-40.svg'
 
@@ -15,23 +16,18 @@ interface INavBarProps {
 export class NavBar extends React.PureComponent<INavBarProps> {
   render() {
     const { title } = this.props.site.siteMetadata
+    const navDropdownOptions = [
+      { key: '/', title: 'Frontpage' },
+      { key: '/blog', title: 'Blog' },
+    ]
     return (
       <NavBarContainer>
         <Nav>
           <Logo src={hyper}/>
-          <NavLink to="/">{title}</NavLink>
-          <NavLink to="/blog">Blog</NavLink>
-          <MyIconLinks>
-            <IconLink href="mailto:contact@teemukoivisto.xyz">
-              <IoMdMail size={24}/>
-            </IconLink>
-            <IconLink href="https://github.com/teemukoivisto">
-              <IoLogoGithub size={24}/>
-            </IconLink>
-            <IconLink href="https://www.linkedin.com/in/teemu-koivisto-75304b114">
-              <IoLogoLinkedin size={24}/>
-            </IconLink>
-          </MyIconLinks>
+          <NavLink className="title" to="/">{title}</NavLink>
+          <NavLink className="blog-link" to="/blog">Blog</NavLink>
+          <MyIconLinks />
+          <NavDropdown options={navDropdownOptions} onSelect={(e: any) => console.log(e)}/>
         </Nav>
       </NavBarContainer>
     )
@@ -41,33 +37,43 @@ export class NavBar extends React.PureComponent<INavBarProps> {
 const NavBarContainer = styled.header`
   background: linear-gradient(#5095fb -59%, #5FA0FF); // #589bff
 `
-
-const MyIconLinks = styled.div`
-  display: flex;
-`
-
 const Logo = styled.img`
   margin-right: 20px;
 `
-
-const IconLink = styled.a`
-  align-items: center;
-  color: #fff;
-  cursor: pointer;
-  display: flex;
-  &:not(:last-child) {
-    margin-right: 10px;
-  }
-`
-
 const Nav = styled.nav`
   align-items: center;
   display: flex;
   padding: 40px;
   position: relative;
   ${raise(2)}
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 460px) {
     padding: 20px;
+  }
+  .title {
+    font-family: 'Rubik',sans-serif;
+    font-weight: 500;
+    text-rendering: optimizeLegibility;
+    /* font-size: 1.2rem; */
+    /* line-height: 1.1; */
+  }
+  ${NavDropdown} {
+    visibility: hidden;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+  @media screen and (max-width: 420px) {
+    > ${MyIconLinks} {
+      display: none;
+      visibility: hidden;
+    }
+    .blog-link {
+      display: none;
+      visibility: hidden;
+    }
+    ${NavDropdown} {
+      visibility: initial;
+    }
   }
 `
 
@@ -76,7 +82,7 @@ const NavLink = styled(Link)`
   margin-right: 40px;
   text-decoration: none;
   position: relative;
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 460px) {
     margin-right: 20px;
   }
   &.right-end {
@@ -93,7 +99,7 @@ const NavLink = styled(Link)`
     position: absolute;
     top: 6px; // Hmm
     background-color: #fff; // #757575; #cbcbcb;
-    @media screen and (max-width: 400px) {
+    @media screen and (max-width: 460px) {
       right: -10px;
     }
   }
