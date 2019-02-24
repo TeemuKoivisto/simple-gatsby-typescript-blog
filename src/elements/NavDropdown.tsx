@@ -15,19 +15,36 @@ interface IProps {
 }
 interface IState {
   isOpen: boolean
+  targetElement: HTMLElement | null
 }
 class DropdownClass extends React.PureComponent<IProps, IState> {
 
-  readonly state: IState = { isOpen: false }
-
-  private toggleMenu = () => {
-    if (!this.state.isOpen) {
-      this.setState({ isOpen: true })
+  readonly state: IState = {
+    isOpen: false,
+    targetElement: null
+  }
+  componentDidMount() {
+    this.setState({ ...this.state, targetElement: document.querySelector('html') })
+  }
+  componentWillUnmount() {
+    this.setScrollLock(false)
+  }
+  setScrollLock(disable: boolean) {
+    if (disable) {
+      this.state.targetElement!.classList.add('scroll-lock')
     } else {
-      this.setState({ isOpen: false })
+      this.state.targetElement!.classList.remove('scroll-lock')
     }
   }
-
+  private toggleMenu = () => {
+    if (!this.state.isOpen) {
+      this.setState({ ...this.state, isOpen: true })
+      this.setScrollLock(true)
+    } else {
+      this.setState({ ...this.state, isOpen: false })
+      this.setScrollLock(false)
+    }
+  }
   render() {
     const { className, options } = this.props
     return (
@@ -38,8 +55,7 @@ class DropdownClass extends React.PureComponent<IProps, IState> {
         </FixedCloseIcon>
         :
         <SvgWrapper onClick={this.toggleMenu}><MdMenu size={32}/></SvgWrapper>}
-        { this.state.isOpen &&
-        <MobileNav>
+        <MobileNav className={this.state.isOpen && 'visible'}>
           <nav>
             <DropdownList>
               {options.map(option => (
@@ -52,7 +68,7 @@ class DropdownClass extends React.PureComponent<IProps, IState> {
               </DropdownOption>
             </DropdownList>
           </nav>
-        </MobileNav> }
+        </MobileNav>
       </div>
     )
   }
@@ -91,6 +107,10 @@ const MobileNav = styled.header`
   width: 100%;
   min-height: 100%;
   z-index: 500;
+  visibility: hidden;
+  &.visible {
+    visibility: visible;
+  }
 `
 const DropdownList = styled.ul`
   margin: 20px 0 0 0;

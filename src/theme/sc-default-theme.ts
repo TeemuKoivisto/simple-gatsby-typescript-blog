@@ -49,6 +49,9 @@ export const defaultTheme : ITheme = {
 }
 
 export const GlobalStyle = createGlobalStyle`
+  html.scroll-lock {
+    overflow: hidden;
+  }
   body {
     margin: 0;
     padding: 0;
