@@ -9,29 +9,27 @@ import { MyIconLinks } from '../elements/MyIconLinks'
 
 import hyper from './logo-black-40.svg'
 
-interface INavBarProps {
+interface IProps {
   site: ISiteData
 }
 
-export class NavBar extends React.PureComponent<INavBarProps> {
-  render() {
-    const { title } = this.props.site.siteMetadata
-    const navDropdownOptions = [
-      { key: '/', title: 'Frontpage' },
-      { key: '/blog', title: 'Blog' },
-    ]
-    return (
-      <NavBarContainer>
-        <Nav>
-          <Logo src={hyper}/>
-          <NavLink className="title" to="/">{title}</NavLink>
-          <NavLink className="blog-link" to="/blog">Blog</NavLink>
-          <MyIconLinks />
-          <NavDropdown options={navDropdownOptions} onSelect={(e: any) => console.log(e)}/>
-        </Nav>
-      </NavBarContainer>
-    )
-  }
+function NavBarEl(props: IProps) {
+  const { title } = props.site.siteMetadata
+  const navDropdownOptions = [
+    { key: '/', title: 'Frontpage' },
+    { key: '/blog', title: 'Blog' },
+  ]
+  return (
+    <NavBarContainer>
+      <Nav>
+        <Logo src={hyper}/>
+        <NavLink className="title" to="/">{title}</NavLink>
+        <NavLink className="blog-link" to="/blog">Blog</NavLink>
+        <MyIconLinks />
+        <NavDropdown options={navDropdownOptions} onSelect={(e: any) => console.log(e)}/>
+      </Nav>
+    </NavBarContainer>
+  )
 }
 
 const NavBarContainer = styled.header`
@@ -104,3 +102,4 @@ const NavLink = styled(Link)`
     }
   }
 `
+export const NavBar = styled(NavBarEl)``

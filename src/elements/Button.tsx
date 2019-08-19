@@ -1,21 +1,19 @@
 import * as React from 'react'
 import styled, { raise } from '../theme/styled'
 
-interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
+interface IProps extends React.HTMLAttributes<HTMLButtonElement> {
   label?: string
   type?: string
   fullWidth?: boolean
 }
 
-class ButtonClass extends React.PureComponent<IButtonProps> {
-  public render() {
-    const { ...rest } = this.props
-    return (
-      <StyledButton { ...rest }>
-        { this.props.children }
-      </StyledButton>
-    )
-  }
+function ButtonEl(props: IProps) {
+  const { ...rest } = props
+  return (
+    <StyledButton { ...rest }>
+      { props.children }
+    </StyledButton>
+  )
 }
 
 const StyledButton = styled.button`
@@ -38,8 +36,4 @@ const StyledButton = styled.button`
   transition: 0.1s all;
   width: ${({ fullWidth }) => fullWidth ? '100%' : '150px' };
 `
-
-// Intercept props from being passed down to the DOM element
-// https://github.com/styled-components/styled-components/issues/135
-// And also expose StyledComponents component rather than React component, it's nicer this way. Trust me
-export const Button = styled(ButtonClass)``
+export const Button = styled(ButtonEl)``

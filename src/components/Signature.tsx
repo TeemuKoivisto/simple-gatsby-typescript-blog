@@ -3,24 +3,22 @@ import * as React from 'react'
 import styled from '../theme/styled'
 import avatar from '../img/avatar-460.jpeg'
 
-interface ISignatureProps {
-}
-
-export class Signature extends React.PureComponent<ISignatureProps> {
-  render() {
-    return [
-      <TopDivider key="first"/>,
-      <SignatureContainer key="second">
+export function Signature() {
+  return (
+    <>
+      <TopDivider/>
+      <SignatureContainer>
         <Avatar src={avatar}/>
         <Blurb>
           <p>
-            <b>Teemu Koivisto</b> is an enthusiastic MSc. student of Data Science and a software developer from Helsinki.
+            Hi, I'm <b>Teemu Koivisto</b>. A software developer and MSc. student of Data Science from Helsinki.
+            When I'm not doing the boring stuff, I like practising music and lifting weights, up and down, in the gym.
           </p>
         </Blurb>
-      </SignatureContainer>,
-      <TopDivider key="3"/>,
-    ]
-  }
+      </SignatureContainer>
+      <TopDivider/>
+    </>
+  )
 }
 
 const SignatureContainer = styled.div`

@@ -6,36 +6,34 @@ import { MdEvent, MdLocalOffer } from 'react-icons/md'
 
 import { IBlogPostFrontmatter } from '../types/graphql'
 
-interface IBlogHeaderProps {
+interface IProps {
   frontmatter: IBlogPostFrontmatter
   excerpt: string
 }
 
-export class BlogHeader extends React.PureComponent<IBlogHeaderProps> {
-  render() {
-    const { excerpt, frontmatter: { title, datePublished, tags } } = this.props
-    return (
-      <BlogHeaderContainer>
-        <h1>{ title }</h1>
-        <Info>
-          <BlogDate>
-            <SvgWrapper><MdEvent size={24}/></SvgWrapper>
-            { datePublished }
-          </BlogDate>
-          <TagsContainer>
-            <SvgWrapper><MdLocalOffer size={24}/></SvgWrapper>
-            <Tags>
-              { tags.map((t, i) =>
-              <Tag key={i}>{t}</Tag>
-              )}
-            </Tags>
-          </TagsContainer>
-        </Info>
-        <Excerpt>{excerpt}</Excerpt>
-        <Divider />
-      </BlogHeaderContainer>
-    )
-  }
+function BlogHeaderEl(props: IProps) {
+  const { excerpt, frontmatter: { title, datePublished, tags } } = props
+  return (
+    <BlogHeaderContainer>
+      <h1>{ title }</h1>
+      <Info>
+        <BlogDate>
+          <SvgWrapper><MdEvent size={24}/></SvgWrapper>
+          { datePublished }
+        </BlogDate>
+        <TagsContainer>
+          <SvgWrapper><MdLocalOffer size={24}/></SvgWrapper>
+          <Tags>
+            { tags.map((t, i) =>
+            <Tag key={i}>{t}</Tag>
+            )}
+          </Tags>
+        </TagsContainer>
+      </Info>
+      <Excerpt>{excerpt}</Excerpt>
+      <Divider />
+    </BlogHeaderContainer>
+  )
 }
 
 const BlogHeaderContainer = styled.div`
@@ -103,3 +101,4 @@ const Excerpt = styled.h6`
 const Divider = styled.hr`
   margin: 2rem 0 2rem 0; // TODO use rhythm??
 `
+export const BlogHeader = styled(BlogHeaderEl)``

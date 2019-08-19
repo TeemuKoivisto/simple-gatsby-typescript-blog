@@ -1,22 +1,25 @@
 import * as React from 'react'
 import styled from '../theme/styled'
 
-interface IInputProps extends React.HTMLAttributes<HTMLInputElement> {
+interface IProps extends React.HTMLAttributes<HTMLInputElement> {
   label?: string
   type?: string
   icon?: React.ReactElement<any>
   fullWidth?: boolean
 }
 
-export const Input: React.SFC<IInputProps> = ({ label, ...props }: IInputProps) => (
-  <InputWrapper>
-    { label && <label>{label}</label> }
-    <InputContainer {...props}>
-      { props.icon }
-      <StyledInput {...props}></StyledInput>
-    </InputContainer>
-  </InputWrapper>
-)
+function InputEl(props: IProps) {
+  const { label, ...rest } = props
+  return (
+    <InputWrapper>
+      { label && <label>{label}</label> }
+      <InputContainer {...rest}>
+        { props.icon }
+        <StyledInput {...rest}></StyledInput>
+      </InputContainer>
+    </InputWrapper>
+  )
+}
 
 const InputWrapper = styled.div`
   display: flex;
@@ -63,3 +66,4 @@ export const StyledInput = styled.input`
     padding-left: 40px;
   } */
 `
+export const Input = styled(InputEl)``

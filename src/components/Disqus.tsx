@@ -14,18 +14,16 @@ interface IProps {
  * are used so I'm only using the minimum needed.
  * https://github.com/theplatapi/react-disqus-thread/blob/master/typescript/types.d.ts
  */
-export class Disqus extends React.PureComponent<IProps> {
-  render() {
-    const { shortname, title } = this.props
-    const modifiedShortname = process.env.NODE_ENV === 'development' ? `dev-${shortname}` : shortname
-    return (
-      <ReactDisqusComments
-        shortname={modifiedShortname}
-        title={title}
-        // Uses the article title from the frontmatter as identifier.
-        // This can be a bad thing were I to change the title... But well I better not do it then.
-        identifier={title}
-      />
-    )
-  }
+export function Disqus(props: IProps) {
+  const { shortname, title } = props
+  const modifiedShortname = process.env.NODE_ENV === 'development' ? `dev-${shortname}` : shortname
+  return (
+    <ReactDisqusComments
+      shortname={modifiedShortname}
+      title={title}
+      // Uses the article title from the frontmatter as identifier.
+      // This can be a bad thing were I to change the title... But well I better not do it then.
+      identifier={title}
+    />
+  )
 }

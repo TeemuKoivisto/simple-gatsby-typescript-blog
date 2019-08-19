@@ -6,31 +6,29 @@ import { ISiteData } from '../types/graphql'
 
 import { MyIconLinks } from '../elements/MyIconLinks'
 
-interface IFooterProps {
+interface IProps {
   site: ISiteData
 }
 
-export class Footer extends React.PureComponent<IFooterProps> {
-  render() {
-    const { title } = this.props.site.siteMetadata
-    return (
-      <FooterContainer>
-        <NavWrapper>
-          <Nav>
-            <NavLink to="/">{title}</NavLink>
-            <NavLink to="/blog">Blog</NavLink>
-            <MyIconLinks />
-          </Nav>
-          <SmallPrint>
-            <CopyrightNotice>{`Copyright © ${new Date().getFullYear()}, Teemu Koivisto`}</CopyrightNotice>
-            <SourceLink href="https://github.com/TeemuKoivisto/simple-gatsby-typescript-blog">
-              This site's code is Open Source
-            </SourceLink>
-          </SmallPrint>
-        </NavWrapper>
-      </FooterContainer>
-    )
-  }
+function FooterEl(props: IProps) {
+  const { title } = props.site.siteMetadata
+  return (
+    <FooterContainer>
+      <NavWrapper>
+        <Nav>
+          <NavLink to="/">{title}</NavLink>
+          <NavLink to="/blog">Blog</NavLink>
+          <MyIconLinks />
+        </Nav>
+        <SmallPrint>
+          <CopyrightNotice>{`Copyright © ${new Date().getFullYear()}, Teemu Koivisto`}</CopyrightNotice>
+          <SourceLink href="https://github.com/TeemuKoivisto/simple-gatsby-typescript-blog">
+            This site's code is Open Source
+          </SourceLink>
+        </SmallPrint>
+      </NavWrapper>
+    </FooterContainer>
+  )
 }
 
 const FooterContainer = styled.footer`
@@ -96,3 +94,4 @@ const CopyrightNotice = styled.p`
 const SourceLink = styled.a`
   font-size: 12px;
 `
+export const Footer = styled(FooterEl)``

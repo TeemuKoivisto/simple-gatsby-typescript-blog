@@ -4,7 +4,7 @@ import { Link } from 'gatsby'
 import styled from '../theme/styled'
 import { FiChevronsLeft, FiChevronsRight } from 'react-icons/fi'
 
-interface IBlogPagerProps {
+interface IProps {
   previous: {
     slug?: string
     title?: string
@@ -17,29 +17,27 @@ interface IBlogPagerProps {
   }
 }
 
-export class BlogPager extends React.PureComponent<IBlogPagerProps> {
-  render() {
-    const { previous, next } = this.props
-    return (
-      <BlogPagerContainer>
-        { previous.slug ?
-        <IconLink to={previous.slug}>
-          <FiChevronsLeft size={24}/>
-          <LinkText className="m-left">
-            <p>{previous.title}</p>
-            <p>{previous.datePublished}</p>
-          </LinkText>
-        </IconLink> : <div></div>}
-        { next.slug ? <IconLink to={next.slug}>
-          <LinkText className="m-right">
-            <p>{next.title}</p>
-            <p>{next.datePublished}</p>
-          </LinkText>
-          <FiChevronsRight size={24}/>
-        </IconLink> : <div></div>}
-      </BlogPagerContainer>
-    )
-  }
+function BlogPagerEl(props: IProps) {
+  const { previous, next } = props
+  return (
+    <BlogPagerContainer>
+      { previous.slug ?
+      <IconLink to={previous.slug}>
+        <FiChevronsLeft size={24}/>
+        <LinkText className="m-left">
+          <p>{previous.title}</p>
+          <p>{previous.datePublished}</p>
+        </LinkText>
+      </IconLink> : <div></div>}
+      { next.slug ? <IconLink to={next.slug}>
+        <LinkText className="m-right">
+          <p>{next.title}</p>
+          <p>{next.datePublished}</p>
+        </LinkText>
+        <FiChevronsRight size={24}/>
+      </IconLink> : <div></div>}
+    </BlogPagerContainer>
+  )
 }
 
 const IconLink = styled(Link)`
@@ -83,3 +81,4 @@ const LinkText = styled.div`
     margin: 0;
   }
 `
+export const BlogPager = styled(BlogPagerEl)``
