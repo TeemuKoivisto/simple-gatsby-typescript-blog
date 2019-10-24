@@ -7,8 +7,6 @@ import { ISiteData } from '../types/graphql'
 import { NavDropdown } from '../elements/NavDropdown'
 import { MyIconLinks } from '../elements/MyIconLinks'
 
-import hyper from './logo-black-40.svg'
-
 interface IProps {
   site: ISiteData
 }
@@ -22,8 +20,10 @@ function NavBarEl(props: IProps) {
   return (
     <NavBarContainer>
       <Nav>
-        <Logo src={hyper}/>
-        <NavLink className="title" to="/">{title}</NavLink>
+        <TitleLink to="/">
+          <Title>Teemu</Title>
+          <Title>Koivisto</Title>
+        </TitleLink>
         <NavLink className="blog-link" to="/blog">Blog</NavLink>
         <MyIconLinks />
         <NavDropdown options={navDropdownOptions} onSelect={(e: any) => console.log(e)}/>
@@ -34,31 +34,44 @@ function NavBarEl(props: IProps) {
 
 const NavBarContainer = styled.header`
   background: linear-gradient(#5095fb -59%, #5FA0FF); // #589bff
+  position: relative;
+  z-index: 1;
 `
-const Logo = styled.img`
-  margin-right: 20px;
+const Title = styled.h1`
+  color: #fff;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 26px;
+  letter-spacing: 2px;
+  line-height: 26px;
+  margin: 0;
+  text-rendering: optimizeLegibility;
+  text-shadow: 2px 2px #2b274f;
+  &:nth-child(2) {
+    margin-left: 12px;
+  }
+`
+const TitleLink = styled(Link)`
+  cursor: pointer;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  margin: 0 40px 0 40px;
 `
 const Nav = styled.nav`
   align-items: center;
   display: flex;
-  padding: 40px;
+  padding: 32px 0;
   position: relative;
   ${raise(2)}
   @media screen and (max-width: 460px) {
-    padding: 20px;
-  }
-  .title {
-    font-family: 'Rubik',sans-serif;
-    font-weight: 500;
-    text-rendering: optimizeLegibility;
-    /* font-size: 1.2rem; */
-    /* line-height: 1.1; */
+    padding: 20px 0;
   }
   ${NavDropdown} {
     visibility: hidden;
     width: 100%;
     display: flex;
     justify-content: flex-end;
+    margin-right: 20px;
   }
   @media screen and (max-width: 420px) {
     > ${MyIconLinks} {
@@ -70,14 +83,14 @@ const Nav = styled.nav`
       visibility: hidden;
     }
     ${NavDropdown} {
-      visibility: initial;
+      visibility: visible;
     }
   }
 `
 
 const NavLink = styled(Link)`
   color: #fff;
-  margin-right: 40px;
+  margin-right: 40px; // For spacing out the dividing bars
   text-decoration: none;
   position: relative;
   @media screen and (max-width: 460px) {

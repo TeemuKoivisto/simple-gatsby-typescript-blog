@@ -20,6 +20,10 @@ const theme = {
       name: 'Rubik',
       styles: ['500', '700'],
     },
+    {
+      name: 'Permanent Marker',
+      styles: ['400'],
+    }
   ],
   headerFontFamily: ['Rubik', 'sans-serif'],
   bodyFontFamily: ['Merriweather', 'Georgia', 'serif'],

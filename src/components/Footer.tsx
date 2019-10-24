@@ -16,7 +16,7 @@ function FooterEl(props: IProps) {
     <FooterContainer>
       <NavWrapper>
         <Nav>
-          <NavLink to="/">{title}</NavLink>
+          <NavLink to="/" className="title">{title}</NavLink>
           <NavLink to="/blog">Blog</NavLink>
           <MyIconLinks />
         </Nav>
@@ -59,6 +59,11 @@ const NavLink = styled(Link)`
   position: relative;
   @media screen and (max-width: 400px) {
     margin-right: 20px;
+  }
+  &.title {
+    color: #fff;
+    font-family: 'Permanent Marker',cursive;
+    text-shadow: 2px 2px #2b274f;
   }
   &.right-end {
     position: absolute;
