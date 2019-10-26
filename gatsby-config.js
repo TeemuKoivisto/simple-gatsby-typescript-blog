@@ -26,29 +26,21 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     {
-      resolve: 'gatsby-plugin-typography',
+      resolve: `gatsby-plugin-google-gtag`,
       options: {
-        pathToConfigModule: 'src/theme/typography',
+        trackingIds: [
+          "UA-146681530-1",
+        ],
+        pluginConfig: {
+          respectDNT: true,
+          exclude: [],
+        },
       },
     },
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: 'gatsby-plugin-typography',
       options: {
-        trackingId: "UA-131285076-1",
-        // Puts tracking script in the head instead of the body
-        head: false,
-        // Setting this parameter is optional
-        anonymize: true,
-        // Setting this parameter is also optional
-        respectDNT: true,
-        // Avoids sending pageview hits from custom paths
-        // exclude: ["/preview/**", "/do-not-track/me/too/"],
-        // Enables Google Optimize using your container Id
-        // optimizeId: "YOUR_GOOGLE_OPTIMIZE_TRACKING_ID",
-        // Any additional create only fields (optional)
-        sampleRate: 5,
-        siteSpeedSampleRate: 10,
-        // cookieDomain: "example.com",
+        pathToConfigModule: 'src/theme/typography',
       },
     },
     {

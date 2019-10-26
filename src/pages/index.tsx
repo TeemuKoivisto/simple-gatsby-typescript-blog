@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { graphql, Link } from 'gatsby'
 import styled from '../theme/styled'
-import { OutboundLink } from 'gatsby-plugin-google-analytics'
+import { OutboundLink } from 'gatsby-plugin-google-gtag'
 
 import { DefaultLayout } from '../layouts/DefaultLayout'
 
