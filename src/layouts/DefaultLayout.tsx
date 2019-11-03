@@ -10,6 +10,8 @@ import { defaultTheme, GlobalStyle } from '../theme/sc-default-theme'
 import { NavBar } from '../components/NavBar'
 import { Footer } from '../components/Footer'
 
+import { breakpoints } from '../constants'
+
 import { ISiteData, ISEOBlogPost } from '../types/graphql'
 
 const siteDataQuery = graphql`
@@ -111,19 +113,24 @@ const DefaultWrapper = styled.div`
 const DefaultContainer = styled.main`
   background: #fff;
   border-radius: 20px;
+  /* box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); */
   max-width: 800px;
   margin: ${({ theme }) => `4rem auto calc(4rem + ${theme.sizes.footer}) auto`};
+  max-width: 600px;
   position: relative;
   height: 100%;
   & > div:first-child {
-    /* box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); */
-    padding: 30px 8vw 0 8vw;
+    padding: 2rem 3vw 0 4vw;
   }
-  @media screen and (max-width: 900px) {
-    max-width: 600px;
+  @media screen and (min-width: 900px) {
+    max-width: 800px;
     & > div:first-child {
-      /* box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); */
-      padding: 30px 3vw 0 4vw;
+      padding: 2rem 8vw 0 8vw;
+    }
+  }
+  @media screen and (min-width: ${breakpoints.large}px) {
+    & > div:first-child {
+      padding: 2rem 6rem 0 6rem;
     }
   }
   @media screen and (max-width: 650px) {
