@@ -82,6 +82,7 @@ export default class BlogPostTemplate extends React.PureComponent<IProps> {
     const blogPost = { ...site.siteMetadata, ...markdownRemark.frontmatter, ...{
       url: postUrl,
       image: seoImage && seoImage.landscape && `${baseUrl}${seoImage.landscape.fluid.src}`,
+      publisher: site.siteMetadata.author,
     }} as ISEOBlogPost
     const title = markdownRemark.frontmatter.title
     // Use markdown's description field if provided, otherwise just 100 first characters.

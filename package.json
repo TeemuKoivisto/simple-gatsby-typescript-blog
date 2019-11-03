@@ -44,7 +44,7 @@
     "react-dom": "^16.9.0",
     "react-helmet": "^5.2.1",
     "react-icons": "^3.7.0",
-    "react-seo-meta-tags": "^0.2.1",
+    "react-seo-meta-tags": "^1.0.0",
     "react-share": "^3.0.0",
     "react-typography": "^0.16.19",
     "styled-components": "^4.3.2",

@@ -7,18 +7,13 @@ module.exports = {
     disqusShortname: 'teemukoivisto-xyz', // Uses dev-teemukoivisto-xyz in development
     author: {
       name: 'Teemu Koivisto',
-      schemaType: 'Person'
+      image: 'https://teemukoivisto.xyz/images/avatar-460.jpeg',
     },
     site: {
       siteName: 'TeemuKoivisto', // This is not very necessary for a personal blog but whatever
       canonicalUrl: 'https://teemukoivisto.xyz',
     },
-    organization: {
-      name: 'Teemu Koivisto',
-      url: 'https://teemukoivisto.xyz',
-      logo: 'https://teemukoivisto.xyz/images/avatar-460.jpeg'
-    }
-  },  
+  },
   plugins: [
     'gatsby-plugin-typescript',
     'gatsby-plugin-styled-components',

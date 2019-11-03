@@ -12,12 +12,7 @@ export interface ISiteData {
     }
     author: {
       name: string
-      schemaType: string
-    }
-    organization: {
-      name: string
-      url: string
-      logo: string
+      image: string
     }
   }
 }
@@ -38,12 +33,11 @@ export interface ISEOBlogPost {
   }
   author: {
     name: string
-    schemaType: string
+    image: string
   }
-  organization: {
+  publisher: {
     name: string
-    logo: string
-    url: string
+    image: string
   }
 }
 

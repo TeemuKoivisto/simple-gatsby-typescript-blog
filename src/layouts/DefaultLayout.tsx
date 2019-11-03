@@ -31,12 +31,7 @@ const siteDataQuery = graphql`
       }
       author {
         name
-        schemaType
-      }
-      organization {
-        name
-        logo
-        url
+        image
       }
     }
   }
