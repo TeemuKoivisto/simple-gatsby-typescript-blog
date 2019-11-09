@@ -134,7 +134,7 @@ const DefaultContainer = styled.main`
   @media screen and (max-width: 650px) {
     margin: 2rem 1rem 10rem 1rem;
   }
-  @media screen and (max-width: 400px) {
-    margin: 2rem 0.5rem 10rem 0.5rem;
+  @media screen and (max-width: 500px) {
+    margin: 2rem 0.5rem 15.5rem 0.5rem; // Massive bottom margin for footer which breaks here into column-wise form
   }
 `

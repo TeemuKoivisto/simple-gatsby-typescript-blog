@@ -49,14 +49,22 @@ const Nav = styled.nav`
   justify-content: center;
   padding: 20px;
   position: relative;
+  @media screen and (max-width: 500px) {
+    flex-direction: column;
+    align-items: center;
+    & > ${MyIconLinks} {
+      align-items: center;
+    }
+  }
 `
 const NavLink = styled(Link)`
   color: #fff;
   margin-right: 40px;
   text-decoration: none;
   position: relative;
-  @media screen and (max-width: 400px) {
-    margin-right: 20px;
+  @media screen and (max-width: 500px) {
+    margin-bottom: 1rem;
+    margin-right: 0px;
   }
   &.title {
     color: #fff;
@@ -77,8 +85,8 @@ const NavLink = styled(Link)`
     position: absolute;
     top: 6px; // Hmm
     background-color: #fff;
-    @media screen and (max-width: 400px) {
-      right: -10px;
+    @media screen and (max-width: 500px) {
+      display: none;
     }
   }
 `

@@ -63,9 +63,6 @@ const Nav = styled.nav`
   padding: 32px 0;
   position: relative;
   ${raise(2)}
-  @media screen and (max-width: 460px) {
-    padding: 20px 0;
-  }
   ${NavDropdown} {
     visibility: hidden;
     width: 100%;
@@ -73,8 +70,9 @@ const Nav = styled.nav`
     justify-content: flex-end;
     margin-right: 20px;
   }
-  @media screen and (max-width: 420px) {
-    > ${MyIconLinks} {
+  @media screen and (max-width: 500px) {
+    padding: 20px 0;
+    & > ${MyIconLinks} {
       display: none;
       visibility: hidden;
     }

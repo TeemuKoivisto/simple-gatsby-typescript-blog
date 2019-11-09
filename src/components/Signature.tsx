@@ -8,11 +8,12 @@ export function Signature() {
     <>
       <TopDivider/>
       <SignatureContainer>
-        <Avatar src={avatar}/>
+        <Avatar src={avatar} alt="Picture of my beautiful face"/>
         <Blurb>
           <p>
             Hi, I'm <b>Teemu Koivisto</b>. A software developer and MSc. student of Data Science from Helsinki.
-            When I'm not doing the boring stuff, I like practising music and lifting weights, up and down, in the gym.
+            When I'm not doing the boring stuff, I like practising music, lifting weights and getting high on heroin.
+            One of those was a lie.
           </p>
         </Blurb>
       </SignatureContainer>
