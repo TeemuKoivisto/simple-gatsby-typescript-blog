@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Link } from 'gatsby'
 
-import styled, { raise } from '../theme/styled'
+import styled from '../theme/styled'
 import { ISiteData } from '../types/graphql'
 
 import { MyIconLinks } from '../elements/MyIconLinks'
@@ -34,11 +34,7 @@ function FooterEl(props: IProps) {
 const FooterContainer = styled.footer`
   background: linear-gradient(#5FA0FF -59%, #589bff);
   /* border-top: 1px solid hsla(0,0%,0%,0.2); */
-  position: absolute; // DON'T REMOVE THIS UNLESS YOU REALLY WANT TO GO DEEP INTO CSS. It's crap but it works
-  bottom: 0;
-  left: 0;
   width: 100%;
-  height: ${({ theme }) => theme.sizes.footer};
 `
 const NavWrapper = styled.div`
   display: flex;

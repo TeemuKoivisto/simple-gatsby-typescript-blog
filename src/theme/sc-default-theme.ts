@@ -40,9 +40,6 @@ export const defaultTheme : ITheme = {
     xlarge: '40px',
     largeIcon: '50px'
   },
-  sizes: {
-    footer: '118px',
-  },
   margins: {
     default: '2rem',
   }
@@ -54,8 +51,10 @@ export const GlobalStyle = createGlobalStyle`
   }
   body {
     margin: 0;
-    padding: 0;
     min-height: 100%;
+    padding: 0;
+    position: absolute;
+    width: 100%;
     // TODO this shit
     & > div {
       height: 100%;

@@ -115,7 +115,7 @@ export default class FrontPage extends React.PureComponent<IFrontPageProps> {
   }
 }
 const Container = styled.div`
-  margin-bottom: 40px;
+  margin-bottom: 3rem;
 `
 const PaddedLink = styled(OutboundLink)`
   margin: 0 5px 0 5px;

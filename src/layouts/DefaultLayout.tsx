@@ -104,9 +104,9 @@ const DefaultWrapper = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100%;
-  position: absolute;
+  /* position: absolute;
   top: 0;
-  left: 0;
+  left: 0; */
   width: 100%;
 `
 
@@ -114,16 +114,17 @@ const DefaultContainer = styled.main`
   background: #fff;
   border-radius: 20px;
   /* box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); */
-  max-width: 800px;
-  margin: ${({ theme }) => `4rem auto calc(4rem + ${theme.sizes.footer}) auto`};
+  height: 100%;
+  margin: 4rem auto 4rem auto;
   max-width: 600px;
   position: relative;
-  height: 100%;
   & > div:first-child {
+    min-height: 400px; // Required to keep the footer at the bottom of the screen (otherwise empty space appears, a long story..)
     padding: 2rem 3vw 0 4vw;
   }
   @media screen and (min-width: 900px) {
     max-width: 800px;
+    width: 100%;
     & > div:first-child {
       padding: 2rem 8vw 0 8vw;
     }
@@ -134,9 +135,9 @@ const DefaultContainer = styled.main`
     }
   }
   @media screen and (max-width: 650px) {
-    margin: ${({ theme }) => `2rem 1rem calc(2rem + ${theme.sizes.footer}) 1rem`};
+    margin: 2rem 1rem 2rem 1rem;
   }
   @media screen and (max-width: 400px) {
-    margin: ${({ theme }) => `2rem 0.5rem calc(2rem + ${theme.sizes.footer}) 0.5rem`};
+    margin: 2rem 0.5rem 2rem 0.5rem;
   }
 `
