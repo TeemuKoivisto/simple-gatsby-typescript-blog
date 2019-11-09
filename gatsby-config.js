@@ -9,6 +9,7 @@ module.exports = {
       name: 'Teemu Koivisto',
       image: 'https://teemukoivisto.xyz/images/avatar-460.jpeg',
     },
+    siteUrl: 'https://teemukoivisto.xyz', // Required by gatsby-plugin-sitemap
     site: {
       siteName: 'TeemuKoivisto', // This is not very necessary for a personal blog but whatever
       canonicalUrl: 'https://teemukoivisto.xyz',
@@ -18,6 +19,7 @@ module.exports = {
     'gatsby-plugin-typescript',
     'gatsby-plugin-styled-components',
     'gatsby-plugin-react-helmet',
+    'gatsby-plugin-sitemap',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     {
