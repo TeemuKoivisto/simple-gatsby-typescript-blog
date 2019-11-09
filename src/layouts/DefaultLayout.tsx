@@ -99,23 +99,20 @@ const DefaultContent = ({ children, seoBlogPost }: IProps) => ({ site }: { site:
 )
 
 const DefaultWrapper = styled.div`
-  background: #f1f3ff;
+  background: ${({ theme }) => theme.color.bg};
   background-size: cover;
   display: flex;
   flex-direction: column;
   min-height: 100%;
-  /* position: absolute;
-  top: 0;
-  left: 0; */
+  position: absolute;
   width: 100%;
 `
-
 const DefaultContainer = styled.main`
   background: #fff;
   border-radius: 20px;
   /* box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); */
   height: 100%;
-  margin: 4rem auto 4rem auto;
+  margin: 4rem auto 12rem auto; // Massive margin-bottom again to keep the footer from getting funky
   max-width: 600px;
   position: relative;
   & > div:first-child {

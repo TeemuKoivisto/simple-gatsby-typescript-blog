@@ -34,6 +34,8 @@ function FooterEl(props: IProps) {
 const FooterContainer = styled.footer`
   background: linear-gradient(#5FA0FF -59%, #589bff);
   /* border-top: 1px solid hsla(0,0%,0%,0.2); */
+  bottom: 0;
+  position: absolute;
   width: 100%;
 `
 const NavWrapper = styled.div`
@@ -85,6 +87,7 @@ const SmallPrint = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-bottom: 10px;
   & > * {
     margin: 0;
   }
