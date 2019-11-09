@@ -132,9 +132,9 @@ const DefaultContainer = styled.main`
     }
   }
   @media screen and (max-width: 650px) {
-    margin: 2rem 1rem 2rem 1rem;
+    margin: 2rem 1rem 10rem 1rem;
   }
   @media screen and (max-width: 400px) {
-    margin: 2rem 0.5rem 2rem 0.5rem;
+    margin: 2rem 0.5rem 10rem 0.5rem;
   }
 `
