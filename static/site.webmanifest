@@ -1,7 +1,12 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "TeemuKoivisto",
+    "short_name": "Teemu Koivisto's blog",
     "icons": [
+        {
+            "src": "favicon.ico",
+            "sizes": "64x64 32x32 24x24 16x16",
+            "type": "image/x-icon"
+        },
         {
             "src": "/android-chrome-192x192.png",
             "sizes": "192x192",
@@ -13,7 +18,8 @@
             "type": "image/png"
         }
     ],
+    "start_url": "./index.html",
     "theme_color": "#ffffff",
-    "background_color": "#ffffff",
+    "background_color": "#f1f3ff",
     "display": "standalone"
 }
