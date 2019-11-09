@@ -1,5 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 
 import styled from '../theme/styled'
 
@@ -17,8 +18,8 @@ import { ISiteData, ISEOBlogPost, IBlogPostFrontmatter } from '../types/graphql'
 interface IProps {
   data: {
     site: ISiteData
-    markdownRemark: {
-      html: any
+    mdx: {
+      body: any
       excerpt: string
       frontmatter: IBlogPostFrontmatter
       fields: {
@@ -72,26 +73,28 @@ interface IProps {
 
 export default class BlogPostTemplate extends React.PureComponent<IProps> {
   render() {
-    const { data: { site, markdownRemark, seoImage }, pageContext } = this.props
-    const baseUrl = process.env.NODE_ENV === 'development' ? this.props.location.origin : site.siteMetadata.site.canonicalUrl
-    const postUrl = `${baseUrl}${markdownRemark.fields.slug}`
+    const { data: { site, mdx, seoImage }, pageContext } = this.props
+    const baseUrl = process.env.NODE_ENV === 'development' ? this.props.location.origin : site.siteMetadata.siteUrl
+    const postUrl = `${baseUrl}${mdx.fields.slug}`
     // This abomination is the combination of siteMetadata from gatsby-config.js,
     // data from the markdown file this blog-post is generated from and the beautifully
     // mushed together URLs of the blog-post & its image so that in development it picks up
     // the localhost address and in production the canonical URL defined in gatsby-config.js
-    const blogPost = { ...site.siteMetadata, ...markdownRemark.frontmatter, ...{
+    const blogPost = { ...site.siteMetadata, ...mdx.frontmatter, ...{
       url: postUrl,
       image: seoImage && seoImage.landscape && `${baseUrl}${seoImage.landscape.fluid.src}`,
       publisher: site.siteMetadata.author,
     }} as ISEOBlogPost
-    const title = markdownRemark.frontmatter.title
+    const title = mdx.frontmatter.title
     // Use markdown's description field if provided, otherwise just 100 first characters.
-    const excerpt = markdownRemark.frontmatter.description || markdownRemark.excerpt
+    const excerpt = mdx.frontmatter.description || mdx.excerpt
     return (
       <DefaultLayout title={title} seoBlogPost={blogPost}>
         <BlogContainer>
-          <BlogHeader frontmatter={markdownRemark.frontmatter} excerpt={excerpt}/>
-          <section dangerouslySetInnerHTML={{ __html: markdownRemark.html }} />
+          <BlogHeader frontmatter={mdx.frontmatter} excerpt={excerpt}/>
+          <section>
+            <MDXRenderer>{mdx.body}</MDXRenderer>
+          </section>
           <Signature/>
           <BlogPager previous={pageContext.previous} next={pageContext.next}/>
           <ShareButtons url={postUrl} title={title}/>
@@ -111,8 +114,8 @@ export const pageQuery = graphql`
     site {
       ...SiteData
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
+    mdx(fields: { slug: { eq: $slug }}) {
+      body
       excerpt
       frontmatter {
         title

@@ -4,7 +4,7 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions
   // Select only markdown-nodes picked up by 'gatsby-transformer-remark'
-  if (node.internal.type === `MarkdownRemark`) {
+  if (node.internal.type === `Mdx`) {
     // Generate a slug name from the file name
     const filePath = node.fileAbsolutePath
     const lastSlashIndex = filePath.lastIndexOf('/')
@@ -23,26 +23,28 @@ exports.createPages = async ({ graphql, actions }) => {
   const result = await graphql(`
     {
       posts: allFile(
-        filter: { relativePath: { glob: "**/*.md" } }
+        filter: { relativePath: { glob: "**/*.mdx" } }
         sort: { fields: relativePath, order: DESC }
       ) {
         edges {
           node {
             id
             relativePath
-            childMarkdownRemark {
-              frontmatter {
-                datePublished(formatString: "YYYY-MM-DD")
-                dateModified(formatString: "YYYY-MM-DD")
-                title
-                description
-                tags
-                images {
-                  name
+            children {
+              ... on Mdx {
+                frontmatter {
+                  datePublished(formatString: "YYYY-MM-DD")
+                  dateModified(formatString: "YYYY-MM-DD")
+                  title
+                  description
+                  tags
+                  images {
+                    name
+                  }
                 }
-              }
-              fields {
-                slug
+                fields {
+                  slug
+                }
               }
             }
           }
@@ -53,7 +55,7 @@ exports.createPages = async ({ graphql, actions }) => {
   if (result.errors) {
     throw Error('createPages graphql query threw an error: \n' + result.errors[0])
   }
-  const nodes = result.data.posts.edges.map(({ node: { childMarkdownRemark } }) => childMarkdownRemark)
+  const nodes = result.data.posts.edges.map(({ node: { children } }) => children[0])
   nodes.forEach((node, i) => {
     const previousNode = i !== nodes.length - 1 ? nodes[i+1] : undefined
     const nextNode = i !== 0 ? nodes[i-1]: undefined

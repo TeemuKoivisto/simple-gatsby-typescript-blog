@@ -8,21 +8,21 @@ import { IBlogPosts, INode } from '../types/graphql'
 
 interface IBlogPageProps {
   data: {
-    allMarkdownRemark: IBlogPosts
+    allMdx: IBlogPosts
   }
 }
 
 export default class BlogPage extends React.PureComponent<IBlogPageProps> {
   render() {
-    const { data: { allMarkdownRemark } } = this.props
+    const { data: { allMdx } } = this.props
     return (
       <DefaultLayout>
         <div>
           <h1>My blog posts</h1>
           <BlogList>
-            { allMarkdownRemark.edges.map(({ node }: INode) =>
+            { allMdx.edges.map(({ node }: INode) =>
             <li key={node.frontmatter.title}>
-              <BlogLink to={node.fields.slug}>
+              <BlogLink to={node.frontmatter.slug}>
                 <Date>{node.frontmatter.datePublished}</Date>
                 <Title>{node.frontmatter.title}</Title>
               </BlogLink>
@@ -80,7 +80,7 @@ const Tag = styled.p`
 
 export const query = graphql`
   query {
-    allMarkdownRemark(sort: { fields: [frontmatter___datePublished], order: DESC }) {
+    allMdx(sort: { fields: [frontmatter___datePublished], order: DESC }) {
       totalCount
       edges {
         ...BlogPost

@@ -14,13 +14,13 @@ interface IFrontPageProps {
         title: string
       }
     },
-    allMarkdownRemark: IBlogPosts
+    allMdx: IBlogPosts
   }
 }
 
 export default class FrontPage extends React.PureComponent<IFrontPageProps> {
   render() {
-    const { data: { allMarkdownRemark } } = this.props
+    const { data: { allMdx } } = this.props
     return (
       <DefaultLayout>
         <Container>
@@ -104,8 +104,10 @@ export default class FrontPage extends React.PureComponent<IFrontPageProps> {
           <div>
             <h2>My 5 most recent blog posts</h2>
             <ul>
-              { allMarkdownRemark.edges.slice(0, 5).map(({ node }: INode) =>
-              <li key={node.frontmatter.title}><Link to={node.fields.slug}>{node.frontmatter.title}</Link></li>
+              { allMdx.edges.slice(0, 5).map(({ node }: INode) =>
+              <li key={node.frontmatter.title}>
+                <Link to={`blog/${node.frontmatter.slug}`}>{node.frontmatter.title}</Link>
+              </li>
               )}
             </ul>
           </div>
@@ -126,7 +128,7 @@ export const query = graphql`
     site {
       ...SiteData
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___datePublished], order: DESC }) {
+    allMdx(sort: { fields: [frontmatter___datePublished], order: DESC }) {
       totalCount
       edges {
         ...BlogPost

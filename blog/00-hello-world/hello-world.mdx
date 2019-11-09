@@ -1,0 +1,32 @@
+---
+datePublished: 2019-11-08
+dateModified: 2019-11-08
+title: Hello World!
+description: My first blog post!
+slug: hello-world
+tags:
+  - hello world
+  - gatsby
+  - blog
+images:
+  - hello-world.jpg
+---
+
+Oh, arise my glorious castle in the internet fantasy land.
+Behold, it's alive! 
+
+<img src="./hello-world.jpg" alt="Hello world in TypeScript." />
+
+This has taken from me forever to make this... I feel like an ancient Egyptian slave, hauling up the last brick on top of the pyramid. Maybe then my mortal aches are finally silenced. In days, long past, I tried out multiple different things at first. Jekyll was my first attempt, but it didn't just feel right. Too restricted. The same with Hugo albeit it was kinda easy to get up and running with it. But nope, I had to do it the hard way. So what I did was build up the whole thing from scratch using Gatsby and TypeScript, making sure everything was just *the way I wanted*. Madness. Oh well, maybe now it's done.
+
+In the process I created one React library just to modularize my SEO meta tag code that I had the unfortunate chance to get deep into <a href="https://github.com/TeemuKoivisto/react-seo-meta-tags" rel="noopener">react-seo-meta-tags</a>. It's really just nonsense with not that much benefit to my overall SEO visibility. And like how many people are going to see this, 10? No Schema.org JSON-LDs needed. But it's a hobby project so no one is counting the hours to see what the theoretical costs would have been. Probably around 200-300 hours. So under 10k €. But I mean who cares about the hours when you are doing it with the ones you love. Oh wait.
+
+Gatsby itself is ok, once you get the boilerplate done. And there's a lot of that. Doesn't help that the source code of Gatsby is bit spagetti JavaScript, and I feel its influence at places here too. Some random thing doesn't work with no obvious explanation. Like that empty `.eslintrc` at the root of this project. Had to put it there, because Gatsby couldn't recognize my locally linked npm module otherwise. It would otherwise try to lint its source code (which obviously had bit different linting rules than the Gatsby source code).
+
+Oh god this has been a massive hurdle. And the CSP rules. The jarring way of deploying new versions of Edge Lambdas. The horror. The horror.
+
+Well it could be course. I could still be in the process of doing this. Or dead. I can imagine realities far worse than this. 
+
+*But* to wrap this thing up. The code for this Gatsby frontend is in Github. The infra stack I've made for the AWS setup is still a bit wonky, so I have to refactor some dumb things I've made before releasing it. And remove probably the CSP since it only makes me go crazy, and probably doesn't add any additional security. I mean what are the chances that Disqus or Google Analytics would hijack my site? There isn't even login or payment functionality so what I'm afraid of? That they'll use my site for redirecting you to crappy porn sites?
+
+Hnnnggh okey. Maybe now it's finally finished. There possibly be any large issues left to solve after adding GA, logo (that took forever to pick), and fixing the styles for a millionth time. Oh yeah maybe I have to update my `react-seo-meta-tags` library, again. Just to make sure things work as planned. Don't want to lose on that SEO visibility heh heh hah hah HUH HUH HAAAAAA.

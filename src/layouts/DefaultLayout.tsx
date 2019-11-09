@@ -27,9 +27,9 @@ const siteDataQuery = graphql`
       image
       facebookAppId
       disqusShortname
+      siteUrl
       site {
         siteName
-        canonicalUrl
       }
       author {
         name
@@ -37,7 +37,7 @@ const siteDataQuery = graphql`
       }
     }
   }
-  fragment BlogPost on MarkdownRemarkEdge {
+  fragment BlogPost on MdxEdge {
     node {
       id
       frontmatter {
