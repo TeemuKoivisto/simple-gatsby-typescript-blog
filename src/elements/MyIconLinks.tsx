@@ -4,6 +4,8 @@ import styled from '../theme/styled'
 // IoMdMail IoLogoLinkedin IoLogoGithub
 import { IoMdMail, IoLogoLinkedin, IoLogoGithub } from 'react-icons/io'
 
+import { outboundClick } from '../analytics'
+
 interface IProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
@@ -11,13 +13,13 @@ function MyIconLinksEl(props: IProps) {
   return (
     <Container className={props.className}>
       <Links>
-        <IconLink href="mailto:teemukoivisto.xyz@gmail.com">
+        <IconLink href="mailto:teemukoivisto.xyz@gmail.com" onClick={outboundClick}>
           <IoMdMail size={24}/>
         </IconLink>
-        <IconLink href="https://github.com/teemukoivisto">
+        <IconLink href="https://github.com/teemukoivisto" onClick={outboundClick} target="_blank">
           <IoLogoGithub size={24}/>
         </IconLink>
-        <IconLink href="https://www.linkedin.com/in/teemu-koivisto-75304b114">
+        <IconLink href="https://www.linkedin.com/in/teemu-koivisto-75304b114" onClick={outboundClick} target="_blank">
           <IoLogoLinkedin size={24}/>
         </IconLink>
       </Links>
