@@ -1,6 +1,8 @@
 
 export const outboundClick = (e: React.MouseEvent<HTMLLinkElement>) => {
-  if (window && window.gtag) {
+  // Check if gtag library _and_ Google Analytics has loaded
+  // Weird thing is that gtag loads, but ga does not when adblocker is enabled
+  if (window && window.gtag && window.ga) {
     let redirect = true
     // Check for modifier keys, might imply that eg Ctrl was used when clicking
     // so in that case we shouldn't redirect the user programmatically

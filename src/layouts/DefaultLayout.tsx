@@ -112,19 +112,21 @@ const DefaultContainer = styled.main`
   border-radius: 20px;
   /* box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); */
   height: 100%;
-  margin: 4rem auto 12rem auto; // Massive margin-bottom again to keep the footer from getting funky
+  margin: 2rem 0.5rem 16rem 0.5rem; // Massive bottom margin for footer which breaks here into column-wise form
   max-width: 600px;
   position: relative;
   & > div:first-child {
     min-height: 400px; // Required to keep the footer at the bottom of the screen (otherwise empty space appears, a long story..)
-    padding: 0 3vw 0 4vw;
+    padding: 0rem 3vw 0 4vw;
   }
-  @media screen and (max-width: 650px) {
+  @media screen and (min-width: 500px) {
     margin: 2rem 1rem 10rem 1rem;
+    & > div:first-child {
+      padding: 1rem 3vw 0 4vw;
+    }
   }
-  @media screen and (max-width: 500px) {
-    border-radius: 0;
-    margin: 0 0 13.5rem 0; // Massive bottom margin for footer which breaks here into column-wise form
+  @media screen and (min-width: 650px) {
+    margin: 4rem auto 12rem auto; // Massive margin-bottom again to keep the footer from getting funky
   }
   @media screen and (min-width: 900px) {
     max-width: 800px;

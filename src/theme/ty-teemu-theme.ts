@@ -66,7 +66,7 @@ const theme = {
     },
     [TABLET_MEDIA_QUERY]: {
       h1: {
-        ...scale(5 / 5),
+        ...scale(6 / 5),
       },
     },
     'h1,h2,h3,h4,h5,h6': {
@@ -74,7 +74,7 @@ const theme = {
       marginBottom: rhythm(3 / 5),
     },
     h1: {
-      ...scale(6 / 5),
+      ...scale(7 / 5),
       letterSpacing: '-1px',
     },
     h6: {

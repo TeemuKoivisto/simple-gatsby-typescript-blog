@@ -69,12 +69,12 @@ const BlogDate = styled.div`
   min-width: 130px; // Based on complex calculations and rocket science
 `
 const Time = styled.time`
-  background: #081da9;
+  background: #607cff; // #081da9;
   border-radius: 5px;
   color: white;
   font-size: 1rem;
   padding: 0 3px;
-${raise(1)}
+  ${raise(1)}
 `
 // Keeps svgs from resizing themselves into oblivion
 const SvgWrapper = styled.div`
