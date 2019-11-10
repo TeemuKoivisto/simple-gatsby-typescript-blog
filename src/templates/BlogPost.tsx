@@ -73,7 +73,7 @@ interface IProps {
 export default class BlogPostTemplate extends React.PureComponent<IProps> {
   render() {
     const { data: { site, markdownRemark, seoImage }, pageContext } = this.props
-    const baseUrl = process.env.NODE_ENV === 'development' ? this.props.location.origin : site.siteMetadata.site.canonicalUrl
+    const baseUrl = process.env.NODE_ENV === 'development' ? this.props.location.origin : site.siteMetadata.siteUrl
     const postUrl = `${baseUrl}${markdownRemark.fields.slug}`
     // This abomination is the combination of siteMetadata from gatsby-config.js,
     // data from the markdown file this blog-post is generated from and the beautifully
@@ -91,7 +91,7 @@ export default class BlogPostTemplate extends React.PureComponent<IProps> {
       <DefaultLayout title={title} seoBlogPost={blogPost}>
         <BlogContainer>
           <BlogHeader frontmatter={markdownRemark.frontmatter} excerpt={excerpt}/>
-          <section dangerouslySetInnerHTML={{ __html: markdownRemark.html }} />
+          <section className="blog-post" dangerouslySetInnerHTML={{ __html: markdownRemark.html }} />
           <Signature/>
           <BlogPager previous={pageContext.previous} next={pageContext.next}/>
           <ShareButtons url={postUrl} title={title}/>

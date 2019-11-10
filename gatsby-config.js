@@ -12,7 +12,6 @@ module.exports = {
     siteUrl: 'https://teemukoivisto.xyz', // Required by gatsby-plugin-sitemap
     site: {
       siteName: 'TeemuKoivisto', // This is not very necessary for a personal blog but whatever
-      canonicalUrl: 'https://teemukoivisto.xyz',
     },
   },
   plugins: [

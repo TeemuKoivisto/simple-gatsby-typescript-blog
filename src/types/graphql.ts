@@ -6,9 +6,9 @@ export interface ISiteData {
     image: string
     facebookAppId: string
     disqusShortname: string
+    siteUrl: string
     site: {
       siteName: string
-      canonicalUrl: string
     }
     author: {
       name: string
@@ -27,9 +27,9 @@ export interface ISEOBlogPost {
   tags: string[]
   facebookAppId: string
   disqusShortname: string
+  siteUrl: string
   site: {
     siteName: string
-    canonicalUrl: string
   }
   author: {
     name: string

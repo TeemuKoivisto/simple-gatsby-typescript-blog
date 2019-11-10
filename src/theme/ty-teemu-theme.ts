@@ -80,8 +80,16 @@ const theme = {
     h6: {
       fontStyle: 'italic',
     },
+    hr: {
+      marginTop: rhythm(5 / 4),
+      marginBottom: rhythm(5 / 4),
+    },
     p: {
-      marginBottom: rhythm(0.5),
+      marginTop: rhythm(1 / 2),
+      marginBottom: rhythm(1 / 2),
+    },
+    figure: {
+      marginBottom: rhythm(1.5),
     }
   }),
 }

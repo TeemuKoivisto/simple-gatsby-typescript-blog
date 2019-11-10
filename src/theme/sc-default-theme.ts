@@ -70,6 +70,19 @@ export const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
+  .blog-post {
+    a {
+      color: #5917ff;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+    figcaption {
+      color: rgba(0, 0, 0, 0.7);
+      font-family: 'Rubik',sans-serif;
+      padding-top: 6px;
+      text-align: center;
+    }
+  }
   .figure-caption__body {
 
   }

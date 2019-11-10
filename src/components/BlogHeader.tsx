@@ -14,29 +14,31 @@ interface IProps {
 function BlogHeaderEl(props: IProps) {
   const { excerpt, frontmatter: { title, datePublished, tags } } = props
   return (
-    <BlogHeaderContainer>
-      <h1>{ title }</h1>
-      <Info>
-        <BlogDate>
-          <SvgWrapper><MdEvent size={24}/></SvgWrapper>
-          { datePublished }
-        </BlogDate>
-        <TagsContainer>
-          <SvgWrapper><MdLocalOffer size={24}/></SvgWrapper>
-          <Tags>
-            { tags.map((t, i) =>
-            <Tag key={i}>{t}</Tag>
-            )}
-          </Tags>
-        </TagsContainer>
-      </Info>
-      <Excerpt>{excerpt}</Excerpt>
-      <Divider />
-    </BlogHeaderContainer>
+    <>
+      <BlogHeaderContainer>
+        <h1>{ title }</h1>
+        <Info>
+          <BlogDate>
+            <SvgWrapper><MdEvent size={24}/></SvgWrapper>
+            <Time>{ datePublished }</Time>
+          </BlogDate>
+          <TagsContainer>
+            <SvgWrapper><MdLocalOffer size={24}/></SvgWrapper>
+            <Tags>
+              { tags.map((t, i) =>
+              <Tag key={i}>{t}</Tag>
+              )}
+            </Tags>
+          </TagsContainer>
+        </Info>
+        <Excerpt>{excerpt}</Excerpt>
+      </BlogHeaderContainer>
+      <hr />
+    </>
   )
 }
 
-const BlogHeaderContainer = styled.div`
+const BlogHeaderContainer = styled.header`
   display: flex;
   flex-direction: column;
   & > h1 {
@@ -65,6 +67,14 @@ const BlogDate = styled.div`
   display: flex;
   margin: 10px 20px 10px 0;
   min-width: 130px; // Based on complex calculations and rocket science
+`
+const Time = styled.time`
+  background: #081da9;
+  border-radius: 5px;
+  color: white;
+  font-size: 1rem;
+  padding: 0 3px;
+${raise(1)}
 `
 // Keeps svgs from resizing themselves into oblivion
 const SvgWrapper = styled.div`
@@ -97,8 +107,5 @@ const Tag = styled.li`
 `
 const Excerpt = styled.h6`
   margin: 0 0 0 0;
-`
-const Divider = styled.hr`
-  margin: 2rem 0 2rem 0; // TODO use rhythm??
 `
 export const BlogHeader = styled(BlogHeaderEl)``

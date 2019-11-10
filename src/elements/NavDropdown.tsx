@@ -91,7 +91,7 @@ const SvgWrapper = styled.div`
 `
 const FixedCloseIcon = styled.div`
   color: #fff;
-  top: 25px;
+  top: 30px;
   position: fixed;
   z-index: 501;
 `
